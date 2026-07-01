@@ -149,15 +149,15 @@ $$
 Для $K$-регулярного графа $G(N,K,p)$ графовый лапласиан $L = D - A$ удовлетворяет:
 
 $$
-\operatorname{Tr}(L) = \sum_{i=0}^{N-1} \lambda_i = N \cdot K,
+\mathrm{Tr}(L) = \sum_{i=0}^{N-1} \lambda_i = N \cdot K,
 \qquad
-\operatorname{Tr}(L^2) = \sum_{i=0}^{N-1} \lambda_i^2 = N \cdot K(K+1).
+\mathrm{Tr}(L^2) = \sum_{i=0}^{N-1} \lambda_i^2 = N \cdot K(K+1).
 $$
 
 Отсюда:
 
 $$
-\boxed{\chi_I = 2\cdot\frac{\operatorname{Tr}(L^2)}{N} + 1 = 2K(K+1) + 1 = 85}.
+\boxed{\chi_I = 2\cdot\frac{\mathrm{Tr}(L^2)}{N} + 1 = 2K(K+1) + 1 = 85}.
 $$
 
 $\chi_I$ есть строгий спектральный инвариант — функция второго момента лапласиана, не содержащая свободных параметров.
@@ -243,7 +243,7 @@ $$
 
 | Инвариант | Формула | Расчёт | Эталон |
 |:--|:--|--:|--:|
-| $\chi_I$ | $2\operatorname{Tr}(L^2)/N + 1$ | 85.083 | 85.000 |
+| $\chi_I$ | $2\mathrm{Tr}(L^2)/N + 1$ | 85.083 | 85.000 |
 | $C_p$ | $\frac{14}{15}\bigl(1 + \frac{1}{K\chi_I f_1}\bigr)$ | 0.933351 | 0.933351 |
 | $C_W$ | $\frac{56}{57} + \frac{K-1}{K f_1^2}$ | 0.982539 | 0.982539 |
 
@@ -251,7 +251,7 @@ $$
 
 | Инвариант | Спектральная формула | Значение |
 |:--|:--|:--:|
-| $\chi_I$ | $2\operatorname{Tr}(L^2)/N + 1 = 2K(K+1) + 1$ | 85 |
+| $\chi_I$ | $2\mathrm{Tr}(L^2)/N + 1 = 2K(K+1) + 1$ | 85 |
 | $C_p$ | $\frac{2K+2}{2K+3}\bigl(1 + \frac{1}{K\chi_I f_1}\bigr)$ | 0.933350796 |
 | $C_n$ | $C_p + \eta_D(0)/(\pi K f_1)$ | 0.934643939 |
 | $C_W$ | $\frac{(K+1)(K+2)}{(K+1)(K+2)+1} + \frac{K-1}{K f_1^2}$ | 0.982539 |
@@ -1722,10 +1722,10 @@ $$
 Тогда средняя абсолютная процентная ошибка по набору из $n$ строк:
 
 $$
-\operatorname{MAE}_{\%} = \frac{1}{n}\sum_{i=1}^{n} |\varepsilon_i|
+\mathrm{MAE_{\%}} = \frac{1}{n}\sum_{i=1}^{n} |\varepsilon_i|
 $$
 
-| Набор | $n$ | $\operatorname{MAE}_{\%}$ | Средняя точность $100\% - \operatorname{MAE}_{\%}$ |
+| Набор | $n$ | $\mathrm{MAE_{\%}}$ | Средняя точность $100\% - \mathrm{MAE_{\%}}$ |
 |:--|--:|--:|--:|
 | Все измеримые/референсные строки, включая BIP39 | 123 | 0.385613\% | 99.614387\% |
 | Только физические величины, без BIP39 | 115 | 0.412438\% | 99.587562\% |
@@ -1740,16 +1740,16 @@ $$
 Вероятность случайно получить среднюю ошибку не хуже наблюдаемой равна
 
 $$
-P_{\text{rand}} = P\!\left(\overline{E}_n \le \frac{\operatorname{MAE}_{\%}}{100}\right)
+P_{\text{rand}} = P\!\left(\overline{E}_n \le \frac{\mathrm{MAE_{\%}}}{100}\right)
 $$
 
-Если $x = n \cdot \operatorname{MAE}_{\%}/100 \le 1$, CDF распределения Ирвина–Холла упрощается до
+Если $x = n \cdot \mathrm{MAE_{\%}}/100 \le 1$, CDF распределения Ирвина–Холла упрощается до
 
 $$
-P_{\text{rand}} = \frac{x^n}{n!}, \qquad x = n \cdot \frac{\operatorname{MAE}_{\%}}{100}
+P_{\text{rand}} = \frac{x^n}{n!}, \qquad x = n \cdot \frac{\mathrm{MAE_{\%}}}{100}
 $$
 
-| Набор | $n$ | $x = n \cdot \operatorname{MAE}_{\%}/100$ | $\log_{10} P_{\text{rand}}$ | $P_{\text{rand}}$ |
+| Набор | $n$ | $x = n \cdot \mathrm{MAE_{\%}}/100$ | $\log_{10} P_{\mathrm{rand}}$ | $P_{\mathrm{rand}}$ |
 |:--|--:|--:|--:|--:|
 | Все строки, включая BIP39 | 123 | 0.474304 | -244.93 | $\approx 10^{-244.93}$ |
 | Только физические, без BIP39 | 115 | 0.474304 | -225.72 | $\approx 10^{-225.72}$ |
