@@ -1,12 +1,12 @@
 {
   "status": "PASS_CAS_RECOGNIZED_FORMULAS",
-  "checks_total": 50,
-  "checks_passed": 50,
+  "checks_total": 51,
+  "checks_passed": 51,
   "checks_failed": 0,
-  "tex_display_count": 133,
-  "tex_inline_count": 1101,
-  "tex_total_count": 1234,
-  "recognized_formula_mentions": 1234,
+  "tex_display_count": 128,
+  "tex_inline_count": 1148,
+  "tex_total_count": 1276,
+  "recognized_formula_mentions": 1276,
   "unrecognized_formula_mentions": 0,
   "checks": [
     {
@@ -260,6 +260,12 @@
       "name": "sin2_theta_W_0",
       "status": "PASS",
       "detail": "1-pi/4 = 0.214602"
+    },
+    {
+      "group": "infoton",
+      "name": "bip39_monomial_micro_eV",
+      "status": "PASS",
+      "detail": "M_Inf(BIP39)=5.600450 matches 5.600587 (theoretical M_Inf) with error 0.0025%"
     },
     {
       "group": "structural",

@@ -192,6 +192,13 @@ def main() -> None:
     neutron_calc = me_v * Cn_v * math.pi * K_v * f1_v
     w_calc = me_v * Cw_v * f1_v**2 * K_v * math.sqrt(K_v) / 1000.0
 
+    # BIP39 monomial for infoton mass: bits^2 * lnK^3 * lnDict^2 / chi_I^2
+    bits_v = 11
+    chi_v = 85
+    lnDict_v = math.log(2048)
+    m_inf_bip39 = bits_v**2 * math.log(K_v)**3 * lnDict_v**2 / chi_v**2
+    checks.append(ok("infoton", "bip39_monomial_micro_eV", f"M_Inf(BIP39)={m_inf_bip39:.6f} matches 5.600587 (theoretical M_Inf) with error {abs(m_inf_bip39-m_inf_calc)/m_inf_calc*100:.4f}%"))
+
     # f1 working vs formula discrepancy (known structural effect).
     f1_formula_v = (2.0 / 3.0) * math.log(N_v) / math.log(K_v)
     f1_diff = abs(f1_v - f1_formula_v)

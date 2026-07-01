@@ -86,7 +86,7 @@ CAS SYMBOLIC VERIFICATION: PASS_CAS_RECOGNIZED_FORMULAS
 Что считается полностью готовым:
 
 - числовые таблицы, которые можно распарсить, прошли проверку `197/197`;
-- распознанное CAS-ядро прошло проверку `50/50`;
+- распознанное CAS-ядро прошло проверку `51/51`;
 - BIP39-сектор прошел проверку `8/8`;
 - изотопная таблица прошла проверку `53/53`;
 - LENR-баланс прошел проверку `3/3`;
@@ -506,6 +506,100 @@ e^{-\sigma n}
 \text{конечная, единая, абсолютно сходящаяся физика}
 }
 $$
+
+---
+
+# Полная таблица предсказаний модели
+
+Сводка всех предсказаний информационного графа: 445 констант из SciPy CODATA + фундаментальные константы теории (инфотон, спектральные инварианты, космология).
+
+**Ключевая статистика:**
+- Всего констант в BIP39-фитинге: **445**
+- Безразмерных: **128** (из них проходят 1%: **80/128**)
+- Размерных: **317** (проходят 1%: **150/317**)
+- Всего проходят 1% sparse fit: **230/445**
+- Всего проходят 0.1% sparse fit: **43/445**
+- Кандидатов мономов на константу: **101635**
+- Фундаментальных предсказаний (NO_FIT): **11**
+- Космологических предсказаний: **3** (Λ, H₀, Ω_m)
+- Спектральных инвариантов: **3** (χ_I, C_p, C_W)
+
+## Фундаментальные предсказания (NO_FIT)
+
+| Константа | Предсказание | Наблюдение | Отн. ошибка | Формула |
+|:--|:--:|:--:|:--:|:--|
+| **α** | 0.0072980714 | 0.0072973526 | 0.0099% | $2\ln(K)^2/(\pi\ln(N))$ |
+| **α_s** | 0.11314301 | 0.118 | 4.12% | $\pi^3\alpha/2$ |
+| **g_I²** | 0.79765008 | 0.801 | 0.42% | $2\pi\alpha f_1/K$ |
+| **sin²θ_W** | 0.2146 | 0.2229 | 3.72% | $1-\pi/4$ |
+| **G** | 6.6764e-11 | 6.674e-11 | 0.035% | $16\pi^3\ln(N)^{13}/(K^5\ln(K)N^{1/3})$ |
+| **Λ** | 1.103e-52 | 1.088e-52 | 1.38% | $\zeta(2)/(2K+1)$ |
+| **H₀** | 67.04 km/s/Mpc | 67.4 | 0.54% | из Λ |
+| **M_Inf** | 5.600587 μeV | 5.6 μeV | 0.010% | $\chi_I m_e/(K f_1^6)$ |
+| **M_p** | 938.3000 MeV | 938.272 MeV | 0.003% | $m_e C_p\pi K f_1$ |
+| **M_W** | 80.38001 GeV | 80.38 GeV | 1.1e-5% | $m_e C_W f_1^2 K\sqrt{K}$ |
+| **χ_I** | 85 | 85 | 0% | $2K(K+1)+1$ |
+
+## Параметры BIP39 и спектральные инварианты
+
+| Параметр | Формула из $K=6$ | Значение |
+|:--|:--|:--:|
+| **bits_per_word** | $2K-1$ | 11 |
+| **dict_size** | $2^{2K-1}$ | 2048 |
+| **words_per_phrase** | $4K$ | 24 |
+| **entropy_bits** | $4\cdot 2^K$ | 256 |
+| **checksum_bits** | $K+2$ | 8 |
+| **total_bits** | $4K(2K-1)$ | 264 |
+| **χ_I** | $2K(K+1)+1$ | 85 |
+| **C_p (proton)** | $\frac{2K+2}{2K+3}\left(1+\frac{1}{K\chi_I f_1}\right)$ | 0.933350796 |
+| **C_W (W boson)** | $\frac{56}{57}+\frac{K-1}{K f_1^2}$ | 0.982539 |
+
+## Масса инфотона (BIP39-моном)
+
+**A. Теоретическая формула (спектральный вывод):**
+$$M_{Inf} = \frac{\chi_I m_e}{K f_1^6} = 5.600587\ \mu\text{eV}$$
+
+**Б. BIP39-мономиальное выражение** (точность 0.0025%):
+$$M_{Inf} \approx \frac{\text{bits}^2 \cdot \ln(K)^3 \cdot \ln(\text{dict})^2}{\chi_I^2}
+= 5.600450\ \mu\text{eV}$$
+
+## BIP39-мономиальные предсказания: 445 констант
+
+Каждая из 445 констант SciPy/CODATA представлена BIP39-мономом.
+
+**Статистика:** Безразмерных 80/128 pass 1%, размерных 150/317 pass 1%.
+
+### Безразмерные (top 10)
+
+| Константа | Наблюдение | BIP39-моном | Ошибка % |
+|:--|:--:|:--|:--:|
+| helion g factor | -4.2552507 | $-\ln(K)^{-1}\ln(\text{dict})$ | 0.0031 |
+| electron to shielded helion mag. mom. ratio | 864.05824 | $K^2\cdot\text{words}$ | 0.0067 |
+| deuteron-electron mass ratio | 3670.483 | $\text{dict}\cdot\ln(K)$ | 0.0261 |
+| alpha particle relative atomic mass | 4.0015062 | $K^{-1}\cdot\text{words}$ | 0.0376 |
+| deuteron-proton mass ratio | 1.9990075 | $K\cdot U^{-1}$ | 0.0481 |
+| muon mag. mom. anomaly | 0.0011659206 | $K^{-1}\cdot\text{entropy}^{-1}\cdot\ln(K)$ | 0.0506 |
+| electron g factor | -2.0023193 | $-K\cdot U^{-1}$ | 0.1174 |
+| fine-structure constant | 0.0072973526 | $K^{-1}\cdot\ln(\text{dict})^{-1}\cdot U^{-1}$ | 0.1525 |
+| inverse fine-structure constant | 137.036 | $K\cdot\ln(\text{dict})\cdot U$ | 0.1527 |
+| electron mag. mom. anomaly | 0.0011596522 | $K^{-2}\cdot\text{words}^{-1}$ | 0.1936 |
+
+### Размерные (top 10)
+
+| Константа | Ед. | Наблюдение | BIP39-моном | Ошибка % |
+|:--|:--:|:--:|:--|:--:|
+| electron mass energy equivalent | MeV | 0.51099895 | $m_e$ | 0.0000 |
+| neutron mass energy equivalent | J | 1.505350e-10 | $K^{-1}\cdot\text{dict}^{-2}\cdot\text{total\_bits}^{-1}$ | 0.0121 |
+| deuteron mass energy equivalent | MeV | 1875.6129 | $m_e\cdot\text{dict}\cdot\ln(K)$ | 0.0261 |
+| deuteron molar mass | kg/mol | 0.0020135532 | $\text{checksum}^{-2}$ | 0.0301 |
+| Compton wavelength | m | 2.426310e-12 | $K^{-1}\cdot\text{dict}^{-3}\cdot\text{checksum}^{-1}$ | 0.0408 |
+| standard atmosphere | Pa | 101325 | $K^2\cdot\text{bits}\cdot\text{entropy}$ | 0.0503 |
+| Bohr magneton in Hz/T | Hz/T | 1.399624e+10 | $\text{dict}\cdot\text{entropy}^2\cdot f_1$ | 0.0785 |
+| Boltzmann constant in eV/K | eV/K | 8.617333e-05 | $K\cdot\text{total\_bits}^{-2}$ | 0.0988 |
+| atomic mass unit-eV relationship | eV | 931494103.7 | $\text{words}^3\cdot\text{entropy}\cdot\text{total\_bits}$ | 0.2992 |
+| alpha particle mass in u | u | 4.0015062 | $K^{-1}\cdot\text{words}$ | 0.0376 |
+
+Полные таблицы всех 445 констант: `complete_theory_kit/results/bip39_fit_all_445_v8.json` и `complete_theory_kit/results/symbolic_all_445_constants_v10.json`.
 """
 
 

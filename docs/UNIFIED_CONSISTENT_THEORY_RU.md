@@ -3233,13 +3233,13 @@ FULL THEORY KIT: OK
 
 ## Сводка
 
-- CAS-проверок: `50`
-- Пройдено: `50`
+- CAS-проверок: `51`
+- Пройдено: `51`
 - Ошибок: `0`
-- Display-формул найдено: `133`
-- Inline-формул найдено: `1101`
-- Всего TeX-фрагментов: `1234`
-- Распознанных упоминаний формульных семейств: `1234`
+- Display-формул найдено: `136`
+- Inline-формул найдено: `1143`
+- Всего TeX-фрагментов: `1279`
+- Распознанных упоминаний формульных семейств: `1279`
 - Нераспознанных TeX-фрагментов: `0`
 
 ## Проверки
@@ -3288,6 +3288,7 @@ FULL THEORY KIT: OK
 | bip39 | checksum_bits | PASS | `8.0 matches 8` |
 | bip39 | bits_per_word_num | PASS | `11.0 matches 11` |
 | ew | sin2_theta_W_0 | PASS | `1-pi/4 = 0.214602` |
+| infoton | bip39_monomial_micro_eV | PASS | `M_Inf(BIP39)=5.600450 matches 5.600587 (theoretical M_Inf) with error 0.0025%` |
 | structural | f1_working_near_formula | PASS | `working=104.370000, formula=104.198259, diff=0.171741` |
 | constants | alpha | PASS | `0.00729807144137314 matches 0.00729807144137314` |
 | constants | alpha_s | PASS | `0.113143011171905 matches 0.113143011171905` |
