@@ -1,0 +1,17 @@
+target,split,family,observed,predicted,log10_error,tolerance_log10,passed
+electron_mass_MeV,train,mass,0.51099895,0.51099895,0.0,0.002,True
+muon_mass_MeV,train,mass,105.6583755,0.51099895,2.315483921366538,0.01,False
+W_mass_MeV,train,mass,80379.0,0.51099895,5.196722591057838,0.01,False
+Z_mass_MeV,train,mass,91187.6,0.51099895,5.251515777754759,0.01,False
+H_mass_MeV,train,mass,125200.0,0.51099895,5.389184321126537,0.02,False
+alpha,train,coupling,0.0072973525692838015,0.0072980714413731435,4.278083070690882e-05,0.002,True
+proton_mass_MeV,locked_known_blind,mass,938.2720813,0.51099895,3.263908786146091,0.01,False
+neutron_mass_MeV,locked_known_blind,mass,939.5654133,0.51099895,3.2645070136724854,0.01,False
+tau_mass_MeV,locked_known_blind,mass,1776.86,0.51099895,3.541233203049724,0.02,False
+top_mass_MeV,locked_known_blind,mass,172690.0,0.51099895,5.5288471817561184,0.03,False
+alpha_s_mZ,locked_known_blind,coupling,0.1181,0.0072980714413731435,1.2090417872225567,0.03,False
+sin2_thetaW,locked_known_blind,coupling,0.223,0.0072980714413731435,1.4850967526572025,0.02,False
+G_F_GeV_minus2,locked_known_blind,weak_dimensional,1.1663787e-05,1e-05,0.06683958011233516,0.05,False
+planck_mass_GeV,locked_known_blind,gravity_dimensional,1.22089e+19,1e+19,0.08667653655336059,0.05,False
+Lambda_QCD_GeV,locked_known_blind,strong_scale,0.217,0.2,0.03542973818454831,0.05,True
+binding_energy_Fe56_MeV,locked_known_blind,nuclear,8.79,8.0,0.040898888081828275,0.02,False

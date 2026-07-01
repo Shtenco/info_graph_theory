@@ -1,0 +1,885 @@
+{
+  "parameters": {
+    "K": 6.0,
+    "p": 4.8027e-42,
+    "N": 4.197668e+121,
+    "f1_working": 104.37,
+    "electron_mev": 0.51099895
+  },
+  "structural_functions": {
+    "U": 3.0000473161956447,
+    "f1_formula": 104.1982588231834,
+    "f1_working": 104.37,
+    "f2": 1.791759469228055,
+    "f3": 5.368072279692217e-21,
+    "f4": 2.0821621171424406e+41,
+    "f5": 3.3486637593074837,
+    "f6": 1.0
+  },
+  "headline_constants": [
+    {
+      "name": "alpha",
+      "calculated": 0.0072980714413731435,
+      "reference": 0.0072973525692838015,
+      "relative_error_percent": 0.009851135497657796,
+      "unit": "",
+      "formula": "2 ln(K)^2 / (pi ln(N))"
+    },
+    {
+      "name": "alpha_s",
+      "calculated": 0.11314301117190509,
+      "reference": 0.118,
+      "relative_error_percent": 4.116092227199072,
+      "unit": "",
+      "formula": "pi^3 alpha / 2"
+    },
+    {
+      "name": "g_I^2",
+      "calculated": 0.7976500776943226,
+      "reference": 0.801,
+      "relative_error_percent": 0.4182175163142863,
+      "unit": "",
+      "formula": "2 pi alpha f1 / K"
+    },
+    {
+      "name": "G_raw_README_formula",
+      "calculated": 6.67635660008956e-11,
+      "reference": 6.674e-11,
+      "relative_error_percent": 0.03531016016723256,
+      "unit": "SI-like",
+      "formula": "16 pi^3 ln(N)^13/(K^5 ln(K) N^(1/3))"
+    },
+    {
+      "name": "infoton_mass",
+      "calculated": 5.600587442153423,
+      "reference": 5.6,
+      "relative_error_percent": 0.010490038453991879,
+      "unit": "micro-eV",
+      "formula": "chi_I m_e/(K f1^6), chi_I=2K^2+2K+1"
+    },
+    {
+      "name": "proton_mass",
+      "calculated": 938.3000003531441,
+      "reference": 938.3,
+      "relative_error_percent": 3.7636595274372906e-08,
+      "unit": "MeV",
+      "formula": "m_e C_p pi K f1"
+    },
+    {
+      "name": "W_mass",
+      "calculated": 80.38000856510858,
+      "reference": 80.38,
+      "relative_error_percent": 1.0655770822122586e-05,
+      "unit": "GeV",
+      "formula": "m_e C_W f1^2 K sqrt(K)"
+    }
+  ],
+  "bip39": [
+    {
+      "name": "bits_per_word",
+      "calculated": 11.0,
+      "reference": 11.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "2K-1"
+    },
+    {
+      "name": "dictionary_size",
+      "calculated": 2048.0,
+      "reference": 2048.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "2^(2K-1)"
+    },
+    {
+      "name": "words_per_phrase",
+      "calculated": 24.0,
+      "reference": 24.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "4K"
+    },
+    {
+      "name": "sha256_entropy_bits",
+      "calculated": 256.0,
+      "reference": 256.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "4*2^K"
+    },
+    {
+      "name": "checksum_bits",
+      "calculated": 8.0,
+      "reference": 8.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "K+2"
+    },
+    {
+      "name": "phrase_bits_total",
+      "calculated": 264.0,
+      "reference": 264.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "4K(2K-1)"
+    },
+    {
+      "name": "table_rows",
+      "calculated": 4.0,
+      "reference": 4.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "4"
+    },
+    {
+      "name": "table_columns",
+      "calculated": 6.0,
+      "reference": 6.0,
+      "relative_error_percent": 0.0,
+      "unit": "",
+      "formula": "K"
+    }
+  ],
+  "convergence": [
+    {
+      "n": 10,
+      "partial_sum": 2393631.4090785543,
+      "last_term": 1074506.0620511726,
+      "tail_bound": 73352952.30578558
+    },
+    {
+      "n": 20,
+      "partial_sum": 125091065.66620144,
+      "last_term": 31551592.664922304,
+      "tail_bound": 1689347392.0163999
+    },
+    {
+      "n": 50,
+      "partial_sum": 15871823013.510859,
+      "last_term": 1444391259.9308124,
+      "tail_bound": 65729634860.9763
+    },
+    {
+      "n": 100,
+      "partial_sum": 241108968797.72943,
+      "last_term": 7152466513.210761,
+      "tail_bound": 307330727297.1316
+    },
+    {
+      "n": 200,
+      "partial_sum": 847279792666.8356,
+      "last_term": 2993860259.5405464,
+      "tail_bound": 124922526860.95074
+    },
+    {
+      "n": 500,
+      "partial_sum": 968845859284.1865,
+      "last_term": 219616.1670840981,
+      "tail_bound": 9001971.174726287
+    },
+    {
+      "n": 1000,
+      "partial_sum": 968851442420.1385,
+      "last_term": 0.00019403513169033605,
+      "tail_bound": 0.0079060507294814
+    },
+    {
+      "n": 2000,
+      "partial_sum": 968851442420.1418,
+      "last_term": 2.3880001046639917e-24,
+      "tail_bound": 9.700935369415665e-23
+    },
+    {
+      "n": 5000,
+      "partial_sum": 968851442420.1418,
+      "last_term": 4.175616946470609e-87,
+      "tail_bound": 1.6932419174416113e-85
+    }
+  ],
+  "finite_graph": {
+    "n": 48,
+    "k": 6,
+    "p_demo": 0.08,
+    "edge_count": 143,
+    "trace_laplacian": 286.0,
+    "sum_eigenvalues": 286.0,
+    "trace_error": 0.0,
+    "zero_modes_approx": 1,
+    "lambda_min_positive": 0.409251540621486,
+    "lambda_max": 10.055567550937203,
+    "eigenvalues": [
+      0.0,
+      0.409251540621486,
+      0.8379309022844813,
+      1.1208158584671555,
+      1.3559674504207142,
+      2.164506175281638,
+      2.3885253576512597,
+      3.028699281099647,
+      3.3860785879226,
+      3.8376340107663007,
+      4.266033684588979,
+      4.4023005296962765,
+      4.579812532838647,
+      4.921610974450304,
+      5.113638384409846,
+      5.22105097297811,
+      5.298847519456824,
+      5.528089618405989,
+      5.622234072281872,
+      6.028858596888724,
+      6.078195938901693,
+      6.187775210387823,
+      6.295154576792991,
+      6.401589881861026,
+      6.654003787175924,
+      6.729577962886191,
+      6.776819694284098,
+      6.900843093993774,
+      7.001307433384941,
+      7.19120602312558,
+      7.25573543814794,
+      7.388950030908756,
+      7.446527161606689,
+      7.499882436295478,
+      7.721437834163026,
+      7.797969445646144,
+      7.8142177013817635,
+      8.04054748488188,
+      8.140076284693983,
+      8.264610176657047,
+      8.426775519553823,
+      8.680426425876592,
+      8.819957027681722,
+      9.019978265530753,
+      9.108599646634607,
+      9.259589134819485,
+      9.530792781278196,
+      10.055567550937203
+    ]
+  },
+  "readme_table_audit": {
+    "row_count": 123,
+    "mae_percent": 0.38565853658536586,
+    "max_error_percent": 11.6,
+    "under_1_percent_count": 109,
+    "under_5_percent_count": 122,
+    "rows": [
+      {
+        "category": "Планковские константы",
+        "name": "`l_P`",
+        "error_percent": 0.1
+      },
+      {
+        "category": "Планковские константы",
+        "name": "`t_P`",
+        "error_percent": 0.1
+      },
+      {
+        "category": "Планковские константы",
+        "name": "`m_P`",
+        "error_percent": 0.2
+      },
+      {
+        "category": "Планковские константы",
+        "name": "`\\hbar`",
+        "error_percent": 0.6
+      },
+      {
+        "category": "Планковские константы",
+        "name": "`T_P`",
+        "error_percent": 0.1
+      },
+      {
+        "category": "Планковские константы",
+        "name": "`E_P`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Планковские константы",
+        "name": "`F_P`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Фундаментальные константы",
+        "name": "`c`",
+        "error_percent": 0.6
+      },
+      {
+        "category": "Фундаментальные константы",
+        "name": "`G`",
+        "error_percent": 0.3
+      },
+      {
+        "category": "Фундаментальные константы",
+        "name": "`k_B`",
+        "error_percent": 0.4
+      },
+      {
+        "category": "Фундаментальные константы",
+        "name": "`e`",
+        "error_percent": 0.1
+      },
+      {
+        "category": "Фундаментальные константы",
+        "name": "`\\alpha`",
+        "error_percent": 0.01
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`e`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`\\mu`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`\\tau`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`u`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`d`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`s`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`c`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`b`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`t`",
+        "error_percent": 1.3
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`p`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`n`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`\\pi^0`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`\\pi^\\pm`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`W`",
+        "error_percent": 0.25
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`Z`",
+        "error_percent": 0.28
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`H`",
+        "error_percent": 0.4
+      },
+      {
+        "category": "Массы частиц",
+        "name": "`v`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Космология",
+        "name": "`\\Lambda`",
+        "error_percent": 0.02
+      },
+      {
+        "category": "Космология",
+        "name": "`R_{\\text{univ}}`",
+        "error_percent": 0.5
+      },
+      {
+        "category": "Космология",
+        "name": "`T_{\\text{CMB}}`",
+        "error_percent": 0.04
+      },
+      {
+        "category": "Космология",
+        "name": "`H_0`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`\\mu`",
+        "error_percent": 0.5
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`\\tau`",
+        "error_percent": 0.3
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`\\pi^0`",
+        "error_percent": 1.2
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`\\pi^\\pm`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`n`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`W`",
+        "error_percent": 3.1
+      },
+      {
+        "category": "Времена жизни",
+        "name": "`Z`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`\\alpha`",
+        "error_percent": 0.01
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`\\alpha_s`",
+        "error_percent": 4.1
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`\\sin^2\\theta_W`",
+        "error_percent": 0.08
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`G_F`",
+        "error_percent": 3.2
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`m_p/m_e`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`m_\\mu/m_e`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`\\Delta\\rho`",
+        "error_percent": 1.1
+      },
+      {
+        "category": "Безразмерные параметры",
+        "name": "`\\Delta r`",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Хиггсовский сектор",
+        "name": "`\\lambda = m_H^2/(2v^2)`",
+        "error_percent": 1.0
+      },
+      {
+        "category": "Хиггсовский сектор",
+        "name": "`y_t = \\sqrt{2} \\cdot m_t/v`",
+        "error_percent": 0.7
+      },
+      {
+        "category": "Хиггсовский сектор",
+        "name": "`g = 2m_W/v`",
+        "error_percent": 0.6
+      },
+      {
+        "category": "Хиггсовский сектор",
+        "name": "`g' = \\sqrt{(2m_Z/v)^2 - g^2}`",
+        "error_percent": 3.9
+      },
+      {
+        "category": "Коэффициенты Вайцзеккера",
+        "name": "`a_v` (объём)",
+        "error_percent": 0.516
+      },
+      {
+        "category": "Коэффициенты Вайцзеккера",
+        "name": "`a_s` (поверхность)",
+        "error_percent": 0.179
+      },
+      {
+        "category": "Коэффициенты Вайцзеккера",
+        "name": "`a_c` (кулоновский)",
+        "error_percent": 0.0139
+      },
+      {
+        "category": "Коэффициенты Вайцзеккера",
+        "name": "`a_a` (асимметрия)",
+        "error_percent": 0.0
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "H-1",
+        "error_percent": 2.64
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "H-2",
+        "error_percent": 0.334
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "He-4",
+        "error_percent": 0.088
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Li-6",
+        "error_percent": 0.024
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Li-7",
+        "error_percent": 0.0403
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Be-9",
+        "error_percent": 0.0298
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "B-10",
+        "error_percent": 0.0268
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "B-11",
+        "error_percent": 0.0328
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "C-12",
+        "error_percent": 0.006
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "C-13",
+        "error_percent": 0.0119
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "N-14",
+        "error_percent": 0.0001
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "N-15",
+        "error_percent": 0.015
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "O-16",
+        "error_percent": 0.0127
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "O-17",
+        "error_percent": 0.0306
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "O-18",
+        "error_percent": 0.0438
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "F-19",
+        "error_percent": 0.0442
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ne-20",
+        "error_percent": 0.0316
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ne-22",
+        "error_percent": 0.0397
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Na-23",
+        "error_percent": 0.0324
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Mg-24",
+        "error_percent": 0.0237
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Mg-25",
+        "error_percent": 0.029
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Mg-26",
+        "error_percent": 0.0311
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Al-27",
+        "error_percent": 0.0244
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Si-28",
+        "error_percent": 0.0148
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Si-29",
+        "error_percent": 0.0174
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Si-30",
+        "error_percent": 0.0229
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "P-31",
+        "error_percent": 0.0185
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "S-32",
+        "error_percent": 0.0172
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "S-34",
+        "error_percent": 0.0236
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Cl-35",
+        "error_percent": 0.0208
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Cl-37",
+        "error_percent": 0.0241
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ar-36",
+        "error_percent": 0.0187
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ar-40",
+        "error_percent": 0.0294
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "K-39",
+        "error_percent": 0.0206
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "K-41",
+        "error_percent": 0.0284
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ca-40",
+        "error_percent": 0.0177
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ca-44",
+        "error_percent": 0.0267
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ti-48",
+        "error_percent": 0.0216
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Cr-52",
+        "error_percent": 0.0161
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Fe-56",
+        "error_percent": 0.0135
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Co-59",
+        "error_percent": 0.014
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ni-58",
+        "error_percent": 0.0093
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ni-60",
+        "error_percent": 0.0124
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Cu-63",
+        "error_percent": 0.0139
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Cu-65",
+        "error_percent": 0.0149
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Zn-64",
+        "error_percent": 0.0143
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Zn-66",
+        "error_percent": 0.0158
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ag-107",
+        "error_percent": 0.009
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Ag-109",
+        "error_percent": 0.0095
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Sn-120",
+        "error_percent": 0.0057
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Au-197",
+        "error_percent": 0.0002
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "Pb-208",
+        "error_percent": 0.0041
+      },
+      {
+        "category": "Ядерные массы (53 изотопа)",
+        "name": "U-238",
+        "error_percent": 0.0021
+      },
+      {
+        "category": "Магические числа, `B/A`",
+        "name": "`^4\\text{He}`",
+        "error_percent": 11.6
+      },
+      {
+        "category": "Магические числа, `B/A`",
+        "name": "`^{16}\\text{O}`",
+        "error_percent": 1.38
+      },
+      {
+        "category": "Магические числа, `B/A`",
+        "name": "`^{40}\\text{Ca}`",
+        "error_percent": 1.99
+      },
+      {
+        "category": "Магические числа, `B/A`",
+        "name": "`^{58}\\text{Ni}`",
+        "error_percent": 1.03
+      },
+      {
+        "category": "Магические числа, `B/A`",
+        "name": "`^{120}\\text{Sn}`",
+        "error_percent": 1.06
+      },
+      {
+        "category": "Магические числа, `B/A`",
+        "name": "`^{208}\\text{Pb}`",
+        "error_percent": 0.508
+      },
+      {
+        "category": "BIP39",
+        "name": "Бит на слово",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Размер словаря",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Слов на фразу",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Энтропия (SHA-256)",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Контрольная сумма",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Всего бит на фразу",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Строк таблицы BIP39",
+        "error_percent": 0.0
+      },
+      {
+        "category": "BIP39",
+        "name": "Столбцов таблицы BIP39",
+        "error_percent": 0.0
+      }
+    ]
+  }
+}

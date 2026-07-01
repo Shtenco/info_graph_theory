@@ -1,0 +1,311 @@
+{
+  "axioms": [
+    {
+      "key": "A0",
+      "statement": "K is the primitive graph/BIP39 arity and K = 6.",
+      "status": "accepted_formal_axiom"
+    },
+    {
+      "key": "A1",
+      "statement": "BIP39 word bits are b = 2K - 1.",
+      "status": "definition"
+    },
+    {
+      "key": "A2",
+      "statement": "BIP39 dictionary size is D = 2^b.",
+      "status": "definition"
+    },
+    {
+      "key": "A3",
+      "statement": "BIP39 phrase length is W = 4K.",
+      "status": "definition"
+    },
+    {
+      "key": "A4",
+      "statement": "BIP39 checksum size is C = K + 2.",
+      "status": "definition"
+    },
+    {
+      "key": "A5",
+      "statement": "BIP39 total phrase bits are T = W b.",
+      "status": "definition"
+    },
+    {
+      "key": "A6",
+      "statement": "The graph sector uses N, p and U = ln(N)/abs(ln(Kp)).",
+      "status": "definition"
+    },
+    {
+      "key": "A7",
+      "statement": "The theorem mode forbids target-specific calibration coefficients.",
+      "status": "rule"
+    },
+    {
+      "key": "A8",
+      "statement": "Fit mode may compute calibration coefficients, but fit mode is not proof mode.",
+      "status": "rule"
+    }
+  ],
+  "bip39_theorems": [
+    {
+      "key": "T1",
+      "statement": "bits_per_word = 2K - 1",
+      "derived_from": "A0,A1",
+      "lhs": "11",
+      "rhs": "11",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T2",
+      "statement": "dictionary_size = 2^(2K - 1)",
+      "derived_from": "A0,A1,A2",
+      "lhs": "2048",
+      "rhs": "2048",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T3",
+      "statement": "words_per_phrase = 4K",
+      "derived_from": "A0,A3",
+      "lhs": "24",
+      "rhs": "24",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T4",
+      "statement": "sha256_entropy_bits = 4*2^K",
+      "derived_from": "A0",
+      "lhs": "256",
+      "rhs": "256",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T5",
+      "statement": "checksum_bits = K + 2",
+      "derived_from": "A0,A4",
+      "lhs": "8",
+      "rhs": "8",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T6",
+      "statement": "phrase_bits_total = 4K(2K - 1)",
+      "derived_from": "A0,A1,A3,A5",
+      "lhs": "264",
+      "rhs": "264",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T7",
+      "statement": "table_rows = 4",
+      "derived_from": "A3",
+      "lhs": "4",
+      "rhs": "4",
+      "passed": true,
+      "notes": "integer identity"
+    },
+    {
+      "key": "T8",
+      "statement": "table_columns = K",
+      "derived_from": "A0",
+      "lhs": "6",
+      "rhs": "6",
+      "passed": true,
+      "notes": "integer identity"
+    }
+  ],
+  "formula_theorems": [
+    {
+      "target": "alpha",
+      "formula": "K^-1 * lnDict^-1 * U^-1",
+      "allowed_symbols": "K, U, lnDict",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "alpha_s_mZ",
+      "formula": "K^-1 * bits^-1 * bip_density^-1",
+      "allowed_symbols": "K, bip_density, bits",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "g_I_squared",
+      "formula": "K * lnDict^-1",
+      "allowed_symbols": "K, lnDict",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "infoton_mass_micro_eV",
+      "formula": "m_e[micro-eV] * dict^-2 * entropy^-2 * U",
+      "allowed_symbols": "U, dict, entropy",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "proton_mass_MeV",
+      "formula": "m_e * pi * words^2",
+      "allowed_symbols": "pi, words",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "W_mass_GeV",
+      "formula": "m_e[GeV] * K * entropy * f1",
+      "allowed_symbols": "K, entropy, f1",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "Z_mass_GeV",
+      "formula": "m_e[GeV] * dict * total_bits / U",
+      "allowed_symbols": "U, dict, total_bits",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "H_mass_GeV",
+      "formula": "m_e[GeV] * bits^2 * dict",
+      "allowed_symbols": "bits, dict",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "sin2_thetaW",
+      "formula": "lnK / checksum",
+      "allowed_symbols": "checksum, lnK",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "G_F_GeV_minus2",
+      "formula": "1 / (pi * total_bits * f1)",
+      "allowed_symbols": "f1, pi, total_bits",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    },
+    {
+      "target": "Lambda_QCD_GeV",
+      "formula": "U * bip_density / lnK",
+      "allowed_symbols": "U, bip_density, lnK",
+      "forbidden_symbols": "",
+      "theorem_mode": "NO_CALIBRATION",
+      "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+      "passed": true
+    }
+  ],
+  "numeric_substitution_audit": {
+    "rows": [
+      {
+        "target": "alpha",
+        "observed": 0.0072973525692838015,
+        "predicted": 0.007286223671553381,
+        "relative_error_percent": 0.1525059619191818,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "alpha_s_mZ",
+        "observed": 0.1181,
+        "predicted": 0.11753902662993573,
+        "relative_error_percent": 0.47499861986813147,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "g_I_squared",
+        "observed": 0.801,
+        "predicted": 0.7869245677576164,
+        "relative_error_percent": 1.7572324896858442,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "infoton_mass_micro_eV",
+        "observed": 5.6,
+        "predicted": 5.5770980126045915,
+        "relative_error_percent": 0.40896406063228863,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "proton_mass_MeV",
+        "observed": 938.2720813,
+        "predicted": 924.6819152517684,
+        "relative_error_percent": 1.4484248566153723,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "W_mass_GeV",
+        "observed": 80.379,
+        "predicted": 81.78462850632951,
+        "relative_error_percent": 1.7487509254027873,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "Z_mass_GeV",
+        "observed": 91.1876,
+        "predicted": 92.09282227080132,
+        "relative_error_percent": 0.9927032521980154,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "H_mass_GeV",
+        "observed": 125.2,
+        "predicted": 126.62962780159998,
+        "relative_error_percent": 1.1418752408945507,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "sin2_thetaW",
+        "observed": 0.223,
+        "predicted": 0.22396993365350687,
+        "relative_error_percent": 0.43494782668469323,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "G_F_GeV_minus2",
+        "observed": 1.1663787e-05,
+        "predicted": 1.1571395524887866e-05,
+        "relative_error_percent": 0.7921224479848051,
+        "pass_readme_tolerance": true
+      },
+      {
+        "target": "Lambda_QCD_GeV",
+        "observed": 0.217,
+        "predicted": 0.21583524797553197,
+        "relative_error_percent": 0.5367520850083087,
+        "pass_readme_tolerance": true
+      }
+    ],
+    "count": 11,
+    "pass_readme_style_tolerance": 11,
+    "mean_relative_error_percent": 0.8990252515358162,
+    "max_relative_error_percent": 1.7572324896858442
+  },
+  "registry_hash": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+  "system_hash": "200a2f70d658b638ac8da1e9e0262f0b3210709001a6ecf5b5398c1d67cfeff7"
+}

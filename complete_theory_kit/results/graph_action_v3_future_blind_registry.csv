@@ -1,0 +1,4 @@
+prediction_id,target,frozen_rule,unlock_rule,status
+GRAPH_ACTION_V3_FUTURE_001,next_CODATA_alpha_value,use graph_action_v3.json theta and ALPHA_GRAPH; no refit,first CODATA release after 2026-06-30,future_blind_registered
+GRAPH_ACTION_V3_FUTURE_002,externally selected nuclear binding-energy subset,use graph_action_v3.json theta; evaluator chooses nuclei before any code edit,third-party target list timestamped after this registry,future_blind_registered
+GRAPH_ACTION_V3_FUTURE_003,independent implementation of K=6 finite graph spectral invariants,"node_count=48, degree_k=6, seed=12345, rewire_probability=0.08",independent code computes spectrum without reading generated CSV,future_blind_registered

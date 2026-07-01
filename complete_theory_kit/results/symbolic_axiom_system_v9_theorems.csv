@@ -1,0 +1,9 @@
+key,statement,derived_from,lhs,rhs,passed,notes
+T1,bits_per_word = 2K - 1,"A0,A1",11,11,True,integer identity
+T2,dictionary_size = 2^(2K - 1),"A0,A1,A2",2048,2048,True,integer identity
+T3,words_per_phrase = 4K,"A0,A3",24,24,True,integer identity
+T4,sha256_entropy_bits = 4*2^K,A0,256,256,True,integer identity
+T5,checksum_bits = K + 2,"A0,A4",8,8,True,integer identity
+T6,phrase_bits_total = 4K(2K - 1),"A0,A1,A3,A5",264,264,True,integer identity
+T7,table_rows = 4,A3,4,4,True,integer identity
+T8,table_columns = K,A0,6,6,True,integer identity

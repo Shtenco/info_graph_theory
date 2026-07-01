@@ -1,0 +1,4 @@
+prediction_id,target,frozen_object,unlock_rule,status
+SGAFT_V4_FUTURE_001,next independent alpha measurement or CODATA adjustment,graph_automata_field_v4.json,first independent release after 2026-06-30,future_blind_registered
+SGAFT_V4_FUTURE_002,third-party selected particle/nuclear observable subset,graph_automata_field_v4.json,target list timestamped externally before any formula/code edit,future_blind_registered
+SGAFT_V4_FUTURE_003,independent implementation of automata-basis invariant vector,"CHANNELS=8, AUTOMATA_STEPS=9, K=6, seed=12345",independent code reproduces pooled automata features,future_blind_registered

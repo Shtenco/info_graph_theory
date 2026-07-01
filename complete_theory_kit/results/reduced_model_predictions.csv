@@ -1,0 +1,43 @@
+model,target,split,family,true_value,predicted,log10_error,tolerance_log10,passed,formula,notes
+REDUCED_GRAPH_OPTIMIZED_V2,W_mass_MeV,train,mass,80379.0,97176.42198555815,0.0824183055885396,0.01,False,m_e * C_global(190170),optimized shared mass formula
+REDUCED_GRAPH_OPTIMIZED_V2,Z_mass_MeV,train,mass,91187.6,97176.42198555815,0.027625118891618543,0.01,False,m_e * C_global(190170),optimized shared mass formula
+REDUCED_GRAPH_OPTIMIZED_V2,H_mass_MeV,train,mass,125200.0,97176.42198555815,0.11004342448015922,0.02,False,m_e * C_global(190170),optimized shared mass formula
+REDUCED_GRAPH_OPTIMIZED_V2,alpha,train,coupling,0.0072973525692838015,0.0072980714413731435,4.278083070690882e-05,0.002,True,2 lnK^2 / (pi lnN),fixed graph alpha formula
+REDUCED_GRAPH_OPTIMIZED_V2,proton_mass_MeV,holdout,mass,938.2720813,97176.42198555815,2.015232110500286,0.01,False,m_e * C_global(190170),optimized shared mass formula
+REDUCED_GRAPH_OPTIMIZED_V2,neutron_mass_MeV,holdout,mass,939.5654133,97176.42198555815,2.014633882973892,0.01,False,m_e * C_global(190170),optimized shared mass formula
+REDUCED_GRAPH_OPTIMIZED_V2,tau_mass_MeV,holdout,mass,1776.86,97176.42198555815,1.7379076935966533,0.02,False,m_e * C_global(190170),optimized shared mass formula
+REDUCED_GRAPH_OPTIMIZED_V2,alpha_s_mZ,holdout,coupling,0.1181,0.11314301117190509,0.018622164804136327,0.03,True,pi^3 alpha / 2,"fixed relation, no refit"
+REDUCED_GRAPH_OPTIMIZED_V2,sin2_thetaW,holdout,coupling,0.223,0.2146,0.016675145418228374,0.02,True,uncorrected weak proxy,fixed existing proxy
+REDUCED_GRAPH_OPTIMIZED_V2,G_F_GeV_minus2,holdout,weak_dimensional,1.1663787e-05,,inf,0.05,False,MISSING,no dimensionally complete reduced formula registered
+REDUCED_GRAPH_OPTIMIZED_V2,planck_mass_GeV,holdout,gravity_dimensional,1.22089e+19,,inf,0.05,False,MISSING,no dimensionally complete reduced formula registered
+REDUCED_GRAPH_OPTIMIZED_V2,cosmological_constant_m_minus2,holdout,cosmology,1.089e-52,,inf,0.2,False,MISSING,no dimensionally complete reduced formula registered
+REDUCED_GRAPH_OPTIMIZED_V2,Lambda_QCD_GeV,holdout,strong_scale,0.217,,inf,0.05,False,MISSING,no dimensionally complete reduced formula registered
+REDUCED_GRAPH_OPTIMIZED_V2,binding_energy_Fe56_MeV,holdout,nuclear,8.79,,inf,0.02,False,MISSING,no dimensionally complete reduced formula registered
+DIMENSIONAL_BASELINE,W_mass_MeV,train,mass,80379.0,1000.0,1.905142598805712,0.01,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,Z_mass_MeV,train,mass,91187.6,1000.0,1.9599357855026331,0.01,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,H_mass_MeV,train,mass,125200.0,1000.0,2.097604328874411,0.02,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,alpha,train,coupling,0.0072973525692838015,0.1,1.1368346704397487,0.002,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,proton_mass_MeV,holdout,mass,938.2720813,1000.0,0.027671206106034466,0.01,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,neutron_mass_MeV,holdout,mass,939.5654133,1000.0,0.027072978579640628,0.01,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,tau_mass_MeV,holdout,mass,1776.86,1000.0,0.24965321079759834,0.02,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,alpha_s_mZ,holdout,coupling,0.1181,0.1,0.07224989761351479,0.03,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,sin2_thetaW,holdout,coupling,0.223,0.1,0.34830486304816066,0.02,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,G_F_GeV_minus2,holdout,weak_dimensional,1.1663787e-05,1e-05,0.06683958011233516,0.05,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,planck_mass_GeV,holdout,gravity_dimensional,1.22089e+19,1e+19,0.08667653655336059,0.05,False,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,cosmological_constant_m_minus2,holdout,cosmology,1.089e-52,1e-52,0.03702787975577491,0.2,True,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,Lambda_QCD_GeV,holdout,strong_scale,0.217,0.2,0.03542973818454831,0.05,True,category scale,dimensional baseline
+DIMENSIONAL_BASELINE,binding_energy_Fe56_MeV,holdout,nuclear,8.79,8.0,0.040898888081828275,0.02,False,category scale,dimensional baseline
+RANDOM_LOG_BASELINE,W_mass_MeV,train,mass,80379.0,8636.42070925685,0.9688088086754305,0.01,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,Z_mass_MeV,train,mass,91187.6,36616626.936873555,2.6037425498160465,0.01,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,H_mass_MeV,train,mass,125200.0,181445.00007671883,0.16114067634880586,0.02,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,alpha,train,coupling,0.0072973525692838015,0.049802290000129985,0.8340839833110006,0.002,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,proton_mass_MeV,holdout,mass,938.2720813,4252.364419713411,0.6563016817806495,0.01,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,neutron_mass_MeV,holdout,mass,939.5654133,1263.1041177916848,0.12851212954565422,0.01,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,tau_mass_MeV,holdout,mass,1776.86,863.7030638277107,0.3132887506173505,0.02,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,alpha_s_mZ,holdout,coupling,0.1181,85.68427763297059,2.8606512421199657,0.03,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,sin2_thetaW,holdout,coupling,0.223,1.169804014947037,0.7198082445470613,0.02,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,G_F_GeV_minus2,holdout,weak_dimensional,1.1663787e-05,0.0005602786025050599,1.6815644566129044,0.05,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,planck_mass_GeV,holdout,gravity_dimensional,1.22089e+19,8.750614645494332e+17,1.144637977500027,0.05,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,cosmological_constant_m_minus2,holdout,cosmology,1.089e-52,3.9500582904649155e-51,1.559575624741691,0.2,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,Lambda_QCD_GeV,holdout,strong_scale,0.217,0.0005180283903168789,2.62210617213401,0.05,False,log-uniform +/-3 decades,favorable random baseline
+RANDOM_LOG_BASELINE,binding_energy_Fe56_MeV,holdout,nuclear,8.79,1038.1189846411178,2.072258258218639,0.02,False,log-uniform +/-3 decades,favorable random baseline

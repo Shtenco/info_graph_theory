@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment and keys
+.env
+*.key
+*.pem
+wallets/
+credentials.json
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temp
+tmp/
+temp/
+*.tmp

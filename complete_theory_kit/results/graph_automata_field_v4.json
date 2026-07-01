@@ -1,0 +1,509 @@
+{
+  "verdict": "FAIL_BLIND_SCORE: fewer than 6 locked known-blind targets pass",
+  "constants": {
+    "K": 6.0,
+    "alpha_graph": 0.0072980714413731435,
+    "alpha_reference": 0.0072973525692838015,
+    "electron_mass_MeV": 0.51099895,
+    "channels": 8,
+    "automata_steps": 9
+  },
+  "basis": [
+    {
+      "name": "identity_memory",
+      "role": "local persistence",
+      "update_rule": "X <- X"
+    },
+    {
+      "name": "laplacian_diffusion",
+      "role": "spectral locality",
+      "update_rule": "X <- X - eps L X"
+    },
+    {
+      "name": "neighbor_message",
+      "role": "graph message passing",
+      "update_rule": "X <- D^-1 A X"
+    },
+    {
+      "name": "phase_rotation",
+      "role": "U(1)-like channel rotation",
+      "update_rule": "X <- R(q_charge) X"
+    },
+    {
+      "name": "spin_gate",
+      "role": "spin/isospin gate",
+      "update_rule": "X <- tanh(spin * X)"
+    },
+    {
+      "name": "color_gate",
+      "role": "SU(3)-like color sector proxy",
+      "update_rule": "X <- color-weighted channels"
+    },
+    {
+      "name": "heat_kernel_gate",
+      "role": "absolute convergence regulator",
+      "update_rule": "X <- exp(-sigma n) X"
+    },
+    {
+      "name": "spectral_pool",
+      "role": "observable extraction",
+      "update_rule": "pool(X, L, heat kernel)"
+    }
+  ],
+  "graph_invariants": {
+    "node_count": 48,
+    "degree_k": 6,
+    "edge_count": 143,
+    "trace_laplacian": 286.0,
+    "spectral_gap": 0.409251540621486,
+    "lambda_max": 10.055567550937203,
+    "mean_lambda": 5.958333333333333,
+    "heat_t_025": 0.2835193586955095,
+    "heat_t_1": 0.0641824047374454,
+    "spectral_entropy": 3.7518952921623874,
+    "kirchhoff_log_proxy": 74.03341693546211
+  },
+  "fit": {
+    "feature_names": [
+      "bias",
+      "mean_c0",
+      "mean_c1",
+      "mean_c2",
+      "mean_c3",
+      "mean_c4",
+      "mean_c5",
+      "mean_c6",
+      "mean_c7",
+      "energy_c0",
+      "energy_c1",
+      "energy_c2",
+      "energy_c3",
+      "energy_c4",
+      "energy_c5",
+      "energy_c6",
+      "energy_c7",
+      "abs_mean_c0",
+      "abs_mean_c1",
+      "abs_mean_c2",
+      "abs_mean_c3",
+      "abs_mean_c4",
+      "abs_mean_c5",
+      "abs_mean_c6",
+      "abs_mean_c7",
+      "log_gap",
+      "log_lambda_max",
+      "log_heat_t_1",
+      "spectral_entropy",
+      "log_kirchhoff",
+      "q_mass",
+      "q_charge_abs",
+      "q_spin",
+      "q_generation",
+      "q_color",
+      "mean_c1_x_q_mass",
+      "mean_c2_x_charge",
+      "energy_c3_x_spin",
+      "abs_mean_c4_x_generation",
+      "energy_c6_x_color",
+      "log_gap_x_mean_c5",
+      "entropy_x_abs_mean_c7"
+    ],
+    "theta": [
+      -7.032308001506167,
+      -0.004828866188482963,
+      -0.007023336283725474,
+      0.00941770730625063,
+      0.021886461336672207,
+      0.0408093366722812,
+      0.011436688680815267,
+      0.0025580935247167765,
+      0.021303248163934908,
+      -2.794580270044899e-05,
+      3.5953361238391123e-06,
+      1.6130145018485396e-05,
+      0.00014712697239197318,
+      6.67373875748742e-05,
+      5.9825647981315805e-05,
+      -6.532099182293928e-07,
+      0.00011737572070445027,
+      -0.004828866188482956,
+      0.002612875473381945,
+      0.005617860793293743,
+      0.021886461336672165,
+      0.01020168977347403,
+      0.011436688680815222,
+      -0.000284177418771167,
+      0.01534452970983399,
+      5.330955765066491e-15,
+      -3.198228764045079e-14,
+      2.487769974993239e-14,
+      7.0869793407570035e-15,
+      9.235990709654776e-14,
+      4.188530076870399,
+      -1.5820843326291918,
+      3.9745893114086264,
+      4.982207974663485,
+      0.0,
+      -0.007959046690254476,
+      0.009461153123245651,
+      0.0001628487694663235,
+      0.029731902846739836,
+      0.0,
+      -0.010217826995488462,
+      0.057571068778771724
+    ],
+    "ridge": 0.3,
+    "train_loss": 0.22113810278537083,
+    "effective_dof": 3.7629677044240215,
+    "automata_feature_count": 29,
+    "penalty_value": 0.7572676616204997,
+    "action_value": 0.9784057644058706
+  },
+  "predictions": [
+    {
+      "target": "electron_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 0.51099895,
+      "predicted": 1.8001522238845493,
+      "log10_error": 0.5468892235764369,
+      "tolerance_log10": 0.002,
+      "passed": false
+    },
+    {
+      "target": "muon_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 105.6583755,
+      "predicted": 262.47014914585924,
+      "log10_error": 0.3951759889193351,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "W_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 80379.0,
+      "predicted": 10475.145734059932,
+      "log10_error": 0.884982525061624,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "Z_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 91187.6,
+      "predicted": 50932.920729612706,
+      "log10_error": 0.25293720415497173,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "H_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 125200.0,
+      "predicted": 139448.67251967825,
+      "log10_error": 0.04681005548511471,
+      "tolerance_log10": 0.02,
+      "passed": false
+    },
+    {
+      "target": "alpha",
+      "split": "train",
+      "family": "coupling",
+      "observed": 0.0072973525692838015,
+      "predicted": 0.010285130128340305,
+      "log10_error": 0.14904446123593862,
+      "tolerance_log10": 0.002,
+      "passed": false
+    },
+    {
+      "target": "proton_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 938.2720813,
+      "predicted": 32.901896471772716,
+      "log10_error": 1.4551078624033074,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "neutron_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 939.5654133,
+      "predicted": 159.9068017249644,
+      "log10_error": 0.7690600843233143,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "tau_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 1776.86,
+      "predicted": 38269.29699403902,
+      "log10_error": 1.3331972735221749,
+      "tolerance_log10": 0.02,
+      "passed": false
+    },
+    {
+      "target": "top_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 172690.0,
+      "predicted": 65017.17579614737,
+      "log10_error": 0.424239088736189,
+      "tolerance_log10": 0.03,
+      "passed": false
+    },
+    {
+      "target": "alpha_s_mZ",
+      "split": "locked_known_blind",
+      "family": "coupling",
+      "observed": 0.1181,
+      "predicted": 1069.8746798652187,
+      "log10_error": 3.9570830118189124,
+      "tolerance_log10": 0.03,
+      "passed": false
+    },
+    {
+      "target": "sin2_thetaW",
+      "split": "locked_known_blind",
+      "family": "coupling",
+      "observed": 0.223,
+      "predicted": 7.298064243049074,
+      "log10_error": 1.5149028189838825,
+      "tolerance_log10": 0.02,
+      "passed": false
+    },
+    {
+      "target": "G_F_GeV_minus2",
+      "split": "locked_known_blind",
+      "family": "weak_dimensional",
+      "observed": 1.1663787e-05,
+      "predicted": 0.9962209587274901,
+      "log10_error": 4.9315160941681375,
+      "tolerance_log10": 0.05,
+      "passed": false
+    },
+    {
+      "target": "planck_mass_GeV",
+      "split": "locked_known_blind",
+      "family": "gravity_dimensional",
+      "observed": 1.22089e+19,
+      "predicted": 2.061341449958588e+29,
+      "log10_error": 10.22747339969479,
+      "tolerance_log10": 0.05,
+      "passed": false
+    },
+    {
+      "target": "Lambda_QCD_GeV",
+      "split": "locked_known_blind",
+      "family": "strong_scale",
+      "observed": 0.217,
+      "predicted": 25.029131945493077,
+      "log10_error": 2.061986053921115,
+      "tolerance_log10": 0.05,
+      "passed": false
+    },
+    {
+      "target": "binding_energy_Fe56_MeV",
+      "split": "locked_known_blind",
+      "family": "nuclear",
+      "observed": 8.79,
+      "predicted": 3.184453796028906e-11,
+      "log10_error": 11.440953923084706,
+      "tolerance_log10": 0.02,
+      "passed": false
+    }
+  ],
+  "baseline_predictions": [
+    {
+      "target": "electron_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 0.51099895,
+      "predicted": 0.51099895,
+      "log10_error": 0.0,
+      "tolerance_log10": 0.002,
+      "passed": true
+    },
+    {
+      "target": "muon_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 105.6583755,
+      "predicted": 0.51099895,
+      "log10_error": 2.315483921366538,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "W_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 80379.0,
+      "predicted": 0.51099895,
+      "log10_error": 5.196722591057838,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "Z_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 91187.6,
+      "predicted": 0.51099895,
+      "log10_error": 5.251515777754759,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "H_mass_MeV",
+      "split": "train",
+      "family": "mass",
+      "observed": 125200.0,
+      "predicted": 0.51099895,
+      "log10_error": 5.389184321126537,
+      "tolerance_log10": 0.02,
+      "passed": false
+    },
+    {
+      "target": "alpha",
+      "split": "train",
+      "family": "coupling",
+      "observed": 0.0072973525692838015,
+      "predicted": 0.0072980714413731435,
+      "log10_error": 4.278083070690882e-05,
+      "tolerance_log10": 0.002,
+      "passed": true
+    },
+    {
+      "target": "proton_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 938.2720813,
+      "predicted": 0.51099895,
+      "log10_error": 3.263908786146091,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "neutron_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 939.5654133,
+      "predicted": 0.51099895,
+      "log10_error": 3.2645070136724854,
+      "tolerance_log10": 0.01,
+      "passed": false
+    },
+    {
+      "target": "tau_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 1776.86,
+      "predicted": 0.51099895,
+      "log10_error": 3.541233203049724,
+      "tolerance_log10": 0.02,
+      "passed": false
+    },
+    {
+      "target": "top_mass_MeV",
+      "split": "locked_known_blind",
+      "family": "mass",
+      "observed": 172690.0,
+      "predicted": 0.51099895,
+      "log10_error": 5.5288471817561184,
+      "tolerance_log10": 0.03,
+      "passed": false
+    },
+    {
+      "target": "alpha_s_mZ",
+      "split": "locked_known_blind",
+      "family": "coupling",
+      "observed": 0.1181,
+      "predicted": 0.0072980714413731435,
+      "log10_error": 1.2090417872225567,
+      "tolerance_log10": 0.03,
+      "passed": false
+    },
+    {
+      "target": "sin2_thetaW",
+      "split": "locked_known_blind",
+      "family": "coupling",
+      "observed": 0.223,
+      "predicted": 0.0072980714413731435,
+      "log10_error": 1.4850967526572025,
+      "tolerance_log10": 0.02,
+      "passed": false
+    },
+    {
+      "target": "G_F_GeV_minus2",
+      "split": "locked_known_blind",
+      "family": "weak_dimensional",
+      "observed": 1.1663787e-05,
+      "predicted": 1e-05,
+      "log10_error": 0.06683958011233516,
+      "tolerance_log10": 0.05,
+      "passed": false
+    },
+    {
+      "target": "planck_mass_GeV",
+      "split": "locked_known_blind",
+      "family": "gravity_dimensional",
+      "observed": 1.22089e+19,
+      "predicted": 1e+19,
+      "log10_error": 0.08667653655336059,
+      "tolerance_log10": 0.05,
+      "passed": false
+    },
+    {
+      "target": "Lambda_QCD_GeV",
+      "split": "locked_known_blind",
+      "family": "strong_scale",
+      "observed": 0.217,
+      "predicted": 0.2,
+      "log10_error": 0.03542973818454831,
+      "tolerance_log10": 0.05,
+      "passed": true
+    },
+    {
+      "target": "binding_energy_Fe56_MeV",
+      "split": "locked_known_blind",
+      "family": "nuclear",
+      "observed": 8.79,
+      "predicted": 8.0,
+      "log10_error": 0.040898888081828275,
+      "tolerance_log10": 0.02,
+      "passed": false
+    }
+  ],
+  "summaries": {
+    "train": {
+      "split": "train",
+      "pass_count": 0,
+      "target_count": 6,
+      "mean_log10_error": 0.37930657640557014,
+      "max_log10_error": 0.884982525061624
+    },
+    "locked_known_blind": {
+      "split": "locked_known_blind",
+      "pass_count": 0,
+      "target_count": 10,
+      "mean_log10_error": 3.8115519610656525,
+      "max_log10_error": 11.440953923084706
+    },
+    "baseline_locked_known_blind": {
+      "split": "locked_known_blind",
+      "pass_count": 1,
+      "target_count": 10,
+      "mean_log10_error": 1.8522479467436253,
+      "max_log10_error": 5.5288471817561184
+    }
+  }
+}

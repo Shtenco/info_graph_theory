@@ -1,0 +1,29 @@
+{
+  "status": "PASS_NUMERIC_TABLES",
+  "total_checks": 197,
+  "passed": 197,
+  "failed": 0,
+  "groups": {
+    "core": {
+      "total": 10,
+      "passed": 10
+    },
+    "bip39": {
+      "total": 8,
+      "passed": 8
+    },
+    "control_table": {
+      "total": 123,
+      "passed": 123
+    },
+    "isotopes": {
+      "total": 53,
+      "passed": 53
+    },
+    "lenr": {
+      "total": 3,
+      "passed": 3
+    }
+  },
+  "failed_rows": []
+}

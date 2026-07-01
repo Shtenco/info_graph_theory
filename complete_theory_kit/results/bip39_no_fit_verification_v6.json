@@ -1,0 +1,338 @@
+{
+  "verdict": "PASS_README_TOLERANCE_ONLY: no fitting, but not all constants are within 1%",
+  "registry_hash_sha256": "d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb",
+  "formula_registry": {
+    "alpha": {
+      "base": 1.0,
+      "factors": {
+        "K": -1,
+        "lnDict": -1,
+        "U": -1
+      },
+      "text": "K^-1 * lnDict^-1 * U^-1"
+    },
+    "alpha_s_mZ": {
+      "base": 1.0,
+      "factors": {
+        "K": -1,
+        "bits": -1,
+        "bip_density": -1
+      },
+      "text": "K^-1 * bits^-1 * bip_density^-1"
+    },
+    "g_I_squared": {
+      "base": 1.0,
+      "factors": {
+        "K": 1,
+        "lnDict": -1
+      },
+      "text": "K * lnDict^-1"
+    },
+    "infoton_mass_micro_eV": {
+      "base": 510998949999.99994,
+      "factors": {
+        "dict": -2,
+        "entropy": -2,
+        "U": 1
+      },
+      "text": "m_e[micro-eV] * dict^-2 * entropy^-2 * U"
+    },
+    "proton_mass_MeV": {
+      "base": 0.51099895,
+      "factors": {
+        "pi": 1,
+        "words": 2
+      },
+      "text": "m_e * pi * words^2"
+    },
+    "W_mass_GeV": {
+      "base": 0.0005109989499999999,
+      "factors": {
+        "K": 1,
+        "entropy": 1,
+        "f1": 1
+      },
+      "text": "m_e[GeV] * K * entropy * f1"
+    },
+    "Z_mass_GeV": {
+      "base": 0.0005109989499999999,
+      "factors": {
+        "dict": 1,
+        "total_bits": 1,
+        "U": -1
+      },
+      "text": "m_e[GeV] * dict * total_bits / U"
+    },
+    "H_mass_GeV": {
+      "base": 0.0005109989499999999,
+      "factors": {
+        "bits": 2,
+        "dict": 1
+      },
+      "text": "m_e[GeV] * bits^2 * dict"
+    },
+    "sin2_thetaW": {
+      "base": 1.0,
+      "factors": {
+        "checksum": -1,
+        "lnK": 1
+      },
+      "text": "lnK / checksum"
+    },
+    "G_F_GeV_minus2": {
+      "base": 1.0,
+      "factors": {
+        "pi": -1,
+        "total_bits": -1,
+        "f1": -1
+      },
+      "text": "1 / (pi * total_bits * f1)"
+    },
+    "Lambda_QCD_GeV": {
+      "base": 1.0,
+      "factors": {
+        "lnK": -1,
+        "U": 1,
+        "bip_density": 1
+      },
+      "text": "U * bip_density / lnK"
+    }
+  },
+  "bip39": {
+    "bits_per_word": 11,
+    "dictionary_size": 2048,
+    "words_per_phrase": 24,
+    "sha256_entropy_bits": 256,
+    "checksum_bits": 8,
+    "phrase_bits_total": 264,
+    "table_rows": 4,
+    "table_columns": 6,
+    "derived_K": 6.0
+  },
+  "features": {
+    "pi": 3.141592653589793,
+    "K": 6.0,
+    "bits": 11.0,
+    "dict": 2048.0,
+    "words": 24.0,
+    "entropy": 256.0,
+    "checksum": 8.0,
+    "total_bits": 264.0,
+    "lnK": 1.791759469228055,
+    "lnDict": 7.6246189861593985,
+    "U": 3.0000473161956447,
+    "f1": 104.1982588231834,
+    "bip_density": 0.12890625
+  },
+  "thresholds": [
+    {
+      "threshold": "README log tolerance",
+      "pass_count": 11,
+      "target_count": 11
+    },
+    {
+      "threshold": "relative <= 1%",
+      "pass_count": 7,
+      "target_count": 11
+    },
+    {
+      "threshold": "relative <= 0.5%",
+      "pass_count": 4,
+      "target_count": 11
+    },
+    {
+      "threshold": "relative <= 0.1%",
+      "pass_count": 0,
+      "target_count": 11
+    }
+  ],
+  "rows": [
+    {
+      "target": "alpha",
+      "observed": 0.0072973525692838015,
+      "predicted": 0.007286223671553381,
+      "absolute_error": 1.112889773042039e-05,
+      "relative_error_percent": 0.1525059619191818,
+      "log10_error": 0.0006628305337952423,
+      "readme_tolerance_log10": 0.002,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": true,
+      "pass_tenth_percent": false,
+      "formula": "K^-1 * lnDict^-1 * U^-1",
+      "coefficient_needed_for_exact_fit": 1.0015273889784457,
+      "coefficient_deviation_percent": 0.15273889784457317,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "alpha_s_mZ",
+      "observed": 0.1181,
+      "predicted": 0.11753902662993573,
+      "absolute_error": 0.0005609733700642633,
+      "relative_error_percent": 0.47499861986813147,
+      "log10_error": 0.002067807721421314,
+      "readme_tolerance_log10": 0.03,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": true,
+      "pass_tenth_percent": false,
+      "formula": "K^-1 * bits^-1 * bip_density^-1",
+      "coefficient_needed_for_exact_fit": 1.00477265625,
+      "coefficient_deviation_percent": 0.4772656249999896,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "g_I_squared",
+      "observed": 0.801,
+      "predicted": 0.7869245677576164,
+      "absolute_error": 0.014075432242383612,
+      "relative_error_percent": 1.7572324896858442,
+      "log10_error": 0.007699411903957487,
+      "readme_tolerance_log10": 0.01,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": false,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "K * lnDict^-1",
+      "coefficient_needed_for_exact_fit": 1.0178866346522797,
+      "coefficient_deviation_percent": 1.7886634652279687,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "infoton_mass_micro_eV",
+      "observed": 5.6,
+      "predicted": 5.5770980126045915,
+      "absolute_error": 0.022901987395408163,
+      "relative_error_percent": 0.40896406063228863,
+      "log10_error": 0.0017797501030747545,
+      "readme_tolerance_log10": 0.02,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": true,
+      "pass_tenth_percent": false,
+      "formula": "m_e[micro-eV] * dict^-2 * entropy^-2 * U",
+      "coefficient_needed_for_exact_fit": 1.004106434447386,
+      "coefficient_deviation_percent": 0.4106434447386009,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "proton_mass_MeV",
+      "observed": 938.2720813,
+      "predicted": 924.6819152517684,
+      "absolute_error": 13.590166048231595,
+      "relative_error_percent": 1.4484248566153723,
+      "log10_error": 0.006336430028745492,
+      "readme_tolerance_log10": 0.01,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": false,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "m_e * pi * words^2",
+      "coefficient_needed_for_exact_fit": 1.014697125383415,
+      "coefficient_deviation_percent": 1.4697125383414944,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "W_mass_GeV",
+      "observed": 80.379,
+      "predicted": 81.78462850632951,
+      "absolute_error": 1.4056285063295064,
+      "relative_error_percent": 1.7487509254027873,
+      "log10_error": 0.007529086501339046,
+      "readme_tolerance_log10": 0.01,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": false,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "m_e[GeV] * K * entropy * f1",
+      "coefficient_needed_for_exact_fit": 0.9828130477327934,
+      "coefficient_deviation_percent": 1.7186952267206568,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "Z_mass_GeV",
+      "observed": 91.1876,
+      "predicted": 92.09282227080132,
+      "absolute_error": 0.9052222708013176,
+      "relative_error_percent": 0.9927032521980154,
+      "log10_error": 0.004289997032328383,
+      "readme_tolerance_log10": 0.01,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "m_e[GeV] * dict * total_bits / U",
+      "coefficient_needed_for_exact_fit": 0.9901705447994689,
+      "coefficient_deviation_percent": 0.9829455200531134,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "H_mass_GeV",
+      "observed": 125.2,
+      "predicted": 126.62962780159998,
+      "absolute_error": 1.4296278015999775,
+      "relative_error_percent": 1.1418752408945507,
+      "log10_error": 0.0049310014937064585,
+      "readme_tolerance_log10": 0.02,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": false,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "m_e[GeV] * bits^2 * dict",
+      "coefficient_needed_for_exact_fit": 0.9887101634394766,
+      "coefficient_deviation_percent": 1.1289836560523403,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "sin2_thetaW",
+      "observed": 0.223,
+      "predicted": 0.22396993365350687,
+      "absolute_error": 0.0009699336535068659,
+      "relative_error_percent": 0.43494782668469323,
+      "log10_error": 0.0018848583003715572,
+      "readme_tolerance_log10": 0.02,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": true,
+      "pass_tenth_percent": false,
+      "formula": "lnK / checksum",
+      "coefficient_needed_for_exact_fit": 0.9956693577674252,
+      "coefficient_deviation_percent": 0.4330642232574844,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "G_F_GeV_minus2",
+      "observed": 1.1663787e-05,
+      "predicted": 1.1571395524887866e-05,
+      "absolute_error": 9.239147511213345e-08,
+      "relative_error_percent": 0.7921224479848051,
+      "log10_error": 0.0034538415399839356,
+      "readme_tolerance_log10": 0.05,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "1 / (pi * total_bits * f1)",
+      "coefficient_needed_for_exact_fit": 1.0079844712691237,
+      "coefficient_deviation_percent": 0.7984471269123716,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    },
+    {
+      "target": "Lambda_QCD_GeV",
+      "observed": 0.217,
+      "predicted": 0.21583524797553197,
+      "absolute_error": 0.0011647520244680298,
+      "relative_error_percent": 0.5367520850083087,
+      "log10_error": 0.0023373632364305148,
+      "readme_tolerance_log10": 0.05,
+      "pass_readme_tolerance": true,
+      "pass_one_percent": true,
+      "pass_half_percent": false,
+      "pass_tenth_percent": false,
+      "formula": "U * bip_density / lnK",
+      "coefficient_needed_for_exact_fit": 1.0053964866044496,
+      "coefficient_deviation_percent": 0.539648660444958,
+      "no_fit_status": "NO_FIT_VERIFIED"
+    }
+  ]
+}

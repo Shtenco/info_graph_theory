@@ -1,0 +1,12 @@
+target,formula,allowed_symbols,forbidden_symbols,theorem_mode,registry_hash,passed
+alpha,K^-1 * lnDict^-1 * U^-1,"K, U, lnDict",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+alpha_s_mZ,K^-1 * bits^-1 * bip_density^-1,"K, bip_density, bits",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+g_I_squared,K * lnDict^-1,"K, lnDict",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+infoton_mass_micro_eV,m_e[micro-eV] * dict^-2 * entropy^-2 * U,"U, dict, entropy",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+proton_mass_MeV,m_e * pi * words^2,"pi, words",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+W_mass_GeV,m_e[GeV] * K * entropy * f1,"K, entropy, f1",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+Z_mass_GeV,m_e[GeV] * dict * total_bits / U,"U, dict, total_bits",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+H_mass_GeV,m_e[GeV] * bits^2 * dict,"bits, dict",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+sin2_thetaW,lnK / checksum,"checksum, lnK",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+G_F_GeV_minus2,1 / (pi * total_bits * f1),"f1, pi, total_bits",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True
+Lambda_QCD_GeV,U * bip_density / lnK,"U, bip_density, lnK",,NO_CALIBRATION,d388fa65f2b74ffde9e313ee8334b11028eca6c02255da5a5b831fd9f8a0cbdb,True

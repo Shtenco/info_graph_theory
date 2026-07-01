@@ -1,0 +1,42 @@
+variant,target,observed,predicted,log10_error,tolerance_log10,passed,formula,complexity,status
+BIP39_EXACT_SECTOR,bits_per_word,11.0,11.0,0.0,1e-12,True,2K-1,1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,dictionary_size,2048.0,2048.0,0.0,1e-12,True,2^(2K-1),1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,words_per_phrase,24.0,24.0,0.0,1e-12,True,4K,1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,sha256_entropy_bits,256.0,256.0,0.0,1e-12,True,4*2^K,1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,checksum_bits,8.0,8.0,0.0,1e-12,True,K+2,1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,phrase_bits_total,264.0,264.0,0.0,1e-12,True,4K(2K-1),1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,table_rows,4.0,4.0,0.0,1e-12,True,4,1,exact BIP39 identity from K=6
+BIP39_EXACT_SECTOR,table_columns,6.0,6.0,0.0,1e-12,True,K,1,exact BIP39 identity from K=6
+BIP39_K_ONLY_ORIGINAL_GRAPH,alpha,0.0072973525692838015,0.0072980714413731435,4.278083070690882e-05,0.002,True,2 ln(K)^2 / (pi ln(N)),4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,alpha_s_mZ,0.1181,0.11314301117190509,0.018622164804136327,0.03,True,pi^3 alpha / 2,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,g_I_squared,0.801,0.7976500776943226,0.0018201042515568519,0.01,True,2 pi alpha f1 / K,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,infoton_mass_micro_eV,5.6,5.600587442153423,4.555526881438003e-05,0.02,True,chi_I m_e/(K f1^6),4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,proton_mass_MeV,938.2720813,938.3000003531441,1.2922595236207321e-05,0.01,True,m_e C_p pi K f1,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,W_mass_GeV,80.379,80.38000856510858,5.4493277261805794e-06,0.01,True,m_e C_W f1^2 K sqrt(K),4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,Z_mass_GeV,91.1876,80.90039221856424,0.05198515835333694,0.01,False,m_e C_Z f1^2 K sqrt(K),4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,H_mass_GeV,125.2,149.69058211356284,0.07759014839065197,0.02,False,m_e C_H f1^2 K^2,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,sin2_thetaW,0.223,0.2146,0.016675145418228374,0.02,True,fixed weak proxy,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,G_F_GeV_minus2,1.1663787e-05,1.13e-05,0.013761136628915456,0.05,True,weak proxy from README scale,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_K_ONLY_ORIGINAL_GRAPH,Lambda_QCD_GeV,0.217,0.2,0.03542973818454831,0.05,True,QCD scale proxy,4,uses BIP39 only to derive K; keeps legacy constants where README used them
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,alpha,0.0072973525692838015,0.007286223671553381,0.0006628305337952423,0.002,True,1 * K^-1 * lnDict^-1 * U^-1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,alpha_s_mZ,0.1181,0.11753902662993573,0.002067807721421314,0.03,True,1 * K^-1 * bits^-1 * bip_density^-1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,g_I_squared,0.801,0.7869245677576164,0.007699411903957487,0.01,True,1 * K^1 * lnDict^-1,2,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,infoton_mass_micro_eV,5.6,5.5770980126045915,0.0017797501030747545,0.02,True,5.10999e+11 * dict^-2 * entropy^-2 * U^1,5,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,proton_mass_MeV,938.2720813,924.6819152517684,0.006336430028745492,0.01,True,0.510999 * pi^1 * words^2,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,W_mass_GeV,80.379,81.78462850632951,0.007529086501339046,0.01,True,0.000510999 * K^1 * entropy^1 * f1^1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,Z_mass_GeV,91.1876,92.09282227080132,0.004289997032328383,0.01,True,0.000510999 * dict^1 * total_bits^1 * U^-1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,H_mass_GeV,125.2,126.62962780159998,0.0049310014937064585,0.02,True,0.000510999 * bits^2 * dict^1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,sin2_thetaW,0.223,0.22396993365350687,0.0018848583003715572,0.02,True,1 * checksum^-1 * lnK^1,2,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,G_F_GeV_minus2,1.1663787e-05,1.1571395524887866e-05,0.0034538415399839356,0.05,True,1 * pi^-1 * total_bits^-1 * f1^-1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_SPARSE_MONOMIAL_NO_COEFFICIENT,Lambda_QCD_GeV,0.217,0.21583524797553197,0.0023373632364305148,0.05,True,1 * lnK^-1 * U^1 * bip_density^1,3,no fitted coefficient; target-specific sparse exponents are still a model-choice risk
+BIP39_TARGET_CALIBRATED,alpha,0.0072973525692838015,0.007297352569283802,9.64327466553287e-17,0.002,True,C_alpha(1.00152738898) * [1 * K^-1 * lnDict^-1 * U^-1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,alpha_s_mZ,0.1181,0.1181,0.0,0.03,True,C_alpha_s_mZ(1.00477265625) * [1 * K^-1 * bits^-1 * bip_density^-1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,g_I_squared,0.801,0.801,0.0,0.01,True,C_g_I_squared(1.01788663465) * [1 * K^1 * lnDict^-1],3,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,infoton_mass_micro_eV,5.6,5.599999999999999,4.821637332766436e-17,0.02,True,C_infoton_mass_micro_eV(1.00410643445) * [5.10999e+11 * dict^-2 * entropy^-2 * U^1],6,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,proton_mass_MeV,938.2720813,938.2720812999999,4.821637332766436e-17,0.01,True,C_proton_mass_MeV(1.01469712538) * [0.510999 * pi^1 * words^2],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,W_mass_GeV,80.379,80.379,0.0,0.01,True,C_W_mass_GeV(0.982813047733) * [0.000510999 * K^1 * entropy^1 * f1^1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,Z_mass_GeV,91.1876,91.1876,0.0,0.01,True,C_Z_mass_GeV(0.990170544799) * [0.000510999 * dict^1 * total_bits^1 * U^-1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,H_mass_GeV,125.2,125.2,0.0,0.02,True,C_H_mass_GeV(0.988710163439) * [0.000510999 * bits^2 * dict^1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,sin2_thetaW,0.223,0.223,0.0,0.02,True,C_sin2_thetaW(0.995669357767) * [1 * checksum^-1 * lnK^1],3,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,G_F_GeV_minus2,1.1663787e-05,1.1663787e-05,0.0,0.05,True,C_G_F_GeV_minus2(1.00798447127) * [1 * pi^-1 * total_bits^-1 * f1^-1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"
+BIP39_TARGET_CALIBRATED,Lambda_QCD_GeV,0.217,0.21699999999999997,4.821637332766436e-17,0.05,True,C_Lambda_QCD_GeV(1.0053964866) * [1 * lnK^-1 * U^1 * bip_density^1],4,"fits by target-specific coefficient; classified as curve fitting, not a proof"

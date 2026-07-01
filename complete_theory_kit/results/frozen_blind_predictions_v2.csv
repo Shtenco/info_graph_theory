@@ -1,0 +1,4 @@
+prediction_id,target,frozen_formula,status,unlock_rule
+FUTURE_BLIND_001,next_CODATA_alpha_shift_direction,alpha = 2 lnK^2 / (pi lnN),pre_registered_not_evaluated,next independent CODATA release after this file timestamp
+FUTURE_BLIND_002,external_nuclear_mass_subset_not_in_current_tables,not yet available; current model must define before unlock,blocked_missing_formula,dataset selected by external party before formula edit
+FUTURE_BLIND_003,new_graph_spectrum_invariant,finite graph construction with K=6 and declared seed,pre_registered_not_evaluated,independent implementation computes invariant
