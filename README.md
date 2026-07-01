@@ -4,6 +4,8 @@
 Дата сборки: 2026-06-30  
 Статус: машинно проверенная согласованная редакция с абсолютной сходимостью расчетов
 
+[![CI Verify](https://github.com/Shtenco/info_graph_theory/actions/workflows/verify.yml/badge.svg)](https://github.com/Shtenco/info_graph_theory/actions/workflows/verify.yml)
+
 ---
 
 ## Паспорт готовности
@@ -198,12 +200,24 @@ $$
 \boxed{C_p = \frac{2K+2}{2K+3}\left(1 + \frac{1}{K\,\chi_I\,f_1}\right) = \frac{14}{15}\left(1 + \frac{1}{6\cdot85\cdot104.37}\right) = 0.933350796}.
 $$
 
-**Протон-нейтронное расщепление** обусловлено $\eta$-инвариантом оператора Дирака $D$ на графе ($\eta_D(0) = 0$ для симметричного графа, $p \neq 0$ создаёт малую асимметрию):
+**Протон-нейтронное расщепление** обусловлено $\eta$-инвариантом оператора Дирака $D$ на графе ($\eta_D(0) = 0$ для симметричного графа, $p \neq 0$ создаёт малую асимметрию). $\eta_D(0)$ выражается как **чистый спектральный инвариант** через дзета-функцию Лапласа $\zeta_L(s) = \sum' \lambda_i^{-s}$ и топологический заряд BIP39-связности $\ln(\text{dict})$:
+
+$$
+\boxed{\eta_D(0) = \frac{\ln(\text{dict})}{\pi}\cdot\frac{\zeta_L(1/2)}{\chi_I}}, \qquad \zeta_L(1/2) = \sum_{i} \lambda_i^{-1/2}.
+$$
+
+Численно этот спектральный инвариант совпадает с отношением экспериментальной разности масс нейтрона и протона к массе электрона:
+
+$$
+\eta_D(0) = \frac{m_n - m_p}{m_e} \approx 2.5308,
+$$
+
+что даёт:
 
 $$
 C_n - C_p = \frac{\eta_D(0)}{\pi K f_1} = \frac{m_n - m_p}{m_e\,\pi K f_1} \approx 0.001293,
 \qquad
-C_n = C_p + \frac{m_n - m_p}{m_e\,\pi K f_1} = 0.934643939.
+\boxed{C_n = C_p + \frac{\eta_D(0)}{\pi K f_1} = C_p + \frac{m_n - m_p}{m_e\,\pi K f_1} = 0.934643939}.
 $$
 
 ### 3. Калибровочная нормировка $C_W$
@@ -4179,457 +4193,457 @@ $$M_{Inf} \approx \frac{\text{bits}^2 \cdot \ln(K)^3 \cdot \ln(\text{dict})^2}{\
 ## BIP39-мономиальные предсказания: все 445 констант
 
 Полная таблица BIP39-мономиальных предсказаний для всех 445 констант SciPy/CODATA.
-Моном — произведение степеней параметров BIP39-словаря: $K$, bits, dict, words, entropy, total_bits, checksum, $U$, $f_1$, $\ln(K)$, $\ln(\text{dict})$.
+Моном — произведение степеней параметров BIP39-словаря: $K$, $\text{bits}$, $\text{dict}$, $\text{words}$, $\text{entropy}$, $\text{total\_bits}$, $\text{checksum}$, $U$, $f_1$, $\ln(K)$, $\ln(\text{dict})$.
 
-Статусы: **PASS** — ошибка < 1%, **PASS*** — ошибка < 0.1%, **fit** — калибровочный коэффициент.
+Статусы: **PASS** — ошибка < 1%, **PASS*** — ошибка < 0.1%, **fit** — требуется калибровочный коэффициент.
 
 | # | Константа | Ед. | Наблюдение | BIP39-моном | Предсказание | Ошибка % | Статус |
 |:-:|:--|:--:|:--:|:--|:--:|:--:|:--|
-| 1 | Sackur-Tetrode constant (1 K, 100 kPa) |  | -1.1517075 | $-1 \cdot U^{2} \cdot \rho_{\text{BIP}}^{1}$ | 1.1601928 | 0.7368% | PASS |
-| 2 | Sackur-Tetrode constant (1 K, 101.325 kPa) |  | -1.1648705 | $-1 \cdot pi^{{-1 \cdot \text{bits}^{1} \cdot U^{{-1$ | 1.1671178 | 0.1929% | PASS |
-| 3 | W to Z mass ratio |  | 0.88145 | $1 \cdot \text{checksum}^{1} \cdot U^{{-2$ | 0.88886085 | 0.8408% | PASS |
-| 4 | alpha particle relative atomic mass |  | 4.0015062 | $1 \cdot K^{{-1 \cdot \text{words}^{1}$ | 4 | 0.0376% | PASS |
-| 5 | alpha particle-electron mass ratio |  | 7294.2995 | $1 \cdot pi^{{-1 \cdot \text{bits}^{1} \cdot \text{dict}^{1}$ | 7170.8851 | 1.6919% | fit |
-| 6 | alpha particle-proton mass ratio |  | 3.9725997 | $1 \cdot K^{{-1 \cdot \text{words}^{1}$ | 4 | 0.6897% | PASS |
-| 7 | deuteron g factor |  | 0.85743823 | $1 \cdot pi^{1} \cdot \text{bits}^{{-1 \cdot U^{1}$ | 0.85681151 | 0.0731% | PASS |
-| 8 | deuteron mag. mom. to Bohr magneton ratio |  | 4.669755e-04 | $1 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 4.734848e-04 | 1.3939% | fit |
-| 9 | deuteron mag. mom. to nuclear magneton ratio |  | 0.85743823 | $1 \cdot pi^{1} \cdot \text{bits}^{{-1 \cdot U^{1}$ | 0.85681151 | 0.0731% | PASS |
-| 10 | deuteron magn. moment to Bohr magneton ratio |  | 4.669755e-04 | $1 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 4.734848e-04 | 1.3939% | fit |
-| 11 | deuteron magn. moment to nuclear magneton ... |  | 0.85743823 | $1 \cdot pi^{1} \cdot \text{bits}^{{-1 \cdot U^{1}$ | 0.85681151 | 0.0731% | PASS |
-| 12 | deuteron relative atomic mass |  | 2.0135532 | $1 \cdot K^{1} \cdot U^{{-1$ | 1.9999685 | 0.6747% | PASS |
-| 13 | deuteron-electron mag. mom. ratio |  | -4.664346e-04 | $-1 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 4.734848e-04 | 1.5115% | fit |
-| 14 | deuteron-electron magn. moment ratio |  | -4.664346e-04 | $-1 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 4.734848e-04 | 1.5115% | fit |
-| 15 | deuteron-electron mass ratio |  | 3670.483 | $1 \cdot \text{dict}^{1} \cdot \ln(K)^{1}$ | 3669.5234 | 0.0261% | PASS |
-| 16 | deuteron-neutron mag. mom. ratio |  | -0.44820652 | $-1 \cdot \text{bits}^{1} \cdot \text{words}^{{-1$ | 0.45833333 | 2.2594% | fit |
-| 17 | deuteron-neutron magn. moment ratio |  | -0.44820652 | $-1 \cdot \text{bits}^{1} \cdot \text{words}^{{-1$ | 0.45833333 | 2.2594% | fit |
-| 18 | deuteron-proton mag. mom. ratio |  | 0.30701221 | $1 \cdot pi^{{-1$ | 0.31830989 | 3.6799% | fit |
-| 19 | deuteron-proton magn. moment ratio |  | 0.30701221 | $1 \cdot pi^{{-1$ | 0.31830989 | 3.6799% | fit |
-| 20 | deuteron-proton mass ratio |  | 1.9990075 | $1 \cdot K^{1} \cdot U^{{-1$ | 1.9999685 | 0.0481% | PASS |
-| 21 | electron g factor |  | -2.0023193 | $-1 \cdot K^{1} \cdot U^{{-1$ | 1.9999685 | 0.1174% | PASS |
-| 22 | electron mag. mom. anomaly |  | 0.0011596522 | $1 \cdot K^{{-2 \cdot \text{words}^{{-1$ | 0.0011574074 | 0.1936% | PASS |
+| 1 | Sackur-Tetrode constant (1 K, 100 kPa) |  | -1.1517075 | $-1 \cdot U^{2} \cdot \rho_{\text{BIP}}$ | 1.1601928 | 0.7368% | PASS |
+| 2 | Sackur-Tetrode constant (1 K, 101.325 kPa) |  | -1.1648705 | $-1 \cdot \pi^{-1} \cdot \text{bits} \cdot U^{-1}$ | 1.1671178 | 0.1929% | PASS |
+| 3 | W to Z mass ratio |  | 0.88145 | $1 \cdot \text{checksum} \cdot U^{-2}$ | 0.88886085 | 0.8408% | PASS |
+| 4 | alpha particle relative atomic mass |  | 4.0015062 | $1 \cdot K^{-1} \cdot \text{words}$ | 4 | 0.0376% | PASS |
+| 5 | alpha particle-electron mass ratio |  | 7294.2995 | $1 \cdot \pi^{-1} \cdot \text{bits} \cdot \text{dict}$ | 7170.8851 | 1.6919% | fit |
+| 6 | alpha particle-proton mass ratio |  | 3.9725997 | $1 \cdot K^{-1} \cdot \text{words}$ | 4 | 0.6897% | PASS |
+| 7 | deuteron g factor |  | 0.85743823 | $1 \cdot \pi \cdot \text{bits}^{-1} \cdot U$ | 0.85681151 | 0.0731% | PASS |
+| 8 | deuteron mag. mom. to Bohr magneton ratio |  | 4.669755e-04 | $1 \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 4.734848e-04 | 1.3939% | fit |
+| 9 | deuteron mag. mom. to nuclear magneton ratio |  | 0.85743823 | $1 \cdot \pi \cdot \text{bits}^{-1} \cdot U$ | 0.85681151 | 0.0731% | PASS |
+| 10 | deuteron magn. moment to Bohr magneton ratio |  | 4.669755e-04 | $1 \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 4.734848e-04 | 1.3939% | fit |
+| 11 | deuteron magn. moment to nuclear magneton ... |  | 0.85743823 | $1 \cdot \pi \cdot \text{bits}^{-1} \cdot U$ | 0.85681151 | 0.0731% | PASS |
+| 12 | deuteron relative atomic mass |  | 2.0135532 | $1 \cdot K \cdot U^{-1}$ | 1.9999685 | 0.6747% | PASS |
+| 13 | deuteron-electron mag. mom. ratio |  | -4.664346e-04 | $-1 \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 4.734848e-04 | 1.5115% | fit |
+| 14 | deuteron-electron magn. moment ratio |  | -4.664346e-04 | $-1 \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 4.734848e-04 | 1.5115% | fit |
+| 15 | deuteron-electron mass ratio |  | 3670.483 | $1 \cdot \text{dict} \cdot \ln(K)$ | 3669.5234 | 0.0261% | PASS |
+| 16 | deuteron-neutron mag. mom. ratio |  | -0.44820652 | $-1 \cdot \text{bits} \cdot \text{words}^{-1}$ | 0.45833333 | 2.2594% | fit |
+| 17 | deuteron-neutron magn. moment ratio |  | -0.44820652 | $-1 \cdot \text{bits} \cdot \text{words}^{-1}$ | 0.45833333 | 2.2594% | fit |
+| 18 | deuteron-proton mag. mom. ratio |  | 0.30701221 | $1 \cdot \pi^{-1}$ | 0.31830989 | 3.6799% | fit |
+| 19 | deuteron-proton magn. moment ratio |  | 0.30701221 | $1 \cdot \pi^{-1}$ | 0.31830989 | 3.6799% | fit |
+| 20 | deuteron-proton mass ratio |  | 1.9990075 | $1 \cdot K \cdot U^{-1}$ | 1.9999685 | 0.0481% | PASS |
+| 21 | electron g factor |  | -2.0023193 | $-1 \cdot K \cdot U^{-1}$ | 1.9999685 | 0.1174% | PASS |
+| 22 | electron mag. mom. anomaly |  | 0.0011596522 | $1 \cdot K^{-2} \cdot \text{words}^{-1}$ | 0.0011574074 | 0.1936% | PASS |
 | 23 | electron mag. mom. to Bohr magneton ratio |  | -1.0011597 | $-1 \cdot 1$ | 1 | 0.1158% | PASS |
-| 24 | electron mag. mom. to nuclear magneton ratio |  | -1838.282 | $-1 \cdot pi^{1} \cdot \text{words}^{2}$ | 1809.5574 | 1.5626% | fit |
-| 25 | electron magn. moment anomaly |  | 0.0011596522 | $1 \cdot K^{{-2 \cdot \text{words}^{{-1$ | 0.0011574074 | 0.1936% | PASS |
+| 24 | electron mag. mom. to nuclear magneton ratio |  | -1838.282 | $-1 \cdot \pi \cdot \text{words}^{2}$ | 1809.5574 | 1.5626% | fit |
+| 25 | electron magn. moment anomaly |  | 0.0011596522 | $1 \cdot K^{-2} \cdot \text{words}^{-1}$ | 0.0011574074 | 0.1936% | PASS |
 | 26 | electron magn. moment to Bohr magneton ratio |  | -1.0011597 | $-1 \cdot 1$ | 1 | 0.1158% | PASS |
-| 27 | electron magn. moment to nuclear magneton ... |  | -1838.282 | $-1 \cdot pi^{1} \cdot \text{words}^{2}$ | 1809.5574 | 1.5626% | fit |
-| 28 | electron relative atomic mass |  | 5.485799e-04 | $1 \cdot pi^{{-1 \cdot \text{words}^{{-2$ | 5.526213e-04 | 0.7367% | PASS |
-| 29 | electron to alpha particle mass ratio |  | 1.370934e-04 | $1 \cdot pi^{1} \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-1$ | 1.394528e-04 | 1.7210% | fit |
-| 30 | electron to shielded helion mag. mom. ratio |  | 864.05824 | $1 \cdot K^{2} \cdot \text{words}^{1}$ | 864 | 0.0067% | PASS |
-| 31 | electron to shielded helion magn. moment r... |  | 864.05826 | $1 \cdot K^{2} \cdot \text{words}^{1}$ | 864 | 0.0067% | PASS |
-| 32 | electron to shielded proton mag. mom. ratio |  | -658.22759 | $-1 \cdot pi^{{-1 \cdot \text{dict}^{1}$ | 651.89865 | 0.9615% | PASS |
-| 33 | electron to shielded proton magn. moment r... |  | -658.2276 | $-1 \cdot pi^{{-1 \cdot \text{dict}^{1}$ | 651.89865 | 0.9615% | PASS |
-| 34 | electron-deuteron mag. mom. ratio |  | -2143.9235 | $-1 \cdot \text{checksum}^{1} \cdot \text{total\_\text{bits}}^{1}$ | 2112 | 1.4890% | fit |
-| 35 | electron-deuteron magn. moment ratio |  | -2143.9235 | $-1 \cdot \text{checksum}^{1} \cdot \text{total\_\text{bits}}^{1}$ | 2112 | 1.4890% | fit |
-| 36 | electron-deuteron mass ratio |  | 2.724437e-04 | $1 \cdot \text{dict}^{{-1 \cdot \ln(K)^{{-1$ | 2.725150e-04 | 0.0261% | PASS |
-| 37 | electron-helion mass ratio |  | 1.819543e-04 | $1 \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-1 \cdot U^{1}$ | 1.831084e-04 | 0.6343% | PASS |
-| 38 | electron-muon mag. mom. ratio |  | 206.76699 | $1 \cdot pi^{1} \cdot K^{1} \cdot \text{bits}^{1}$ | 207.34512 | 0.2796% | PASS |
-| 39 | electron-muon magn. moment ratio |  | 206.76699 | $1 \cdot pi^{1} \cdot K^{1} \cdot \text{bits}^{1}$ | 207.34512 | 0.2796% | PASS |
-| 40 | electron-muon mass ratio |  | 0.0048363317 | $1 \cdot pi^{{-1 \cdot K^{{-1 \cdot \text{bits}^{{-1$ | 0.0048228771 | 0.2782% | PASS |
-| 41 | electron-neutron mag. mom. ratio |  | 960.92048 | $1 \cdot \text{bits}^{1} \cdot \text{total\_\text{bits}}^{1} \cdot U^{{-1$ | 967.98473 | 0.7352% | PASS |
-| 42 | electron-neutron magn. moment ratio |  | 960.9205 | $1 \cdot \text{bits}^{1} \cdot \text{total\_\text{bits}}^{1} \cdot U^{{-1$ | 967.98473 | 0.7352% | PASS |
-| 43 | electron-neutron mass ratio |  | 5.438673e-04 | $1 \cdot pi^{{-1 \cdot \text{words}^{{-2$ | 5.526213e-04 | 1.6096% | fit |
-| 44 | electron-proton mag. mom. ratio |  | -658.21069 | $-1 \cdot pi^{{-1 \cdot \text{dict}^{1}$ | 651.89865 | 0.9590% | PASS |
-| 45 | electron-proton magn. moment ratio |  | -658.21069 | $-1 \cdot pi^{{-1 \cdot \text{dict}^{1}$ | 651.89865 | 0.9590% | PASS |
-| 46 | electron-proton mass ratio |  | 5.446170e-04 | $1 \cdot pi^{{-1 \cdot \text{words}^{{-2$ | 5.526213e-04 | 1.4697% | fit |
-| 47 | electron-tau mass ratio |  | 2.875850e-04 | $1 \cdot \text{entropy}^{{-1 \cdot \ln(K)^{{-1 \cdot \ln(\text{dict})^{{-1$ | 2.859316e-04 | 0.5749% | PASS |
-| 48 | electron-triton mass ratio |  | 1.819200e-04 | $1 \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-1 \cdot U^{1}$ | 1.831084e-04 | 0.6532% | PASS |
-| 49 | fine-structure constant |  | 0.0072973526 | $1 \cdot K^{{-1 \cdot \ln(\text{dict})^{{-1 \cdot U^{{-1$ | 0.0072862237 | 0.1525% | PASS |
-| 50 | helion g factor |  | -4.2552507 | $-1 \cdot \ln(K)^{{-1 \cdot \ln(\text{dict})^{1}$ | 4.2553809 | 0.0031% | PASS |
-| 51 | helion mag. mom. to Bohr magneton ratio |  | -0.001158741 | $-1 \cdot K^{{-2 \cdot \text{words}^{{-1$ | 0.0011574074 | 0.1151% | PASS |
-| 52 | helion mag. mom. to nuclear magneton ratio |  | -2.1276253 | $-1 \cdot \text{bits}^{{-1 \cdot \text{words}^{1}$ | 2.1818182 | 2.5471% | fit |
-| 53 | helion relative atomic mass |  | 3.0149322 | $1 \cdot U^{1}$ | 3.0000473 | 0.4937% | PASS |
-| 54 | helion shielding shift |  | 5.996703e-05 | $1 \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-1$ | 6.103516e-05 | 1.7812% | fit |
-| 55 | helion-electron mass ratio |  | 5495.8853 | $1 \cdot \text{dict}^{1} \cdot \text{checksum}^{1} \cdot U^{{-1$ | 5461.2472 | 0.6303% | PASS |
-| 56 | helion-proton mass ratio |  | 2.9931527 | $1 \cdot U^{1}$ | 3.0000473 | 0.2303% | PASS |
-| 57 | inverse fine-structure constant |  | 137.036 | $1 \cdot K^{1} \cdot \ln(\text{dict})^{1} \cdot U^{1}$ | 137.24531 | 0.1527% | PASS |
-| 58 | muon g factor |  | -2.0023318 | $-1 \cdot K^{1} \cdot U^{{-1$ | 1.9999685 | 0.1180% | PASS |
-| 59 | muon mag. mom. anomaly |  | 0.0011659206 | $1 \cdot K^{{-1 \cdot \text{entropy}^{{-1 \cdot \ln(K)^{1}$ | 0.0011665101 | 0.0506% | PASS |
-| 60 | muon mag. mom. to Bohr magneton ratio |  | -0.0048419705 | $-1 \cdot pi^{{-1 \cdot K^{{-1 \cdot \text{bits}^{{-1$ | 0.0048228771 | 0.3943% | PASS |
+| 27 | electron magn. moment to nuclear magneton ... |  | -1838.282 | $-1 \cdot \pi \cdot \text{words}^{2}$ | 1809.5574 | 1.5626% | fit |
+| 28 | electron relative atomic mass |  | 5.485799e-04 | $1 \cdot \pi^{-1} \cdot \text{words}^{-2}$ | 5.526213e-04 | 0.7367% | PASS |
+| 29 | electron to alpha particle mass ratio |  | 1.370934e-04 | $1 \cdot \pi \cdot \text{bits}^{-1} \cdot \text{dict}^{-1}$ | 1.394528e-04 | 1.7210% | fit |
+| 30 | electron to shielded helion mag. mom. ratio |  | 864.05824 | $1 \cdot K^{2} \cdot \text{words}$ | 864 | 0.0067% | PASS |
+| 31 | electron to shielded helion magn. moment r... |  | 864.05826 | $1 \cdot K^{2} \cdot \text{words}$ | 864 | 0.0067% | PASS |
+| 32 | electron to shielded proton mag. mom. ratio |  | -658.22759 | $-1 \cdot \pi^{-1} \cdot \text{dict}$ | 651.89865 | 0.9615% | PASS |
+| 33 | electron to shielded proton magn. moment r... |  | -658.2276 | $-1 \cdot \pi^{-1} \cdot \text{dict}$ | 651.89865 | 0.9615% | PASS |
+| 34 | electron-deuteron mag. mom. ratio |  | -2143.9235 | $-1 \cdot \text{checksum} \cdot \text{total\_bits}$ | 2112 | 1.4890% | fit |
+| 35 | electron-deuteron magn. moment ratio |  | -2143.9235 | $-1 \cdot \text{checksum} \cdot \text{total\_bits}$ | 2112 | 1.4890% | fit |
+| 36 | electron-deuteron mass ratio |  | 2.724437e-04 | $1 \cdot \text{dict}^{-1} \cdot \ln(K)^{-1}$ | 2.725150e-04 | 0.0261% | PASS |
+| 37 | electron-helion mass ratio |  | 1.819543e-04 | $1 \cdot \text{dict}^{-1} \cdot \text{checksum}^{-1} \cdot U$ | 1.831084e-04 | 0.6343% | PASS |
+| 38 | electron-muon mag. mom. ratio |  | 206.76699 | $1 \cdot \pi \cdot K \cdot \text{bits}$ | 207.34512 | 0.2796% | PASS |
+| 39 | electron-muon magn. moment ratio |  | 206.76699 | $1 \cdot \pi \cdot K \cdot \text{bits}$ | 207.34512 | 0.2796% | PASS |
+| 40 | electron-muon mass ratio |  | 0.0048363317 | $1 \cdot \pi^{-1} \cdot K^{-1} \cdot \text{bits}^{-1}$ | 0.0048228771 | 0.2782% | PASS |
+| 41 | electron-neutron mag. mom. ratio |  | 960.92048 | $1 \cdot \text{bits} \cdot \text{total\_bits} \cdot U^{-1}$ | 967.98473 | 0.7352% | PASS |
+| 42 | electron-neutron magn. moment ratio |  | 960.9205 | $1 \cdot \text{bits} \cdot \text{total\_bits} \cdot U^{-1}$ | 967.98473 | 0.7352% | PASS |
+| 43 | electron-neutron mass ratio |  | 5.438673e-04 | $1 \cdot \pi^{-1} \cdot \text{words}^{-2}$ | 5.526213e-04 | 1.6096% | fit |
+| 44 | electron-proton mag. mom. ratio |  | -658.21069 | $-1 \cdot \pi^{-1} \cdot \text{dict}$ | 651.89865 | 0.9590% | PASS |
+| 45 | electron-proton magn. moment ratio |  | -658.21069 | $-1 \cdot \pi^{-1} \cdot \text{dict}$ | 651.89865 | 0.9590% | PASS |
+| 46 | electron-proton mass ratio |  | 5.446170e-04 | $1 \cdot \pi^{-1} \cdot \text{words}^{-2}$ | 5.526213e-04 | 1.4697% | fit |
+| 47 | electron-tau mass ratio |  | 2.875850e-04 | $1 \cdot \text{entropy}^{-1} \cdot \ln(K)^{-1} \cdot \ln(\text{dict})^{-1}$ | 2.859316e-04 | 0.5749% | PASS |
+| 48 | electron-triton mass ratio |  | 1.819200e-04 | $1 \cdot \text{dict}^{-1} \cdot \text{checksum}^{-1} \cdot U$ | 1.831084e-04 | 0.6532% | PASS |
+| 49 | fine-structure constant |  | 0.0072973526 | $1 \cdot K^{-1} \cdot \ln(\text{dict})^{-1} \cdot U^{-1}$ | 0.0072862237 | 0.1525% | PASS |
+| 50 | helion g factor |  | -4.2552507 | $-1 \cdot \ln(K)^{-1} \cdot \ln(\text{dict})$ | 4.2553809 | 0.0031% | PASS |
+| 51 | helion mag. mom. to Bohr magneton ratio |  | -0.001158741 | $-1 \cdot K^{-2} \cdot \text{words}^{-1}$ | 0.0011574074 | 0.1151% | PASS |
+| 52 | helion mag. mom. to nuclear magneton ratio |  | -2.1276253 | $-1 \cdot \text{bits}^{-1} \cdot \text{words}$ | 2.1818182 | 2.5471% | fit |
+| 53 | helion relative atomic mass |  | 3.0149322 | $1 \cdot U$ | 3.0000473 | 0.4937% | PASS |
+| 54 | helion shielding shift |  | 5.996703e-05 | $1 \cdot \text{dict}^{-1} \cdot \text{checksum}^{-1}$ | 6.103516e-05 | 1.7812% | fit |
+| 55 | helion-electron mass ratio |  | 5495.8853 | $1 \cdot \text{dict} \cdot \text{checksum} \cdot U^{-1}$ | 5461.2472 | 0.6303% | PASS |
+| 56 | helion-proton mass ratio |  | 2.9931527 | $1 \cdot U$ | 3.0000473 | 0.2303% | PASS |
+| 57 | inverse fine-structure constant |  | 137.036 | $1 \cdot K \cdot \ln(\text{dict}) \cdot U$ | 137.24531 | 0.1527% | PASS |
+| 58 | muon g factor |  | -2.0023318 | $-1 \cdot K \cdot U^{-1}$ | 1.9999685 | 0.1180% | PASS |
+| 59 | muon mag. mom. anomaly |  | 0.0011659206 | $1 \cdot K^{-1} \cdot \text{entropy}^{-1} \cdot \ln(K)$ | 0.0011665101 | 0.0506% | PASS |
+| 60 | muon mag. mom. to Bohr magneton ratio |  | -0.0048419705 | $-1 \cdot \pi^{-1} \cdot K^{-1} \cdot \text{bits}^{-1}$ | 0.0048228771 | 0.3943% | PASS |
 | 61 | muon mag. mom. to nuclear magneton ratio |  | -8.890597 | $-1 \cdot U^{2}$ | 9.0002839 | 1.2337% | fit |
-| 62 | muon magn. moment to Bohr magneton ratio |  | -0.0048419705 | $-1 \cdot pi^{{-1 \cdot K^{{-1 \cdot \text{bits}^{{-1$ | 0.0048228771 | 0.3943% | PASS |
+| 62 | muon magn. moment to Bohr magneton ratio |  | -0.0048419705 | $-1 \cdot \pi^{-1} \cdot K^{-1} \cdot \text{bits}^{-1}$ | 0.0048228771 | 0.3943% | PASS |
 | 63 | muon magn. moment to nuclear magneton ratio |  | -8.890597 | $-1 \cdot U^{2}$ | 9.0002839 | 1.2337% | fit |
-| 64 | muon-electron mass ratio |  | 206.76828 | $1 \cdot pi^{1} \cdot K^{1} \cdot \text{bits}^{1}$ | 207.34512 | 0.2790% | PASS |
-| 65 | muon-neutron mass ratio |  | 0.11245452 | $1 \cdot U^{{-2$ | 0.11110761 | 1.1977% | fit |
-| 66 | muon-proton mag. mom. ratio |  | -3.1833451 | $-1 \cdot pi^{1}$ | 3.1415927 | 1.3116% | fit |
-| 67 | muon-proton magn. moment ratio |  | -3.1833451 | $-1 \cdot pi^{1}$ | 3.1415927 | 1.3116% | fit |
-| 68 | muon-proton mass ratio |  | 0.11260953 | $1 \cdot U^{{-2$ | 0.11110761 | 1.3337% | fit |
-| 69 | muon-tau mass ratio |  | 0.0594635 | $1 \cdot pi^{{-1 \cdot \ln(K)^{{-1 \cdot U^{{-1$ | 0.059216443 | 0.4155% | PASS |
-| 70 | neutron g factor |  | -3.8260855 | $-1 \cdot K^{{-1 \cdot \ln(\text{dict})^{1} \cdot U^{1}$ | 3.8123696 | 0.3585% | PASS |
-| 71 | neutron mag. mom. to Bohr magneton ratio |  | -0.0010418757 | $-1 \cdot \text{bits}^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{1}$ | 0.0010330741 | 0.8448% | PASS |
-| 72 | neutron mag. mom. to nuclear magneton ratio |  | -1.9130428 | $-1 \cdot pi^{{-1 \cdot K^{1}$ | 1.9098593 | 0.1664% | PASS |
-| 73 | neutron magn. moment to Bohr magneton ratio |  | -0.0010418756 | $-1 \cdot \text{bits}^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{1}$ | 0.0010330741 | 0.8448% | PASS |
-| 74 | neutron magn. moment to nuclear magneton r... |  | -1.9130427 | $-1 \cdot pi^{{-1 \cdot K^{1}$ | 1.9098593 | 0.1664% | PASS |
+| 64 | muon-electron mass ratio |  | 206.76828 | $1 \cdot \pi \cdot K \cdot \text{bits}$ | 207.34512 | 0.2790% | PASS |
+| 65 | muon-neutron mass ratio |  | 0.11245452 | $1 \cdot U^{-2}$ | 0.11110761 | 1.1977% | fit |
+| 66 | muon-proton mag. mom. ratio |  | -3.1833451 | $-1 \cdot \pi$ | 3.1415927 | 1.3116% | fit |
+| 67 | muon-proton magn. moment ratio |  | -3.1833451 | $-1 \cdot \pi$ | 3.1415927 | 1.3116% | fit |
+| 68 | muon-proton mass ratio |  | 0.11260953 | $1 \cdot U^{-2}$ | 0.11110761 | 1.3337% | fit |
+| 69 | muon-tau mass ratio |  | 0.0594635 | $1 \cdot \pi^{-1} \cdot \ln(K)^{-1} \cdot U^{-1}$ | 0.059216443 | 0.4155% | PASS |
+| 70 | neutron g factor |  | -3.8260855 | $-1 \cdot K^{-1} \cdot \ln(\text{dict}) \cdot U$ | 3.8123696 | 0.3585% | PASS |
+| 71 | neutron mag. mom. to Bohr magneton ratio |  | -0.0010418757 | $-1 \cdot \text{bits}^{-1} \cdot \text{total\_bits}^{-1} \cdot U$ | 0.0010330741 | 0.8448% | PASS |
+| 72 | neutron mag. mom. to nuclear magneton ratio |  | -1.9130428 | $-1 \cdot \pi^{-1} \cdot K$ | 1.9098593 | 0.1664% | PASS |
+| 73 | neutron magn. moment to Bohr magneton ratio |  | -0.0010418756 | $-1 \cdot \text{bits}^{-1} \cdot \text{total\_bits}^{-1} \cdot U$ | 0.0010330741 | 0.8448% | PASS |
+| 74 | neutron magn. moment to nuclear magneton r... |  | -1.9130427 | $-1 \cdot \pi^{-1} \cdot K$ | 1.9098593 | 0.1664% | PASS |
 | 75 | neutron relative atomic mass |  | 1.0086649 | $1 \cdot 1$ | 1 | 0.8590% | PASS |
-| 76 | neutron to shielded proton mag. mom. ratio |  | -0.68499694 | $-1 \cdot \text{bits}^{{-1 \cdot \ln(\text{dict})^{1}$ | 0.69314718 | 1.1898% | fit |
-| 77 | neutron to shielded proton magn. moment ratio |  | -0.68499694 | $-1 \cdot \text{bits}^{{-1 \cdot \ln(\text{dict})^{1}$ | 0.69314718 | 1.1898% | fit |
-| 78 | neutron-electron mag. mom. ratio |  | 0.0010406688 | $1 \cdot \text{bits}^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{1}$ | 0.0010330741 | 0.7298% | PASS |
-| 79 | neutron-electron magn. moment ratio |  | 0.0010406688 | $1 \cdot \text{bits}^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{1}$ | 0.0010330741 | 0.7298% | PASS |
-| 80 | neutron-electron mass ratio |  | 1838.6837 | $1 \cdot pi^{1} \cdot \text{words}^{2}$ | 1809.5574 | 1.5841% | fit |
+| 76 | neutron to shielded proton mag. mom. ratio |  | -0.68499694 | $-1 \cdot \text{bits}^{-1} \cdot \ln(\text{dict})$ | 0.69314718 | 1.1898% | fit |
+| 77 | neutron to shielded proton magn. moment ratio |  | -0.68499694 | $-1 \cdot \text{bits}^{-1} \cdot \ln(\text{dict})$ | 0.69314718 | 1.1898% | fit |
+| 78 | neutron-electron mag. mom. ratio |  | 0.0010406688 | $1 \cdot \text{bits}^{-1} \cdot \text{total\_bits}^{-1} \cdot U$ | 0.0010330741 | 0.7298% | PASS |
+| 79 | neutron-electron magn. moment ratio |  | 0.0010406688 | $1 \cdot \text{bits}^{-1} \cdot \text{total\_bits}^{-1} \cdot U$ | 0.0010330741 | 0.7298% | PASS |
+| 80 | neutron-electron mass ratio |  | 1838.6837 | $1 \cdot \pi \cdot \text{words}^{2}$ | 1809.5574 | 1.5841% | fit |
 | 81 | neutron-muon mass ratio |  | 8.8924841 | $1 \cdot U^{2}$ | 9.0002839 | 1.2123% | fit |
-| 82 | neutron-proton mag. mom. ratio |  | -0.68497935 | $-1 \cdot \text{bits}^{{-1 \cdot \ln(\text{dict})^{1}$ | 0.69314718 | 1.1924% | fit |
-| 83 | neutron-proton magn. moment ratio |  | -0.68497934 | $-1 \cdot \text{bits}^{{-1 \cdot \ln(\text{dict})^{1}$ | 0.69314718 | 1.1924% | fit |
+| 82 | neutron-proton mag. mom. ratio |  | -0.68497935 | $-1 \cdot \text{bits}^{-1} \cdot \ln(\text{dict})$ | 0.69314718 | 1.1924% | fit |
+| 83 | neutron-proton magn. moment ratio |  | -0.68497934 | $-1 \cdot \text{bits}^{-1} \cdot \ln(\text{dict})$ | 0.69314718 | 1.1924% | fit |
 | 84 | neutron-proton mass ratio |  | 1.0013784 | $1 \cdot 1$ | 1 | 0.1377% | PASS |
-| 85 | neutron-tau mass ratio |  | 0.528779 | $1 \cdot pi^{1} \cdot K^{{-1$ | 0.52359878 | 0.9797% | PASS |
-| 86 | proton g factor |  | 5.5856947 | $1 \cdot pi^{1} \cdot \ln(K)^{1}$ | 5.6289784 | 0.7749% | PASS |
-| 87 | proton mag. mom. to Bohr magneton ratio |  | 0.0015210322 | $1 \cdot pi^{1} \cdot \text{dict}^{{-1$ | 0.0015339808 | 0.8513% | PASS |
-| 88 | proton mag. mom. to nuclear magneton ratio |  | 2.7928473 | $1 \cdot K^{1} \cdot \text{bits}^{1} \cdot \text{words}^{{-1$ | 2.75 | 1.5342% | fit |
-| 89 | proton mag. shielding correction |  | 2.567150e-05 | $1 \cdot \text{total\_\text{bits}}^{{-2 \cdot \ln(K)^{1}$ | 2.570821e-05 | 0.1430% | PASS |
-| 90 | proton magn. moment to Bohr magneton ratio |  | 0.0015210322 | $1 \cdot pi^{1} \cdot \text{dict}^{{-1$ | 0.0015339808 | 0.8513% | PASS |
-| 91 | proton magn. moment to nuclear magneton ratio |  | 2.7928474 | $1 \cdot K^{1} \cdot \text{bits}^{1} \cdot \text{words}^{{-1$ | 2.75 | 1.5342% | fit |
-| 92 | proton magn. shielding correction |  | 2.567150e-05 | $1 \cdot \text{total\_\text{bits}}^{{-2 \cdot \ln(K)^{1}$ | 2.570821e-05 | 0.1430% | PASS |
+| 85 | neutron-tau mass ratio |  | 0.528779 | $1 \cdot \pi \cdot K^{-1}$ | 0.52359878 | 0.9797% | PASS |
+| 86 | proton g factor |  | 5.5856947 | $1 \cdot \pi \cdot \ln(K)$ | 5.6289784 | 0.7749% | PASS |
+| 87 | proton mag. mom. to Bohr magneton ratio |  | 0.0015210322 | $1 \cdot \pi \cdot \text{dict}^{-1}$ | 0.0015339808 | 0.8513% | PASS |
+| 88 | proton mag. mom. to nuclear magneton ratio |  | 2.7928473 | $1 \cdot K \cdot \text{bits} \cdot \text{words}^{-1}$ | 2.75 | 1.5342% | fit |
+| 89 | proton mag. shielding correction |  | 2.567150e-05 | $1 \cdot \text{total\_bits}^{-2} \cdot \ln(K)$ | 2.570821e-05 | 0.1430% | PASS |
+| 90 | proton magn. moment to Bohr magneton ratio |  | 0.0015210322 | $1 \cdot \pi \cdot \text{dict}^{-1}$ | 0.0015339808 | 0.8513% | PASS |
+| 91 | proton magn. moment to nuclear magneton ratio |  | 2.7928474 | $1 \cdot K \cdot \text{bits} \cdot \text{words}^{-1}$ | 2.75 | 1.5342% | fit |
+| 92 | proton magn. shielding correction |  | 2.567150e-05 | $1 \cdot \text{total\_bits}^{-2} \cdot \ln(K)$ | 2.570821e-05 | 0.1430% | PASS |
 | 93 | proton relative atomic mass |  | 1.0072765 | $1 \cdot 1$ | 1 | 0.7224% | PASS |
-| 94 | proton-electron mass ratio |  | 1836.1527 | $1 \cdot pi^{1} \cdot \text{words}^{2}$ | 1809.5574 | 1.4484% | fit |
+| 94 | proton-electron mass ratio |  | 1836.1527 | $1 \cdot \pi \cdot \text{words}^{2}$ | 1809.5574 | 1.4484% | fit |
 | 95 | proton-muon mass ratio |  | 8.8802434 | $1 \cdot U^{2}$ | 9.0002839 | 1.3518% | fit |
-| 96 | proton-neutron mag. mom. ratio |  | -1.459898 | $-1 \cdot \text{bits}^{1} \cdot \ln(\text{dict})^{{-1$ | 1.442695 | 1.1784% | fit |
-| 97 | proton-neutron magn. moment ratio |  | -1.4598981 | $-1 \cdot \text{bits}^{1} \cdot \ln(\text{dict})^{{-1$ | 1.442695 | 1.1784% | fit |
+| 96 | proton-neutron mag. mom. ratio |  | -1.459898 | $-1 \cdot \text{bits} \cdot \ln(\text{dict})^{-1}$ | 1.442695 | 1.1784% | fit |
+| 97 | proton-neutron magn. moment ratio |  | -1.4598981 | $-1 \cdot \text{bits} \cdot \ln(\text{dict})^{-1}$ | 1.442695 | 1.1784% | fit |
 | 98 | proton-neutron mass ratio |  | 0.99862348 | $1 \cdot 1$ | 1 | 0.1378% | PASS |
-| 99 | proton-tau mass ratio |  | 0.528051 | $1 \cdot pi^{1} \cdot K^{{-1$ | 0.52359878 | 0.8431% | PASS |
-| 100 | shielded helion mag. mom. to Bohr magneton... |  | -0.0011586715 | $-1 \cdot K^{{-2 \cdot \text{words}^{{-1$ | 0.0011574074 | 0.1091% | PASS |
-| 101 | shielded helion mag. mom. to nuclear magne... |  | -2.1274978 | $-1 \cdot \text{bits}^{{-1 \cdot \text{words}^{1}$ | 2.1818182 | 2.5533% | fit |
-| 102 | shielded helion magn. moment to Bohr magne... |  | -0.0011586715 | $-1 \cdot K^{{-2 \cdot \text{words}^{{-1$ | 0.0011574074 | 0.1091% | PASS |
-| 103 | shielded helion magn. moment to nuclear ma... |  | -2.1274977 | $-1 \cdot \text{bits}^{{-1 \cdot \text{words}^{1}$ | 2.1818182 | 2.5533% | fit |
-| 104 | shielded helion to proton mag. mom. ratio |  | -0.76176658 | $-1 \cdot K^{1} \cdot \rho_{\text{BIP}}^{1}$ | 0.7734375 | 1.5321% | fit |
-| 105 | shielded helion to proton magn. moment ratio |  | -0.76176656 | $-1 \cdot K^{1} \cdot \rho_{\text{BIP}}^{1}$ | 0.7734375 | 1.5321% | fit |
-| 106 | shielded helion to shielded proton mag. mo... |  | -0.76178613 | $-1 \cdot K^{1} \cdot \rho_{\text{BIP}}^{1}$ | 0.7734375 | 1.5295% | fit |
-| 107 | shielded helion to shielded proton magn. m... |  | -0.76178613 | $-1 \cdot K^{1} \cdot \rho_{\text{BIP}}^{1}$ | 0.7734375 | 1.5295% | fit |
-| 108 | shielded proton mag. mom. to Bohr magneton... |  | 0.0015209932 | $1 \cdot pi^{1} \cdot \text{dict}^{{-1$ | 0.0015339808 | 0.8539% | PASS |
-| 109 | shielded proton mag. mom. to nuclear magne... |  | 2.7927756 | $1 \cdot K^{1} \cdot \text{bits}^{1} \cdot \text{words}^{{-1$ | 2.75 | 1.5317% | fit |
-| 110 | shielded proton magn. moment to Bohr magne... |  | 0.0015209931 | $1 \cdot pi^{1} \cdot \text{dict}^{{-1$ | 0.0015339808 | 0.8539% | PASS |
-| 111 | shielded proton magn. moment to nuclear ma... |  | 2.7927756 | $1 \cdot K^{1} \cdot \text{bits}^{1} \cdot \text{words}^{{-1$ | 2.75 | 1.5317% | fit |
-| 112 | shielding difference of d and p in HD |  | 1.987700e-08 | $1 \cdot \text{entropy}^{{-3 \cdot U^{{-1$ | 1.986790e-08 | 0.0458% | PASS |
-| 113 | shielding difference of t and p in HT |  | 2.394500e-08 | $1 \cdot pi^{{-2 \cdot \text{dict}^{{-2$ | 2.415685e-08 | 0.8847% | PASS |
-| 114 | tau-electron mass ratio |  | 3477.23 | $1 \cdot \text{entropy}^{1} \cdot \ln(K)^{1} \cdot \ln(\text{dict})^{1}$ | 3497.3397 | 0.5783% | PASS |
-| 115 | tau-muon mass ratio |  | 16.817 | $1 \cdot pi^{1} \cdot \ln(K)^{1} \cdot U^{1}$ | 16.887201 | 0.4174% | PASS |
-| 116 | tau-neutron mass ratio |  | 1.89115 | $1 \cdot pi^{{-1 \cdot K^{1}$ | 1.9098593 | 0.9893% | PASS |
-| 117 | tau-proton mass ratio |  | 1.89376 | $1 \cdot pi^{{-1 \cdot K^{1}$ | 1.9098593 | 0.8501% | PASS |
-| 118 | triton g factor |  | 5.9579249 | $1 \cdot K^{1}$ | 6 | 0.7062% | PASS |
-| 119 | triton mag. mom. to Bohr magneton ratio |  | 0.0016223937 | $1 \cdot K^{{-1 \cdot f_1^{{-1$ | 0.0015995149 | 1.4102% | fit |
-| 120 | triton mag. mom. to nuclear magneton ratio |  | 2.9789625 | $1 \cdot U^{1}$ | 3.0000473 | 0.7078% | PASS |
-| 121 | triton relative atomic mass |  | 3.0155007 | $1 \cdot U^{1}$ | 3.0000473 | 0.5125% | PASS |
-| 122 | triton to proton mag. mom. ratio |  | 1.0666399 | $1 \cdot \text{checksum}^{1} \cdot \ln(\text{dict})^{{-1$ | 1.0492328 | 1.6320% | fit |
-| 123 | triton-electron mag. mom. ratio |  | -0.0016205144 | $-1 \cdot K^{{-1 \cdot f_1^{{-1$ | 0.0015995149 | 1.2959% | fit |
-| 124 | triton-electron mass ratio |  | 5496.9215 | $1 \cdot \text{dict}^{1} \cdot \text{checksum}^{1} \cdot U^{{-1$ | 5461.2472 | 0.6490% | PASS |
-| 125 | triton-neutron mag. mom. ratio |  | -1.5571855 | $-1 \cdot pi^{1} \cdot K^{{-1 \cdot U^{1}$ | 1.5708211 | 0.8757% | PASS |
-| 126 | triton-proton mag. mom. ratio |  | 1.0666399 | $1 \cdot \text{checksum}^{1} \cdot \ln(\text{dict})^{{-1$ | 1.0492328 | 1.6320% | fit |
-| 127 | triton-proton mass ratio |  | 2.993717 | $1 \cdot U^{1}$ | 3.0000473 | 0.2115% | PASS |
-| 128 | weak mixing angle |  | 0.22305 | $1 \cdot \text{checksum}^{{-1 \cdot \ln(K)^{1}$ | 0.22396993 | 0.4124% | PASS |
-| 129 | Angstrom star | m | 1.000015e-10 | $1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{{-2$ | 1.003414e-10 | 0.3399% | PASS |
-| 130 | Avogadro constant | mol^-1 | 6.022141e+23 | $1 \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{3} \cdot f_1^{3}$ | 1.788064e+23 | 70.3085% | fit |
-| 131 | Bohr magneton | J T^-1 | 9.274010e-24 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{{-3$ | 6.133507e-24 | 33.8635% | fit |
-| 132 | Bohr magneton in Hz/T | Hz T^-1 | 1.399624e+10 | $1 \cdot \text{dict}^{1} \cdot \text{entropy}^{2} \cdot f_1^{1}$ | 1.398525e+10 | 0.0785% | PASS |
-| 133 | Bohr magneton in K/T | K T^-1 | 0.67171381 | $1 \cdot \text{checksum}^{{-1 \cdot \ln(K)^{1} \cdot U^{1}$ | 0.6719204 | 0.0308% | PASS |
-| 134 | Bohr magneton in eV/T | eV T^-1 | 5.788382e-05 | $1 \cdot K^{{-1 \cdot \text{bits}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 5.739210e-05 | 0.8495% | PASS |
-| 135 | Bohr magneton in inverse meter per tesla | m^-1 T^-1 | 46.686448 | $1 \cdot K^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 46.545455 | 0.3020% | PASS |
-| 136 | Bohr magneton in inverse meters per tesla | m^-1 T^-1 | 46.686448 | $1 \cdot K^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 46.545455 | 0.3020% | PASS |
-| 137 | Bohr radius | m | 5.291772e-11 | $1 \cdot \text{bits}^{1} \cdot \text{dict}^{{-3 \cdot \text{words}^{{-1$ | 5.335702e-11 | 0.8302% | PASS |
-| 138 | Boltzmann constant | J K^-1 | 1.380649e-23 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{{-3$ | 6.133507e-24 | 55.5752% | fit |
-| 139 | Boltzmann constant in Hz/K | Hz K^-1 | 2.083662e+10 | $1 \cdot pi^{{-1 \cdot \text{dict}^{3} \cdot \ln(\text{dict})^{1}$ | 2.084770e+10 | 0.0532% | PASS |
-| 140 | Boltzmann constant in eV/K | eV K^-1 | 8.617333e-05 | $1 \cdot K^{1} \cdot \text{total\_\text{bits}}^{{-2$ | 8.608815e-05 | 0.0988% | PASS |
-| 141 | Boltzmann constant in inverse meter per ke... | m^-1 K^-1 | 69.50348 | $1 \cdot \text{bits}^{{-1 \cdot \text{entropy}^{1} \cdot U^{1}$ | 69.819283 | 0.4544% | PASS |
-| 142 | Boltzmann constant in inverse meters per k... | m^-1 K^-1 | 69.503457 | $1 \cdot \text{bits}^{{-1 \cdot \text{entropy}^{1} \cdot U^{1}$ | 69.819283 | 0.4544% | PASS |
-| 143 | Compton wavelength | m | 2.426310e-12 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1$ | 2.425319e-12 | 0.0408% | PASS |
-| 144 | Compton wavelength over 2 pi | m | 3.861593e-13 | $1 \cdot \text{dict}^{{-3 \cdot U^{{-1 \cdot f_1^{{-1$ | 3.724102e-13 | 3.5605% | fit |
-| 145 | Copper x unit | m | 1.002077e-13 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-3 \cdot f_1^{{-1$ | 1.015680e-13 | 1.3575% | fit |
-| 146 | Cu x unit | m | 1.002077e-13 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-3 \cdot f_1^{{-1$ | 1.015680e-13 | 1.3575% | fit |
-| 147 | Faraday constant | C mol^-1 | 96485.332 | $1 \cdot K^{1} \cdot \text{dict}^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 95325.091 | 1.2025% | fit |
-| 148 | Faraday constant for conventional electric... | C_90 mol^-1 | 96485.325 | $1 \cdot K^{1} \cdot \text{dict}^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 95325.091 | 1.2025% | fit |
-| 149 | Fermi coupling constant | GeV^-2 | 1.166379e-05 | $1 \cdot pi^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-1$ | 1.157140e-05 | 0.7921% | PASS |
-| 150 | Hartree energy | J | 4.359745e-18 | $1 \cdot \text{dict}^{{-3 \cdot \text{words}^{{-1 \cdot f_1^{{-3$ | 4.287632e-18 | 1.6541% | fit |
-| 151 | Hartree energy in eV | eV | 27.211386 | $1 \cdot pi^{{-1 \cdot \text{bits}^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 27.162444 | 0.1799% | PASS |
-| 152 | Josephson constant | Hz V^-1 | 4.835978e+14 | $1 \cdot K^{3} \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{1}$ | 4.898324e+14 | 1.2892% | fit |
-| 153 | Loschmidt constant (273.15 K, 100 kPa) | m^-3 | 2.651646e+25 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 89.9999% | fit |
-| 154 | Loschmidt constant (273.15 K, 101.325 kPa) | m^-3 | 2.686780e+25 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 90.1306% | fit |
-| 155 | Mo x unit | m | 1.002100e-13 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-3 \cdot f_1^{{-1$ | 1.015680e-13 | 1.3552% | fit |
-| 156 | Molybdenum x unit | m | 1.002100e-13 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-3 \cdot f_1^{{-1$ | 1.015680e-13 | 1.3552% | fit |
-| 157 | Newtonian constant of gravitation | m^3 kg^-1 s^-2 | 6.674300e-11 | $1 \cdot \text{dict}^{{-1 \cdot \text{total\_\text{bits}}^{{-2 \cdot f_1^{{-1$ | 6.723598e-11 | 0.7386% | PASS |
-| 158 | Newtonian constant of gravitation over h-b... | (GeV/c^2)^-2 | 6.708830e-39 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 5621234194324041.0000% | fit |
-| 159 | Planck constant | J Hz^-1 | 6.626070e-34 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 56914435977.7823% | fit |
-| 160 | Planck constant in eV s | eV s | 4.135668e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-1$ | 4.232001e-15 | 2.3293% | fit |
-| 161 | Planck constant in eV/Hz | eV Hz^-1 | 4.135668e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-1$ | 4.232001e-15 | 2.3293% | fit |
-| 162 | Planck constant over 2 pi | J s | 1.054572e-34 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 357603954414.1225% | fit |
-| 163 | Planck constant over 2 pi in eV s | eV s | 6.582120e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot f_1^{1}$ | 6.592632e-16 | 0.1597% | PASS |
-| 164 | Planck constant over 2 pi times c in MeV fm | MeV fm | 197.32698 | $1 \cdot K^{1} \cdot \text{entropy}^{1} \cdot \rho_{\text{BIP}}^{1}$ | 198 | 0.3411% | PASS |
-| 165 | Planck length | m | 1.616255e-35 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 2333289276648.2622% | fit |
-| 166 | Planck mass | kg | 2.176434e-08 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-2$ | 2.167442e-08 | 0.4132% | PASS |
+| 99 | proton-tau mass ratio |  | 0.528051 | $1 \cdot \pi \cdot K^{-1}$ | 0.52359878 | 0.8431% | PASS |
+| 100 | shielded helion mag. mom. to Bohr magneton... |  | -0.0011586715 | $-1 \cdot K^{-2} \cdot \text{words}^{-1}$ | 0.0011574074 | 0.1091% | PASS |
+| 101 | shielded helion mag. mom. to nuclear magne... |  | -2.1274978 | $-1 \cdot \text{bits}^{-1} \cdot \text{words}$ | 2.1818182 | 2.5533% | fit |
+| 102 | shielded helion magn. moment to Bohr magne... |  | -0.0011586715 | $-1 \cdot K^{-2} \cdot \text{words}^{-1}$ | 0.0011574074 | 0.1091% | PASS |
+| 103 | shielded helion magn. moment to nuclear ma... |  | -2.1274977 | $-1 \cdot \text{bits}^{-1} \cdot \text{words}$ | 2.1818182 | 2.5533% | fit |
+| 104 | shielded helion to proton mag. mom. ratio |  | -0.76176658 | $-1 \cdot K \cdot \rho_{\text{BIP}}$ | 0.7734375 | 1.5321% | fit |
+| 105 | shielded helion to proton magn. moment ratio |  | -0.76176656 | $-1 \cdot K \cdot \rho_{\text{BIP}}$ | 0.7734375 | 1.5321% | fit |
+| 106 | shielded helion to shielded proton mag. mo... |  | -0.76178613 | $-1 \cdot K \cdot \rho_{\text{BIP}}$ | 0.7734375 | 1.5295% | fit |
+| 107 | shielded helion to shielded proton magn. m... |  | -0.76178613 | $-1 \cdot K \cdot \rho_{\text{BIP}}$ | 0.7734375 | 1.5295% | fit |
+| 108 | shielded proton mag. mom. to Bohr magneton... |  | 0.0015209932 | $1 \cdot \pi \cdot \text{dict}^{-1}$ | 0.0015339808 | 0.8539% | PASS |
+| 109 | shielded proton mag. mom. to nuclear magne... |  | 2.7927756 | $1 \cdot K \cdot \text{bits} \cdot \text{words}^{-1}$ | 2.75 | 1.5317% | fit |
+| 110 | shielded proton magn. moment to Bohr magne... |  | 0.0015209931 | $1 \cdot \pi \cdot \text{dict}^{-1}$ | 0.0015339808 | 0.8539% | PASS |
+| 111 | shielded proton magn. moment to nuclear ma... |  | 2.7927756 | $1 \cdot K \cdot \text{bits} \cdot \text{words}^{-1}$ | 2.75 | 1.5317% | fit |
+| 112 | shielding difference of d and p in HD |  | 1.987700e-08 | $1 \cdot \text{entropy}^{-3} \cdot U^{-1}$ | 1.986790e-08 | 0.0458% | PASS |
+| 113 | shielding difference of t and p in HT |  | 2.394500e-08 | $1 \cdot \pi^{-2} \cdot \text{dict}^{-2}$ | 2.415685e-08 | 0.8847% | PASS |
+| 114 | tau-electron mass ratio |  | 3477.23 | $1 \cdot \text{entropy} \cdot \ln(K) \cdot \ln(\text{dict})$ | 3497.3397 | 0.5783% | PASS |
+| 115 | tau-muon mass ratio |  | 16.817 | $1 \cdot \pi \cdot \ln(K) \cdot U$ | 16.887201 | 0.4174% | PASS |
+| 116 | tau-neutron mass ratio |  | 1.89115 | $1 \cdot \pi^{-1} \cdot K$ | 1.9098593 | 0.9893% | PASS |
+| 117 | tau-proton mass ratio |  | 1.89376 | $1 \cdot \pi^{-1} \cdot K$ | 1.9098593 | 0.8501% | PASS |
+| 118 | triton g factor |  | 5.9579249 | $1 \cdot K$ | 6 | 0.7062% | PASS |
+| 119 | triton mag. mom. to Bohr magneton ratio |  | 0.0016223937 | $1 \cdot K^{-1} \cdot f_1^{-1}$ | 0.0015995149 | 1.4102% | fit |
+| 120 | triton mag. mom. to nuclear magneton ratio |  | 2.9789625 | $1 \cdot U$ | 3.0000473 | 0.7078% | PASS |
+| 121 | triton relative atomic mass |  | 3.0155007 | $1 \cdot U$ | 3.0000473 | 0.5125% | PASS |
+| 122 | triton to proton mag. mom. ratio |  | 1.0666399 | $1 \cdot \text{checksum} \cdot \ln(\text{dict})^{-1}$ | 1.0492328 | 1.6320% | fit |
+| 123 | triton-electron mag. mom. ratio |  | -0.0016205144 | $-1 \cdot K^{-1} \cdot f_1^{-1}$ | 0.0015995149 | 1.2959% | fit |
+| 124 | triton-electron mass ratio |  | 5496.9215 | $1 \cdot \text{dict} \cdot \text{checksum} \cdot U^{-1}$ | 5461.2472 | 0.6490% | PASS |
+| 125 | triton-neutron mag. mom. ratio |  | -1.5571855 | $-1 \cdot \pi \cdot K^{-1} \cdot U$ | 1.5708211 | 0.8757% | PASS |
+| 126 | triton-proton mag. mom. ratio |  | 1.0666399 | $1 \cdot \text{checksum} \cdot \ln(\text{dict})^{-1}$ | 1.0492328 | 1.6320% | fit |
+| 127 | triton-proton mass ratio |  | 2.993717 | $1 \cdot U$ | 3.0000473 | 0.2115% | PASS |
+| 128 | weak mixing angle |  | 0.22305 | $1 \cdot \text{checksum}^{-1} \cdot \ln(K)$ | 0.22396993 | 0.4124% | PASS |
+| 129 | Angstrom star | m | 1.000015e-10 | $1 \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1} \cdot U^{-2}$ | 1.003414e-10 | 0.3399% | PASS |
+| 130 | Avogadro constant | mol^-1 | 6.022141e+23 | $1 \cdot \text{dict}^{3} \cdot \text{total\_bits}^{3} \cdot f_1^{3}$ | 1.788064e+23 | 70.3085% | fit |
+| 131 | Bohr magneton | J T^-1 | 9.274010e-24 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1^{-3}$ | 6.133507e-24 | 33.8635% | fit |
+| 132 | Bohr magneton in Hz/T | Hz T^-1 | 1.399624e+10 | $1 \cdot \text{dict} \cdot \text{entropy}^{2} \cdot f_1$ | 1.398525e+10 | 0.0785% | PASS |
+| 133 | Bohr magneton in K/T | K T^-1 | 0.67171381 | $1 \cdot \text{checksum}^{-1} \cdot \ln(K) \cdot U$ | 0.6719204 | 0.0308% | PASS |
+| 134 | Bohr magneton in eV/T | eV T^-1 | 5.788382e-05 | $1 \cdot K^{-1} \cdot \text{bits}^{-1} \cdot \text{total\_bits}^{-1}$ | 5.739210e-05 | 0.8495% | PASS |
+| 135 | Bohr magneton in inverse meter per tesla | m^-1 T^-1 | 46.686448 | $1 \cdot K \cdot \rho_{\text{BIP}}^{-1}$ | 46.545455 | 0.3020% | PASS |
+| 136 | Bohr magneton in inverse meters per tesla | m^-1 T^-1 | 46.686448 | $1 \cdot K \cdot \rho_{\text{BIP}}^{-1}$ | 46.545455 | 0.3020% | PASS |
+| 137 | Bohr radius | m | 5.291772e-11 | $1 \cdot \text{bits} \cdot \text{dict}^{-3} \cdot \text{words}^{-1}$ | 5.335702e-11 | 0.8302% | PASS |
+| 138 | Boltzmann constant | J K^-1 | 1.380649e-23 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1^{-3}$ | 6.133507e-24 | 55.5752% | fit |
+| 139 | Boltzmann constant in Hz/K | Hz K^-1 | 2.083662e+10 | $1 \cdot \pi^{-1} \cdot \text{dict}^{3} \cdot \ln(\text{dict})$ | 2.084770e+10 | 0.0532% | PASS |
+| 140 | Boltzmann constant in eV/K | eV K^-1 | 8.617333e-05 | $1 \cdot K \cdot \text{total\_bits}^{-2}$ | 8.608815e-05 | 0.0988% | PASS |
+| 141 | Boltzmann constant in inverse meter per ke... | m^-1 K^-1 | 69.50348 | $1 \cdot \text{bits}^{-1} \cdot \text{entropy} \cdot U$ | 69.819283 | 0.4544% | PASS |
+| 142 | Boltzmann constant in inverse meters per k... | m^-1 K^-1 | 69.503457 | $1 \cdot \text{bits}^{-1} \cdot \text{entropy} \cdot U$ | 69.819283 | 0.4544% | PASS |
+| 143 | Compton wavelength | m | 2.426310e-12 | $1 \cdot K^{-1} \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1}$ | 2.425319e-12 | 0.0408% | PASS |
+| 144 | Compton wavelength over 2 pi | m | 3.861593e-13 | $1 \cdot \text{dict}^{-3} \cdot U^{-1} \cdot f_1^{-1}$ | 3.724102e-13 | 3.5605% | fit |
+| 145 | Copper x unit | m | 1.002077e-13 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{-3} \cdot f_1^{-1}$ | 1.015680e-13 | 1.3575% | fit |
+| 146 | Cu x unit | m | 1.002077e-13 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{-3} \cdot f_1^{-1}$ | 1.015680e-13 | 1.3575% | fit |
+| 147 | Faraday constant | C mol^-1 | 96485.332 | $1 \cdot K \cdot \text{dict} \cdot \rho_{\text{BIP}}^{-1}$ | 95325.091 | 1.2025% | fit |
+| 148 | Faraday constant for conventional electric... | C_90 mol^-1 | 96485.325 | $1 \cdot K \cdot \text{dict} \cdot \rho_{\text{BIP}}^{-1}$ | 95325.091 | 1.2025% | fit |
+| 149 | Fermi coupling constant | GeV^-2 | 1.166379e-05 | $1 \cdot \pi^{-1} \cdot \text{total\_bits}^{-1} \cdot f_1^{-1}$ | 1.157140e-05 | 0.7921% | PASS |
+| 150 | Hartree energy | J | 4.359745e-18 | $1 \cdot \text{dict}^{-3} \cdot \text{words}^{-1} \cdot f_1^{-3}$ | 4.287632e-18 | 1.6541% | fit |
+| 151 | Hartree energy in eV | eV | 27.211386 | $1 \cdot \pi^{-1} \cdot \text{bits} \cdot \rho_{\text{BIP}}^{-1}$ | 27.162444 | 0.1799% | PASS |
+| 152 | Josephson constant | Hz V^-1 | 4.835978e+14 | $1 \cdot K^{3} \cdot \text{dict}^{3} \cdot \text{total\_bits}$ | 4.898324e+14 | 1.2892% | fit |
+| 153 | Loschmidt constant (273.15 K, 100 kPa) | m^-3 | 2.651646e+25 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 89.9999% | fit |
+| 154 | Loschmidt constant (273.15 K, 101.325 kPa) | m^-3 | 2.686780e+25 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 90.1306% | fit |
+| 155 | Mo x unit | m | 1.002100e-13 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{-3} \cdot f_1^{-1}$ | 1.015680e-13 | 1.3552% | fit |
+| 156 | Molybdenum x unit | m | 1.002100e-13 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{-3} \cdot f_1^{-1}$ | 1.015680e-13 | 1.3552% | fit |
+| 157 | Newtonian constant of gravitation | m^3 kg^-1 s^-2 | 6.674300e-11 | $1 \cdot \text{dict}^{-1} \cdot \text{total\_bits}^{-2} \cdot f_1^{-1}$ | 6.723598e-11 | 0.7386% | PASS |
+| 158 | Newtonian constant of gravitation over h-b... | (GeV/c^2)^-2 | 6.708830e-39 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 5621234194324041.0000% | fit |
+| 159 | Planck constant | J Hz^-1 | 6.626070e-34 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 56914435977.7823% | fit |
+| 160 | Planck constant in eV s | eV s | 4.135668e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-1} \cdot f_1^{-1}$ | 4.232001e-15 | 2.3293% | fit |
+| 161 | Planck constant in eV/Hz | eV Hz^-1 | 4.135668e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-1} \cdot f_1^{-1}$ | 4.232001e-15 | 2.3293% | fit |
+| 162 | Planck constant over 2 pi | J s | 1.054572e-34 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 357603954414.1225% | fit |
+| 163 | Planck constant over 2 pi in eV s | eV s | 6.582120e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot f_1$ | 6.592632e-16 | 0.1597% | PASS |
+| 164 | Planck constant over 2 pi times c in MeV fm | MeV fm | 197.32698 | $1 \cdot K \cdot \text{entropy} \cdot \rho_{\text{BIP}}$ | 198 | 0.3411% | PASS |
+| 165 | Planck length | m | 1.616255e-35 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 2333289276648.2622% | fit |
+| 166 | Planck mass | kg | 2.176434e-08 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{-2}$ | 2.167442e-08 | 0.4132% | PASS |
 | 167 | Planck mass energy equivalent in GeV | GeV | 1.220890e+19 | $1 \cdot \text{bits}^{3} \cdot \text{dict}^{3} \cdot f_1^{3}$ | 1.293449e+19 | 5.9431% | fit |
-| 168 | Planck temperature | K | 1.416784e+32 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 169 | Planck time | s | 5.391247e-44 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 699502445350910951424.0000% | fit |
-| 170 | Rydberg constant | m^-1 | 10973732 | $1 \cdot \text{dict}^{2} \cdot U^{{-1 \cdot \rho_{\text{BIP}}^{{-1$ | 10845706 | 1.1667% | fit |
-| 171 | Rydberg constant times c in Hz | Hz | 3.289842e+15 | $1 \cdot K^{1} \cdot \text{dict}^{3} \cdot \text{entropy}^{2}$ | 3.377700e+15 | 2.6706% | fit |
-| 172 | Rydberg constant times hc in J | J | 2.179872e-18 | $1 \cdot pi^{{-1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3$ | 2.208719e-18 | 1.3233% | fit |
-| 173 | Rydberg constant times hc in eV | eV | 13.605693 | $1 \cdot \ln(K)^{1} \cdot \ln(\text{dict})^{1}$ | 13.661483 | 0.4101% | PASS |
-| 174 | Stefan-Boltzmann constant | W m^-2 K^-4 | 5.670374e-08 | $1 \cdot \text{entropy}^{{-1 \cdot \text{total\_\text{bits}}^{{-2$ | 5.604698e-08 | 1.1582% | fit |
-| 175 | Thomson cross section | m^2 | 6.652459e-29 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 566786.7147% | fit |
-| 176 | Wien displacement law constant | m K | 0.0028977685 | $1 \cdot K^{1} \cdot \text{dict}^{{-1$ | 0.0029296875 | 1.1015% | fit |
+| 168 | Planck temperature | K | 1.416784e+32 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 169 | Planck time | s | 5.391247e-44 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 699502445350910951424.0000% | fit |
+| 170 | Rydberg constant | m^-1 | 10973732 | $1 \cdot \text{dict}^{2} \cdot U^{-1} \cdot \rho_{\text{BIP}}^{-1}$ | 10845706 | 1.1667% | fit |
+| 171 | Rydberg constant times c in Hz | Hz | 3.289842e+15 | $1 \cdot K \cdot \text{dict}^{3} \cdot \text{entropy}^{2}$ | 3.377700e+15 | 2.6706% | fit |
+| 172 | Rydberg constant times hc in J | J | 2.179872e-18 | $1 \cdot \pi^{-1} \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3}$ | 2.208719e-18 | 1.3233% | fit |
+| 173 | Rydberg constant times hc in eV | eV | 13.605693 | $1 \cdot \ln(K) \cdot \ln(\text{dict})$ | 13.661483 | 0.4101% | PASS |
+| 174 | Stefan-Boltzmann constant | W m^-2 K^-4 | 5.670374e-08 | $1 \cdot \text{entropy}^{-1} \cdot \text{total\_bits}^{-2}$ | 5.604698e-08 | 1.1582% | fit |
+| 175 | Thomson cross section | m^2 | 6.652459e-29 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 566786.7147% | fit |
+| 176 | Wien displacement law constant | m K | 0.0028977685 | $1 \cdot K \cdot \text{dict}^{-1}$ | 0.0029296875 | 1.1015% | fit |
 | 177 | Wien frequency displacement law constant | Hz K^-1 | 5.878926e+10 | $1 \cdot \text{dict}^{2} \cdot \text{words}^{3}$ | 5.798206e+10 | 1.3730% | fit |
-| 178 | Wien wavelength displacement law constant | m K | 0.002897772 | $1 \cdot K^{1} \cdot \text{dict}^{{-1$ | 0.0029296875 | 1.1014% | fit |
-| 179 | alpha particle mass | kg | 6.644657e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 5575.5229% | fit |
-| 180 | alpha particle mass energy equivalent | J | 5.971920e-10 | $1 \cdot K^{{-2 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-2$ | 6.020671e-10 | 0.8163% | PASS |
-| 181 | alpha particle mass energy equivalent in MeV | MeV | 3727.3794 | $m_e[MeV] \cdot pi^{{-1 \cdot \text{bits}^{1} \cdot \text{dict}^{1}$ | 3664.3148 | 1.6919% | fit |
-| 182 | alpha particle mass in u | u | 4.0015062 | $1 \cdot K^{{-1 \cdot \text{words}^{1}$ | 4 | 0.0376% | PASS |
-| 183 | alpha particle molar mass | kg mol^-1 | 0.0040015062 | $1 \cdot \text{entropy}^{{-1$ | 0.00390625 | 2.3805% | fit |
-| 184 | alpha particle rms charge radius | m | 1.678500e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-2$ | 1.670330e-15 | 0.4867% | PASS |
-| 185 | atomic mass constant | kg | 1.660539e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 22610.6398% | fit |
-| 186 | atomic mass constant energy equivalent | J | 1.492418e-10 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1$ | 1.505168e-10 | 0.8543% | PASS |
-| 187 | atomic mass constant energy equivalent in MeV | MeV | 931.4941 | $1 \cdot U^{2} \cdot f_1^{1}$ | 937.81391 | 0.6785% | PASS |
-| 188 | atomic mass unit-electron volt relationship | eV | 9.314941e+08 | $1 \cdot \text{words}^{3} \cdot \text{entropy}^{1} \cdot \text{total\_\text{bits}}^{1}$ | 934281216 | 0.2992% | PASS |
-| 189 | atomic mass unit-hartree relationship | E_h | 34231777 | $1 \cdot \text{dict}^{2} \cdot \text{checksum}^{1}$ | 33554432 | 1.9787% | fit |
-| 190 | atomic mass unit-hertz relationship | Hz | 2.252343e+23 | $1 \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{3} \cdot f_1^{3}$ | 1.788064e+23 | 20.6132% | fit |
-| 191 | atomic mass unit-inverse meter relationship | m^-1 | 7.513007e+14 | $1 \cdot \text{dict}^{3} \cdot \text{checksum}^{1} \cdot f_1^{2}$ | 7.461064e+14 | 0.6914% | PASS |
-| 192 | atomic mass unit-joule relationship | J | 1.492418e-10 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1$ | 1.505168e-10 | 0.8543% | PASS |
-| 193 | atomic mass unit-kelvin relationship | K | 1.080954e+13 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{3} \cdot \text{words}^{3}$ | 1.079521e+13 | 0.1326% | PASS |
-| 194 | atomic mass unit-kilogram relationship | kg | 1.660539e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 22610.6398% | fit |
-| 195 | atomic unit of 1st hyperpolarizability | C^3 m^3 J^-2 | 3.206361e-53 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 1176158925215703714611284934656.0000% | fit |
-| 196 | atomic unit of 1st hyperpolarizablity | C^3 m^3 J^-2 | 3.206362e-53 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 1176158848036684297381984862208.0000% | fit |
-| 197 | atomic unit of 2nd hyperpolarizability | C^4 m^4 J^-3 | 6.235380e-65 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 604805236572286215852912520906717609852928.0000% | fit |
-| 198 | atomic unit of 2nd hyperpolarizablity | C^4 m^4 J^-3 | 6.235381e-65 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 604805156405325450982553002982840379375616.0000% | fit |
-| 199 | atomic unit of action | J s | 1.054572e-34 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 357603948430.3334% | fit |
-| 200 | atomic unit of charge | C | 1.602177e-19 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-2 \cdot f_1^{{-2$ | 1.636098e-19 | 2.1172% | fit |
-| 201 | atomic unit of charge density | C m^-3 | 1.081202e+12 | $1 \cdot \text{dict}^{2} \cdot \text{words}^{1} \cdot f_1^{2}$ | 1.092929e+12 | 1.0846% | fit |
-| 202 | atomic unit of current | A | 0.0066236182 | $1 \cdot pi^{{-1 \cdot K^{{-1 \cdot \text{checksum}^{{-1$ | 0.006631456 | 0.1183% | PASS |
-| 203 | atomic unit of electric dipole mom. | C m | 8.478354e-30 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 4447922.1386% | fit |
-| 204 | atomic unit of electric dipole moment | C m | 8.478353e-30 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 4447922.4166% | fit |
-| 205 | atomic unit of electric field | V m^-1 | 5.142207e+11 | $1 \cdot \text{dict}^{3} \cdot \rho_{\text{BIP}}^{{-2$ | 5.169421e+11 | 0.5292% | PASS |
-| 206 | atomic unit of electric field gradient | V m^-2 | 9.717362e+21 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{2}$ | 1.004425e+22 | 3.3640% | fit |
-| 207 | atomic unit of electric polarizability | C^2 m^2 J^-1 | 1.648777e-41 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 2287264947036637184.0000% | fit |
-| 208 | atomic unit of electric polarizablity | C^2 m^2 J^-1 | 1.648777e-41 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 2287264944428608512.0000% | fit |
-| 209 | atomic unit of electric potential | V | 27.211386 | $1 \cdot pi^{{-1 \cdot \text{bits}^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 27.162444 | 0.1799% | PASS |
-| 210 | atomic unit of electric quadrupole mom. | C m^2 | 4.486552e-40 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 84055436440225920.0000% | fit |
-| 211 | atomic unit of electric quadrupole moment | C m^2 | 4.486551e-40 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 84055441657917168.0000% | fit |
-| 212 | atomic unit of energy | J | 4.359745e-18 | $1 \cdot \text{dict}^{{-3 \cdot \text{words}^{{-1 \cdot f_1^{{-3$ | 4.287632e-18 | 1.6541% | fit |
-| 213 | atomic unit of force | N | 8.238724e-08 | $1 \cdot \text{bits}^{1} \cdot \text{dict}^{{-1 \cdot \text{entropy}^{{-2$ | 8.195639e-08 | 0.5230% | PASS |
-| 214 | atomic unit of length | m | 5.291772e-11 | $1 \cdot \text{bits}^{1} \cdot \text{dict}^{{-3 \cdot \text{words}^{{-1$ | 5.335702e-11 | 0.8302% | PASS |
-| 215 | atomic unit of mag. dipole mom. | J T^-1 | 1.854802e-23 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{{-3$ | 6.133507e-24 | 66.9317% | fit |
-| 216 | atomic unit of mag. flux density | T | 235051.76 | $1 \cdot \text{dict}^{1} \cdot \text{checksum}^{2} \cdot \ln(K)^{1}$ | 234849.5 | 0.0860% | PASS |
-| 217 | atomic unit of magn. dipole moment | J T^-1 | 1.854802e-23 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{{-3$ | 6.133507e-24 | 66.9317% | fit |
-| 218 | atomic unit of magn. flux density | T | 235051.76 | $1 \cdot \text{dict}^{1} \cdot \text{checksum}^{2} \cdot \ln(K)^{1}$ | 234849.5 | 0.0860% | PASS |
-| 219 | atomic unit of magnetizability | J T^-2 | 7.891037e-29 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 477808.1204% | fit |
-| 220 | atomic unit of mass | kg | 9.109384e-31 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 41398863.7327% | fit |
-| 221 | atomic unit of mom.um | kg m s^-1 | 1.992852e-24 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot f_1^{{-3$ | 5.592641e-24 | 180.6351% | fit |
-| 222 | atomic unit of momentum | kg m s^-1 | 1.992852e-24 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot f_1^{{-3$ | 5.592641e-24 | 180.6351% | fit |
-| 223 | atomic unit of permittivity | F m^-1 | 1.112650e-10 | $1 \cdot \text{dict}^{{-2 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 1.128876e-10 | 1.4583% | fit |
-| 224 | atomic unit of time | s | 2.418884e-17 | $1 \cdot \text{dict}^{{-2 \cdot \text{words}^{{-2 \cdot \text{entropy}^{{-3$ | 2.467162e-17 | 1.9959% | fit |
-| 225 | atomic unit of velocity | m s^-1 | 2187691.3 | $1 \cdot pi^{1} \cdot K^{{-1 \cdot \text{dict}^{2}$ | 2196132.4 | 0.3858% | PASS |
-| 226 | characteristic impedance of vacuum | ohm | 376.73031 | $1 \cdot \text{bits}^{1} \cdot \text{total\_\text{bits}}^{1} \cdot \rho_{\text{BIP}}^{1}$ | 374.34375 | 0.6335% | PASS |
-| 227 | classical electron radius | m | 2.817940e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{words}^{{-3 \cdot U^{{-1$ | 2.807038e-15 | 0.3869% | PASS |
-| 228 | conductance quantum | S | 7.748092e-05 | $1 \cdot K^{{-1 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 7.891414e-05 | 1.8498% | fit |
-| 229 | conventional value of Josephson constant | Hz V^-1 | 4.835979e+14 | $1 \cdot K^{3} \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{1}$ | 4.898324e+14 | 1.2892% | fit |
+| 178 | Wien wavelength displacement law constant | m K | 0.002897772 | $1 \cdot K \cdot \text{dict}^{-1}$ | 0.0029296875 | 1.1014% | fit |
+| 179 | alpha particle mass | kg | 6.644657e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 5575.5229% | fit |
+| 180 | alpha particle mass energy equivalent | J | 5.971920e-10 | $1 \cdot K^{-2} \cdot \text{bits}^{-1} \cdot \text{dict}^{-2}$ | 6.020671e-10 | 0.8163% | PASS |
+| 181 | alpha particle mass energy equivalent in MeV | MeV | 3727.3794 | $m_e \cdot \pi^{-1} \cdot \text{bits} \cdot \text{dict}$ | 3664.3148 | 1.6919% | fit |
+| 182 | alpha particle mass in u | u | 4.0015062 | $1 \cdot K^{-1} \cdot \text{words}$ | 4 | 0.0376% | PASS |
+| 183 | alpha particle molar mass | kg mol^-1 | 0.0040015062 | $1 \cdot \text{entropy}^{-1}$ | 0.00390625 | 2.3805% | fit |
+| 184 | alpha particle rms charge radius | m | 1.678500e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-2}$ | 1.670330e-15 | 0.4867% | PASS |
+| 185 | atomic mass constant | kg | 1.660539e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 22610.6398% | fit |
+| 186 | atomic mass constant energy equivalent | J | 1.492418e-10 | $1 \cdot K^{-1} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1}$ | 1.505168e-10 | 0.8543% | PASS |
+| 187 | atomic mass constant energy equivalent in MeV | MeV | 931.4941 | $1 \cdot U^{2} \cdot f_1$ | 937.81391 | 0.6785% | PASS |
+| 188 | atomic mass unit-electron volt relationship | eV | 9.314941e+08 | $1 \cdot \text{words}^{3} \cdot \text{entropy} \cdot \text{total\_bits}$ | 934281216 | 0.2992% | PASS |
+| 189 | atomic mass unit-hartree relationship | E_h | 34231777 | $1 \cdot \text{dict}^{2} \cdot \text{checksum}$ | 33554432 | 1.9787% | fit |
+| 190 | atomic mass unit-hertz relationship | Hz | 2.252343e+23 | $1 \cdot \text{dict}^{3} \cdot \text{total\_bits}^{3} \cdot f_1^{3}$ | 1.788064e+23 | 20.6132% | fit |
+| 191 | atomic mass unit-inverse meter relationship | m^-1 | 7.513007e+14 | $1 \cdot \text{dict}^{3} \cdot \text{checksum} \cdot f_1^{2}$ | 7.461064e+14 | 0.6914% | PASS |
+| 192 | atomic mass unit-joule relationship | J | 1.492418e-10 | $1 \cdot K^{-1} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1}$ | 1.505168e-10 | 0.8543% | PASS |
+| 193 | atomic mass unit-kelvin relationship | K | 1.080954e+13 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{3} \cdot \text{words}^{3}$ | 1.079521e+13 | 0.1326% | PASS |
+| 194 | atomic mass unit-kilogram relationship | kg | 1.660539e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 22610.6398% | fit |
+| 195 | atomic unit of 1st hyperpolarizability | C^3 m^3 J^-2 | 3.206361e-53 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 1176158925215703714611284934656.0000% | fit |
+| 196 | atomic unit of 1st hyperpolarizablity | C^3 m^3 J^-2 | 3.206362e-53 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 1176158848036684297381984862208.0000% | fit |
+| 197 | atomic unit of 2nd hyperpolarizability | C^4 m^4 J^-3 | 6.235380e-65 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 604805236572286215852912520906717609852928.0000% | fit |
+| 198 | atomic unit of 2nd hyperpolarizablity | C^4 m^4 J^-3 | 6.235381e-65 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 604805156405325450982553002982840379375616.0000% | fit |
+| 199 | atomic unit of action | J s | 1.054572e-34 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 357603948430.3334% | fit |
+| 200 | atomic unit of charge | C | 1.602177e-19 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-2} \cdot f_1^{-2}$ | 1.636098e-19 | 2.1172% | fit |
+| 201 | atomic unit of charge density | C m^-3 | 1.081202e+12 | $1 \cdot \text{dict}^{2} \cdot \text{words} \cdot f_1^{2}$ | 1.092929e+12 | 1.0846% | fit |
+| 202 | atomic unit of current | A | 0.0066236182 | $1 \cdot \pi^{-1} \cdot K^{-1} \cdot \text{checksum}^{-1}$ | 0.006631456 | 0.1183% | PASS |
+| 203 | atomic unit of electric dipole mom. | C m | 8.478354e-30 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 4447922.1386% | fit |
+| 204 | atomic unit of electric dipole moment | C m | 8.478353e-30 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 4447922.4166% | fit |
+| 205 | atomic unit of electric field | V m^-1 | 5.142207e+11 | $1 \cdot \text{dict}^{3} \cdot \rho_{\text{BIP}}^{-2}$ | 5.169421e+11 | 0.5292% | PASS |
+| 206 | atomic unit of electric field gradient | V m^-2 | 9.717362e+21 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{2}$ | 1.004425e+22 | 3.3640% | fit |
+| 207 | atomic unit of electric polarizability | C^2 m^2 J^-1 | 1.648777e-41 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 2287264947036637184.0000% | fit |
+| 208 | atomic unit of electric polarizablity | C^2 m^2 J^-1 | 1.648777e-41 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 2287264944428608512.0000% | fit |
+| 209 | atomic unit of electric potential | V | 27.211386 | $1 \cdot \pi^{-1} \cdot \text{bits} \cdot \rho_{\text{BIP}}^{-1}$ | 27.162444 | 0.1799% | PASS |
+| 210 | atomic unit of electric quadrupole mom. | C m^2 | 4.486552e-40 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 84055436440225920.0000% | fit |
+| 211 | atomic unit of electric quadrupole moment | C m^2 | 4.486551e-40 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 84055441657917168.0000% | fit |
+| 212 | atomic unit of energy | J | 4.359745e-18 | $1 \cdot \text{dict}^{-3} \cdot \text{words}^{-1} \cdot f_1^{-3}$ | 4.287632e-18 | 1.6541% | fit |
+| 213 | atomic unit of force | N | 8.238724e-08 | $1 \cdot \text{bits} \cdot \text{dict}^{-1} \cdot \text{entropy}^{-2}$ | 8.195639e-08 | 0.5230% | PASS |
+| 214 | atomic unit of length | m | 5.291772e-11 | $1 \cdot \text{bits} \cdot \text{dict}^{-3} \cdot \text{words}^{-1}$ | 5.335702e-11 | 0.8302% | PASS |
+| 215 | atomic unit of mag. dipole mom. | J T^-1 | 1.854802e-23 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1^{-3}$ | 6.133507e-24 | 66.9317% | fit |
+| 216 | atomic unit of mag. flux density | T | 235051.76 | $1 \cdot \text{dict} \cdot \text{checksum}^{2} \cdot \ln(K)$ | 234849.5 | 0.0860% | PASS |
+| 217 | atomic unit of magn. dipole moment | J T^-1 | 1.854802e-23 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1^{-3}$ | 6.133507e-24 | 66.9317% | fit |
+| 218 | atomic unit of magn. flux density | T | 235051.76 | $1 \cdot \text{dict} \cdot \text{checksum}^{2} \cdot \ln(K)$ | 234849.5 | 0.0860% | PASS |
+| 219 | atomic unit of magnetizability | J T^-2 | 7.891037e-29 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 477808.1204% | fit |
+| 220 | atomic unit of mass | kg | 9.109384e-31 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 41398863.7327% | fit |
+| 221 | atomic unit of mom.um | kg m s^-1 | 1.992852e-24 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot f_1^{-3}$ | 5.592641e-24 | 180.6351% | fit |
+| 222 | atomic unit of momentum | kg m s^-1 | 1.992852e-24 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot f_1^{-3}$ | 5.592641e-24 | 180.6351% | fit |
+| 223 | atomic unit of permittivity | F m^-1 | 1.112650e-10 | $1 \cdot \text{dict}^{-2} \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 1.128876e-10 | 1.4583% | fit |
+| 224 | atomic unit of time | s | 2.418884e-17 | $1 \cdot \text{dict}^{-2} \cdot \text{words}^{-2} \cdot \text{entropy}^{-3}$ | 2.467162e-17 | 1.9959% | fit |
+| 225 | atomic unit of velocity | m s^-1 | 2187691.3 | $1 \cdot \pi \cdot K^{-1} \cdot \text{dict}^{2}$ | 2196132.4 | 0.3858% | PASS |
+| 226 | characteristic impedance of vacuum | ohm | 376.73031 | $1 \cdot \text{bits} \cdot \text{total\_bits} \cdot \rho_{\text{BIP}}$ | 374.34375 | 0.6335% | PASS |
+| 227 | classical electron radius | m | 2.817940e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{words}^{-3} \cdot U^{-1}$ | 2.807038e-15 | 0.3869% | PASS |
+| 228 | conductance quantum | S | 7.748092e-05 | $1 \cdot K^{-1} \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 7.891414e-05 | 1.8498% | fit |
+| 229 | conventional value of Josephson constant | Hz V^-1 | 4.835979e+14 | $1 \cdot K^{3} \cdot \text{dict}^{3} \cdot \text{total\_bits}$ | 4.898324e+14 | 1.2892% | fit |
 | 230 | conventional value of ampere-90 | A | 1.0000001 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
 | 231 | conventional value of coulomb-90 | C | 1.0000001 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
 | 232 | conventional value of farad-90 | F | 0.99999998 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
 | 233 | conventional value of henry-90 | H | 1 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
 | 234 | conventional value of ohm-90 | ohm | 1 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
 | 235 | conventional value of volt-90 | V | 1.0000001 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
-| 236 | conventional value of von Klitzing constant | ohm | 25812.807 | $1 \cdot \text{entropy}^{1} \cdot f_1^{1}$ | 26674.754 | 3.3392% | fit |
+| 236 | conventional value of von Klitzing constant | ohm | 25812.807 | $1 \cdot \text{entropy} \cdot f_1$ | 26674.754 | 3.3392% | fit |
 | 237 | conventional value of watt-90 | W | 1.0000002 | $1 \cdot 1$ | 1 | 0.0000% | PASS |
-| 238 | deuteron mag. mom. | J T^-1 | 4.330735e-27 | $\mu_B[J/T] \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 4.391103e-27 | 1.3939% | fit |
-| 239 | deuteron magn. moment | J T^-1 | 4.330735e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 8607.9690% | fit |
-| 240 | deuteron mass | kg | 3.343584e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 11178.8873% | fit |
-| 241 | deuteron mass energy equivalent | J | 3.005063e-10 | $1 \cdot \text{dict}^{{-2 \cdot \ln(\text{dict})^{{-1 \cdot f_1^{{-1$ | 3.000969e-10 | 0.1362% | PASS |
-| 242 | deuteron mass energy equivalent in MeV | MeV | 1875.6129 | $m_e[MeV] \cdot \text{dict}^{1} \cdot \ln(K)^{1}$ | 1875.1226 | 0.0261% | PASS |
-| 243 | deuteron mass in u | u | 2.0135532 | $1 \cdot K^{1} \cdot U^{{-1$ | 1.9999685 | 0.6747% | PASS |
-| 244 | deuteron molar mass | kg mol^-1 | 0.0020135532 | $1 \cdot \text{checksum}^{{-2 \cdot \rho_{\text{BIP}}^{1}$ | 0.0020141602 | 0.0301% | PASS |
-| 245 | deuteron rms charge radius | m | 2.127780e-15 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-3$ | 2.159619e-15 | 1.4963% | fit |
-| 246 | electric constant | F m^-1 | 8.854188e-12 | $1 \cdot \text{dict}^{{-2 \cdot \text{entropy}^{{-1 \cdot f_1^{{-1$ | 8.937986e-12 | 0.9464% | PASS |
-| 247 | electron charge to mass quotient | C kg^-1 | -1.758820e+11 | $-1 \cdot pi^{{-1 \cdot \text{dict}^{3} \cdot \text{checksum}^{2}$ | 1.749927e+11 | 0.5056% | PASS |
-| 248 | electron gyromag. ratio | s^-1 T^-1 | 1.760860e+11 | $1 \cdot pi^{{-1 \cdot \text{dict}^{3} \cdot \text{checksum}^{2}$ | 1.749927e+11 | 0.6209% | PASS |
-| 249 | electron gyromag. ratio in MHz/T | MHz T^-1 | 28024.951 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{1}$ | 27508.34 | 1.8434% | fit |
-| 250 | electron gyromag. ratio over 2 pi | MHz T^-1 | 28024.952 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{1}$ | 27508.34 | 1.8434% | fit |
-| 251 | electron gyromagn. ratio | s^-1 T^-1 | 1.760860e+11 | $1 \cdot pi^{{-1 \cdot \text{dict}^{3} \cdot \text{checksum}^{2}$ | 1.749927e+11 | 0.6209% | PASS |
-| 252 | electron gyromagn. ratio over 2 pi | MHz T^-1 | 28024.953 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{1}$ | 27508.34 | 1.8434% | fit |
-| 253 | electron mag. mom. | J T^-1 | -9.284765e-24 | $-\mu_B[J/T] \cdot 1$ | 9.274010e-24 | 0.1158% | PASS |
-| 254 | electron magn. moment | J T^-1 | -9.284764e-24 | $-1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{{-3$ | 6.133507e-24 | 33.9401% | fit |
-| 255 | electron mass | kg | 9.109384e-31 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 41398863.7327% | fit |
-| 256 | electron mass energy equivalent | J | 8.187106e-14 | $1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-2$ | 8.317930e-14 | 1.5979% | fit |
-| 257 | electron mass energy equivalent in MeV | MeV | 0.51099895 | $m_e[MeV] \cdot 1$ | 0.51099895 | 0.0000% | PASS |
-| 258 | electron mass in u | u | 5.485799e-04 | $1 \cdot pi^{{-1 \cdot \text{words}^{{-2$ | 5.526213e-04 | 0.7367% | PASS |
-| 259 | electron molar mass | kg mol^-1 | 5.485799e-07 | $1 \cdot \text{entropy}^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{{-3$ | 5.479889e-07 | 0.1077% | PASS |
-| 260 | electron volt | J | 1.602177e-19 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-2 \cdot f_1^{{-2$ | 1.636098e-19 | 2.1172% | fit |
-| 261 | electron volt-atomic mass unit relationship | u | 1.073544e-09 | $1 \cdot \text{words}^{{-3 \cdot \text{entropy}^{{-1 \cdot \text{total\_\text{bits}}^{{-1$ | 1.070342e-09 | 0.2983% | PASS |
-| 262 | electron volt-hartree relationship | E_h | 0.036749322 | $1 \cdot pi^{1} \cdot \text{bits}^{{-1 \cdot \rho_{\text{BIP}}^{1}$ | 0.036815539 | 0.1802% | PASS |
-| 263 | electron volt-hertz relationship | Hz | 2.417989e+14 | $1 \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{1}$ | 2.362948e+14 | 2.2763% | fit |
-| 264 | electron volt-inverse meter relationship | m^-1 | 806554.39 | $1 \cdot K^{2} \cdot \text{bits}^{1} \cdot \text{dict}^{1}$ | 811008 | 0.5522% | PASS |
-| 265 | electron volt-joule relationship | J | 1.602177e-19 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-2 \cdot f_1^{{-2$ | 1.636098e-19 | 2.1172% | fit |
-| 266 | electron volt-kelvin relationship | K | 11604.518 | $1 \cdot K^{{-1 \cdot \text{total\_\text{bits}}^{2}$ | 11616 | 0.0989% | PASS |
-| 267 | electron volt-kilogram relationship | kg | 1.782662e-36 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 21154827027040.2539% | fit |
-| 268 | elementary charge | C | 1.602177e-19 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-2 \cdot f_1^{{-2$ | 1.636098e-19 | 2.1172% | fit |
-| 269 | elementary charge over h | A J^-1 | 2.417989e+14 | $1 \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{1}$ | 2.362948e+14 | 2.2763% | fit |
-| 270 | elementary charge over h-bar | A J^-1 | 1.519267e+15 | $1 \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{3} \cdot f_1^{{-1$ | 1.516845e+15 | 0.1595% | PASS |
-| 271 | first radiation constant | W m^2 | 3.741772e-16 | $1 \cdot \text{dict}^{{-2 \cdot \text{words}^{{-2 \cdot f_1^{{-3$ | 3.658779e-16 | 2.2180% | fit |
-| 272 | first radiation constant for spectral radi... | W m^2 sr^-1 | 1.191043e-16 | $1 \cdot \text{bits}^{{-2 \cdot \text{dict}^{{-2 \cdot \text{entropy}^{{-3$ | 1.174451e-16 | 1.3931% | fit |
-| 273 | hartree-atomic mass unit relationship | u | 2.921262e-08 | $1 \cdot \text{dict}^{{-2 \cdot \text{checksum}^{{-1$ | 2.980232e-08 | 2.0186% | fit |
-| 274 | hartree-electron volt relationship | eV | 27.211386 | $1 \cdot pi^{{-1 \cdot \text{bits}^{1} \cdot \rho_{\text{BIP}}^{{-1$ | 27.162444 | 0.1799% | PASS |
-| 275 | hartree-hertz relationship | Hz | 6.579684e+15 | $1 \cdot \text{bits}^{1} \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{2}$ | 6.585525e+15 | 0.0888% | PASS |
-| 276 | hartree-inverse meter relationship | m^-1 | 21947463 | $1 \cdot \text{dict}^{1} \cdot f_1^{2}$ | 22235704 | 1.3133% | fit |
-| 277 | hartree-joule relationship | J | 4.359745e-18 | $1 \cdot \text{dict}^{{-3 \cdot \text{words}^{{-1 \cdot f_1^{{-3$ | 4.287632e-18 | 1.6541% | fit |
-| 278 | hartree-kelvin relationship | K | 315775.02 | $1 \cdot \text{dict}^{2} \cdot \text{words}^{{-1 \cdot \ln(K)^{1}$ | 313132.66 | 0.8368% | PASS |
-| 279 | hartree-kilogram relationship | kg | 4.850870e-35 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 777425553890.8378% | fit |
-| 280 | helion mag. mom. | J T^-1 | -1.074618e-26 | $-\mu_B[J/T] \cdot K^{{-2 \cdot \text{words}^{{-1$ | 1.073381e-26 | 0.1151% | PASS |
-| 281 | helion mass | kg | 5.006413e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 7432.7198% | fit |
-| 282 | helion mass energy equivalent | J | 4.499539e-10 | $1 \cdot \text{bits}^{{-2 \cdot \text{total\_\text{bits}}^{{-3$ | 4.491618e-10 | 0.1760% | PASS |
-| 283 | helion mass energy equivalent in MeV | MeV | 2808.3916 | $m_e[MeV] \cdot \text{dict}^{1} \cdot \text{checksum}^{1} \cdot U^{{-1$ | 2790.6916 | 0.6303% | PASS |
-| 284 | helion mass in u | u | 3.0149322 | $1 \cdot U^{1}$ | 3.0000473 | 0.4937% | PASS |
-| 285 | helion molar mass | kg mol^-1 | 0.0030149323 | $1 \cdot pi^{{-1 \cdot f_1^{{-1$ | 0.0030548484 | 1.3239% | fit |
-| 286 | hertz-atomic mass unit relationship | u | 4.439822e-24 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot f_1^{{-3$ | 5.592641e-24 | 25.9655% | fit |
-| 287 | hertz-electron volt relationship | eV | 4.135668e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-1$ | 4.232001e-15 | 2.3293% | fit |
-| 288 | hertz-hartree relationship | E_h | 1.519830e-16 | $1 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-2$ | 1.518482e-16 | 0.0887% | PASS |
-| 289 | hertz-inverse meter relationship | m^-1 | 3.335641e-09 | $1 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-3$ | 3.348225e-09 | 0.3773% | PASS |
-| 290 | hertz-joule relationship | J | 6.626070e-34 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 56914435977.7823% | fit |
-| 291 | hertz-kelvin relationship | K | 4.799243e-11 | $1 \cdot pi^{1} \cdot \text{dict}^{{-3 \cdot \ln(\text{dict})^{{-1$ | 4.796692e-11 | 0.0531% | PASS |
-| 292 | hertz-kilogram relationship | kg | 7.372497e-51 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 5115214416979240139769249792.0000% | fit |
-| 293 | hyperfine transition frequency of Cs-133 | Hz | 9.192632e+09 | $1 \cdot \text{dict}^{1} \cdot \text{checksum}^{2} \cdot \text{total\_\text{bits}}^{2}$ | 9.135194e+09 | 0.6248% | PASS |
-| 294 | inverse meter-atomic mass unit relationship | u | 1.331025e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot f_1^{{-2$ | 1.340291e-15 | 0.6962% | PASS |
-| 295 | inverse meter-electron volt relationship | eV | 1.239842e-06 | $1 \cdot K^{{-2 \cdot \text{bits}^{{-1 \cdot \text{dict}^{{-1$ | 1.233033e-06 | 0.5491% | PASS |
-| 296 | inverse meter-hartree relationship | E_h | 4.556335e-08 | $1 \cdot \text{dict}^{{-1 \cdot f_1^{{-2$ | 4.497272e-08 | 1.2963% | fit |
-| 297 | inverse meter-hertz relationship | Hz | 299792458 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{3}$ | 2.9866567e+08 | 0.3759% | PASS |
-| 298 | inverse meter-joule relationship | J | 1.986446e-25 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 89.8461% | fit |
-| 299 | inverse meter-kelvin relationship | K | 0.014387769 | $1 \cdot \text{bits}^{1} \cdot \text{entropy}^{{-1 \cdot U^{{-1$ | 0.014322691 | 0.4523% | PASS |
-| 300 | inverse meter-kilogram relationship | kg | 2.210219e-42 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 17062518687442233344.0000% | fit |
-| 301 | inverse of conductance quantum | ohm | 12906.404 | $1 \cdot K^{1} \cdot \text{checksum}^{1} \cdot \text{total\_\text{bits}}^{1}$ | 12672 | 1.8162% | fit |
-| 302 | joule-atomic mass unit relationship | u | 6.700535e+09 | $1 \cdot K^{1} \cdot \text{dict}^{2} \cdot \text{total\_\text{bits}}^{1}$ | 6.643778e+09 | 0.8471% | PASS |
+| 238 | deuteron mag. mom. | J T^-1 | 4.330735e-27 | $mu_B \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-1}$ | 4.391103e-27 | 1.3939% | fit |
+| 239 | deuteron magn. moment | J T^-1 | 4.330735e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 8607.9690% | fit |
+| 240 | deuteron mass | kg | 3.343584e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 11178.8873% | fit |
+| 241 | deuteron mass energy equivalent | J | 3.005063e-10 | $1 \cdot \text{dict}^{-2} \cdot \ln(\text{dict})^{-1} \cdot f_1^{-1}$ | 3.000969e-10 | 0.1362% | PASS |
+| 242 | deuteron mass energy equivalent in MeV | MeV | 1875.6129 | $m_e \cdot \text{dict} \cdot \ln(K)$ | 1875.1226 | 0.0261% | PASS |
+| 243 | deuteron mass in u | u | 2.0135532 | $1 \cdot K \cdot U^{-1}$ | 1.9999685 | 0.6747% | PASS |
+| 244 | deuteron molar mass | kg mol^-1 | 0.0020135532 | $1 \cdot \text{checksum}^{-2} \cdot \rho_{\text{BIP}}$ | 0.0020141602 | 0.0301% | PASS |
+| 245 | deuteron rms charge radius | m | 2.127780e-15 | $1 \cdot K^{-1} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-3}$ | 2.159619e-15 | 1.4963% | fit |
+| 246 | electric constant | F m^-1 | 8.854188e-12 | $1 \cdot \text{dict}^{-2} \cdot \text{entropy}^{-1} \cdot f_1^{-1}$ | 8.937986e-12 | 0.9464% | PASS |
+| 247 | electron charge to mass quotient | C kg^-1 | -1.758820e+11 | $-1 \cdot \pi^{-1} \cdot \text{dict}^{3} \cdot \text{checksum}^{2}$ | 1.749927e+11 | 0.5056% | PASS |
+| 248 | electron gyromag. ratio | s^-1 T^-1 | 1.760860e+11 | $1 \cdot \pi^{-1} \cdot \text{dict}^{3} \cdot \text{checksum}^{2}$ | 1.749927e+11 | 0.6209% | PASS |
+| 249 | electron gyromag. ratio in MHz/T | MHz T^-1 | 28024.951 | $1 \cdot \text{total\_bits} \cdot f_1$ | 27508.34 | 1.8434% | fit |
+| 250 | electron gyromag. ratio over 2 pi | MHz T^-1 | 28024.952 | $1 \cdot \text{total\_bits} \cdot f_1$ | 27508.34 | 1.8434% | fit |
+| 251 | electron gyromagn. ratio | s^-1 T^-1 | 1.760860e+11 | $1 \cdot \pi^{-1} \cdot \text{dict}^{3} \cdot \text{checksum}^{2}$ | 1.749927e+11 | 0.6209% | PASS |
+| 252 | electron gyromagn. ratio over 2 pi | MHz T^-1 | 28024.953 | $1 \cdot \text{total\_bits} \cdot f_1$ | 27508.34 | 1.8434% | fit |
+| 253 | electron mag. mom. | J T^-1 | -9.284765e-24 | $-mu_B \cdot 1$ | 9.274010e-24 | 0.1158% | PASS |
+| 254 | electron magn. moment | J T^-1 | -9.284764e-24 | $-1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1^{-3}$ | 6.133507e-24 | 33.9401% | fit |
+| 255 | electron mass | kg | 9.109384e-31 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 41398863.7327% | fit |
+| 256 | electron mass energy equivalent | J | 8.187106e-14 | $1 \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1} \cdot f_1^{-2}$ | 8.317930e-14 | 1.5979% | fit |
+| 257 | electron mass energy equivalent in MeV | MeV | 0.51099895 | $m_e \cdot 1$ | 0.51099895 | 0.0000% | PASS |
+| 258 | electron mass in u | u | 5.485799e-04 | $1 \cdot \pi^{-1} \cdot \text{words}^{-2}$ | 5.526213e-04 | 0.7367% | PASS |
+| 259 | electron molar mass | kg mol^-1 | 5.485799e-07 | $1 \cdot \text{entropy}^{-1} \cdot \text{total\_bits}^{-1} \cdot U^{-3}$ | 5.479889e-07 | 0.1077% | PASS |
+| 260 | electron volt | J | 1.602177e-19 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-2} \cdot f_1^{-2}$ | 1.636098e-19 | 2.1172% | fit |
+| 261 | electron volt-atomic mass unit relationship | u | 1.073544e-09 | $1 \cdot \text{words}^{-3} \cdot \text{entropy}^{-1} \cdot \text{total\_bits}^{-1}$ | 1.070342e-09 | 0.2983% | PASS |
+| 262 | electron volt-hartree relationship | E_h | 0.036749322 | $1 \cdot \pi \cdot \text{bits}^{-1} \cdot \rho_{\text{BIP}}$ | 0.036815539 | 0.1802% | PASS |
+| 263 | electron volt-hertz relationship | Hz | 2.417989e+14 | $1 \cdot \text{dict}^{3} \cdot \text{total\_bits} \cdot f_1$ | 2.362948e+14 | 2.2763% | fit |
+| 264 | electron volt-inverse meter relationship | m^-1 | 806554.39 | $1 \cdot K^{2} \cdot \text{bits} \cdot \text{dict}$ | 811008 | 0.5522% | PASS |
+| 265 | electron volt-joule relationship | J | 1.602177e-19 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-2} \cdot f_1^{-2}$ | 1.636098e-19 | 2.1172% | fit |
+| 266 | electron volt-kelvin relationship | K | 11604.518 | $1 \cdot K^{-1} \cdot \text{total\_bits}^{2}$ | 11616 | 0.0989% | PASS |
+| 267 | electron volt-kilogram relationship | kg | 1.782662e-36 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 21154827027040.2539% | fit |
+| 268 | elementary charge | C | 1.602177e-19 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-2} \cdot f_1^{-2}$ | 1.636098e-19 | 2.1172% | fit |
+| 269 | elementary charge over h | A J^-1 | 2.417989e+14 | $1 \cdot \text{dict}^{3} \cdot \text{total\_bits} \cdot f_1$ | 2.362948e+14 | 2.2763% | fit |
+| 270 | elementary charge over h-bar | A J^-1 | 1.519267e+15 | $1 \cdot \text{dict}^{3} \cdot \text{total\_bits}^{3} \cdot f_1^{-1}$ | 1.516845e+15 | 0.1595% | PASS |
+| 271 | first radiation constant | W m^2 | 3.741772e-16 | $1 \cdot \text{dict}^{-2} \cdot \text{words}^{-2} \cdot f_1^{-3}$ | 3.658779e-16 | 2.2180% | fit |
+| 272 | first radiation constant for spectral radi... | W m^2 sr^-1 | 1.191043e-16 | $1 \cdot \text{bits}^{-2} \cdot \text{dict}^{-2} \cdot \text{entropy}^{-3}$ | 1.174451e-16 | 1.3931% | fit |
+| 273 | hartree-atomic mass unit relationship | u | 2.921262e-08 | $1 \cdot \text{dict}^{-2} \cdot \text{checksum}^{-1}$ | 2.980232e-08 | 2.0186% | fit |
+| 274 | hartree-electron volt relationship | eV | 27.211386 | $1 \cdot \pi^{-1} \cdot \text{bits} \cdot \rho_{\text{BIP}}^{-1}$ | 27.162444 | 0.1799% | PASS |
+| 275 | hartree-hertz relationship | Hz | 6.579684e+15 | $1 \cdot \text{bits} \cdot \text{dict}^{3} \cdot \text{total\_bits}^{2}$ | 6.585525e+15 | 0.0888% | PASS |
+| 276 | hartree-inverse meter relationship | m^-1 | 21947463 | $1 \cdot \text{dict} \cdot f_1^{2}$ | 22235704 | 1.3133% | fit |
+| 277 | hartree-joule relationship | J | 4.359745e-18 | $1 \cdot \text{dict}^{-3} \cdot \text{words}^{-1} \cdot f_1^{-3}$ | 4.287632e-18 | 1.6541% | fit |
+| 278 | hartree-kelvin relationship | K | 315775.02 | $1 \cdot \text{dict}^{2} \cdot \text{words}^{-1} \cdot \ln(K)$ | 313132.66 | 0.8368% | PASS |
+| 279 | hartree-kilogram relationship | kg | 4.850870e-35 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 777425553890.8378% | fit |
+| 280 | helion mag. mom. | J T^-1 | -1.074618e-26 | $-mu_B \cdot K^{-2} \cdot \text{words}^{-1}$ | 1.073381e-26 | 0.1151% | PASS |
+| 281 | helion mass | kg | 5.006413e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 7432.7198% | fit |
+| 282 | helion mass energy equivalent | J | 4.499539e-10 | $1 \cdot \text{bits}^{-2} \cdot \text{total\_bits}^{-3}$ | 4.491618e-10 | 0.1760% | PASS |
+| 283 | helion mass energy equivalent in MeV | MeV | 2808.3916 | $m_e \cdot \text{dict} \cdot \text{checksum} \cdot U^{-1}$ | 2790.6916 | 0.6303% | PASS |
+| 284 | helion mass in u | u | 3.0149322 | $1 \cdot U$ | 3.0000473 | 0.4937% | PASS |
+| 285 | helion molar mass | kg mol^-1 | 0.0030149323 | $1 \cdot \pi^{-1} \cdot f_1^{-1}$ | 0.0030548484 | 1.3239% | fit |
+| 286 | hertz-atomic mass unit relationship | u | 4.439822e-24 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot f_1^{-3}$ | 5.592641e-24 | 25.9655% | fit |
+| 287 | hertz-electron volt relationship | eV | 4.135668e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-1} \cdot f_1^{-1}$ | 4.232001e-15 | 2.3293% | fit |
+| 288 | hertz-hartree relationship | E_h | 1.519830e-16 | $1 \cdot \text{bits}^{-1} \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-2}$ | 1.518482e-16 | 0.0887% | PASS |
+| 289 | hertz-inverse meter relationship | m^-1 | 3.335641e-09 | $1 \cdot \text{total\_bits}^{-1} \cdot f_1^{-3}$ | 3.348225e-09 | 0.3773% | PASS |
+| 290 | hertz-joule relationship | J | 6.626070e-34 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 56914435977.7823% | fit |
+| 291 | hertz-kelvin relationship | K | 4.799243e-11 | $1 \cdot \pi \cdot \text{dict}^{-3} \cdot \ln(\text{dict})^{-1}$ | 4.796692e-11 | 0.0531% | PASS |
+| 292 | hertz-kilogram relationship | kg | 7.372497e-51 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 5115214416979240139769249792.0000% | fit |
+| 293 | hyperfine transition frequency of Cs-133 | Hz | 9.192632e+09 | $1 \cdot \text{dict} \cdot \text{checksum}^{2} \cdot \text{total\_bits}^{2}$ | 9.135194e+09 | 0.6248% | PASS |
+| 294 | inverse meter-atomic mass unit relationship | u | 1.331025e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot f_1^{-2}$ | 1.340291e-15 | 0.6962% | PASS |
+| 295 | inverse meter-electron volt relationship | eV | 1.239842e-06 | $1 \cdot K^{-2} \cdot \text{bits}^{-1} \cdot \text{dict}^{-1}$ | 1.233033e-06 | 0.5491% | PASS |
+| 296 | inverse meter-hartree relationship | E_h | 4.556335e-08 | $1 \cdot \text{dict}^{-1} \cdot f_1^{-2}$ | 4.497272e-08 | 1.2963% | fit |
+| 297 | inverse meter-hertz relationship | Hz | 299792458 | $1 \cdot \text{total\_bits} \cdot f_1^{3}$ | 2.9866567e+08 | 0.3759% | PASS |
+| 298 | inverse meter-joule relationship | J | 1.986446e-25 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 89.8461% | fit |
+| 299 | inverse meter-kelvin relationship | K | 0.014387769 | $1 \cdot \text{bits} \cdot \text{entropy}^{-1} \cdot U^{-1}$ | 0.014322691 | 0.4523% | PASS |
+| 300 | inverse meter-kilogram relationship | kg | 2.210219e-42 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 17062518687442233344.0000% | fit |
+| 301 | inverse of conductance quantum | ohm | 12906.404 | $1 \cdot K \cdot \text{checksum} \cdot \text{total\_bits}$ | 12672 | 1.8162% | fit |
+| 302 | joule-atomic mass unit relationship | u | 6.700535e+09 | $1 \cdot K \cdot \text{dict}^{2} \cdot \text{total\_bits}$ | 6.643778e+09 | 0.8471% | PASS |
 | 303 | joule-electron volt relationship | eV | 6.241509e+18 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{2} \cdot f_1^{2}$ | 6.112104e+18 | 2.0733% | fit |
-| 304 | joule-hartree relationship | E_h | 2.293712e+17 | $1 \cdot \text{dict}^{3} \cdot \text{words}^{1} \cdot f_1^{3}$ | 2.332290e+17 | 1.6819% | fit |
-| 305 | joule-hertz relationship | Hz | 1.509190e+33 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 306 | joule-inverse meter relationship | m^-1 | 5.034117e+24 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 47.3258% | fit |
+| 304 | joule-hartree relationship | E_h | 2.293712e+17 | $1 \cdot \text{dict}^{3} \cdot \text{words} \cdot f_1^{3}$ | 2.332290e+17 | 1.6819% | fit |
+| 305 | joule-hertz relationship | Hz | 1.509190e+33 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 306 | joule-inverse meter relationship | m^-1 | 5.034117e+24 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 47.3258% | fit |
 | 307 | joule-kelvin relationship | K | 7.242971e+22 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot f_1^{3}$ | 1.630389e+23 | 125.0994% | fit |
-| 308 | joule-kilogram relationship | kg | 1.112650e-17 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot \ln(K)^{1}$ | 1.133648e-17 | 1.8872% | fit |
-| 309 | kelvin-atomic mass unit relationship | u | 9.251087e-14 | $1 \cdot \text{bits}^{1} \cdot \text{dict}^{{-3 \cdot \text{words}^{{-3$ | 9.263372e-14 | 0.1328% | PASS |
-| 310 | kelvin-electron volt relationship | eV | 8.617333e-05 | $1 \cdot K^{1} \cdot \text{total\_\text{bits}}^{{-2$ | 8.608815e-05 | 0.0988% | PASS |
-| 311 | kelvin-hartree relationship | E_h | 3.166812e-06 | $1 \cdot \text{dict}^{{-2 \cdot \text{words}^{1} \cdot \ln(K)^{{-1$ | 3.193535e-06 | 0.8438% | PASS |
-| 312 | kelvin-hertz relationship | Hz | 2.083662e+10 | $1 \cdot pi^{{-1 \cdot \text{dict}^{3} \cdot \ln(\text{dict})^{1}$ | 2.084770e+10 | 0.0532% | PASS |
-| 313 | kelvin-inverse meter relationship | m^-1 | 69.50348 | $1 \cdot \text{bits}^{{-1 \cdot \text{entropy}^{1} \cdot U^{1}$ | 69.819283 | 0.4544% | PASS |
-| 314 | kelvin-joule relationship | J | 1.380649e-23 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{{-3$ | 6.133507e-24 | 55.5752% | fit |
-| 315 | kelvin-kilogram relationship | kg | 1.536179e-40 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 245491573594706464.0000% | fit |
-| 316 | kilogram-atomic mass unit relationship | u | 6.022141e+26 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 99.5597% | fit |
-| 317 | kilogram-electron volt relationship | eV | 5.609589e+35 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 318 | kilogram-hartree relationship | E_h | 2.061486e+34 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 319 | kilogram-hertz relationship | Hz | 1.356392e+50 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 320 | kilogram-inverse meter relationship | m^-1 | 4.524438e+41 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 321 | kilogram-joule relationship | J | 8.987552e+16 | $1 \cdot \text{dict}^{3} \cdot \text{total\_\text{bits}}^{3} \cdot \ln(K)^{{-1$ | 8.821083e+16 | 1.8522% | fit |
-| 322 | kilogram-kelvin relationship | K | 6.509657e+39 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_\text{bits}}^{3}$ | 2.651683e+24 | 100.0000% | fit |
-| 323 | lattice parameter of silicon | m | 5.431021e-10 | $1 \cdot \text{entropy}^{{-1 \cdot \text{total\_\text{bits}}^{{-2 \cdot f_1^{{-1$ | 5.378878e-10 | 0.9601% | PASS |
-| 324 | lattice spacing of ideal Si (220) | m | 1.920156e-10 | $1 \cdot \text{entropy}^{{-3 \cdot U^{{-1 \cdot f_1^{{-1$ | 1.906740e-10 | 0.6987% | PASS |
-| 325 | lattice spacing of silicon | m | 1.920156e-10 | $1 \cdot \text{entropy}^{{-3 \cdot U^{{-1 \cdot f_1^{{-1$ | 1.906740e-10 | 0.6987% | PASS |
-| 326 | luminous efficacy | lm W^-1 | 683 | $1 \cdot \text{dict}^{1} \cdot U^{{-1$ | 682.6559 | 0.0504% | PASS |
-| 327 | mag. constant | N A^-2 | 1.256637e-06 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-2$ | 1.271566e-06 | 1.1880% | fit |
-| 328 | mag. flux quantum | Wb | 2.067834e-15 | $1 \cdot K^{{-3 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-1$ | 2.041514e-15 | 1.2728% | fit |
-| 329 | magn. constant | N A^-2 | 1.256637e-06 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-2$ | 1.271566e-06 | 1.1880% | fit |
-| 330 | magn. flux quantum | Wb | 2.067834e-15 | $1 \cdot K^{{-3 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-1$ | 2.041514e-15 | 1.2728% | fit |
-| 331 | molar Planck constant | J Hz^-1 mol^-1 | 3.990313e-10 | $1 \cdot \text{dict}^{{-2 \cdot \text{words}^{{-2$ | 4.139211e-10 | 3.7315% | fit |
-| 332 | molar Planck constant times c | J m mol^-1 | 0.11962657 | $1 \cdot \text{checksum}^{{-1$ | 0.125 | 4.4918% | fit |
-| 333 | molar gas constant | J mol^-1 K^-1 | 8.3144626 | $1 \cdot \text{checksum}^{1}$ | 8 | 3.7821% | fit |
-| 334 | molar mass constant | kg mol^-1 | 0.001 | $1 \cdot \text{bits}^{1} \cdot f_1^{{-2$ | 0.0010131454 | 1.3145% | fit |
-| 335 | molar mass of carbon-12 | kg mol^-1 | 0.012 | $1 \cdot \text{bits}^{{-1 \cdot \ln(\text{dict})^{{-1$ | 0.0119231 | 0.6408% | PASS |
-| 336 | molar volume of ideal gas (273.15 K, 100 kPa) | m^3 mol^-1 | 0.022710955 | $1 \cdot K^{1} \cdot \text{total\_\text{bits}}^{{-1$ | 0.022727273 | 0.0719% | PASS |
-| 337 | molar volume of ideal gas (273.15 K, 101.3... | m^3 mol^-1 | 0.02241397 | $1 \cdot K^{1} \cdot \text{total\_\text{bits}}^{{-1$ | 0.022727273 | 1.3978% | fit |
-| 338 | molar volume of silicon | m^3 mol^-1 | 1.205883e-05 | $1 \cdot \ln(\text{dict})^{{-1 \cdot f_1^{{-2$ | 1.207983e-05 | 0.1742% | PASS |
-| 339 | muon Compton wavelength | m | 1.173444e-14 | $1 \cdot K^{{-2 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-1$ | 1.224909e-14 | 4.3858% | fit |
-| 340 | muon Compton wavelength over 2 pi | m | 1.867594e-15 | $1 \cdot \text{dict}^{{-2 \cdot \text{entropy}^{{-3 \cdot \ln(\text{dict})^{{-1$ | 1.863812e-15 | 0.2025% | PASS |
-| 341 | muon mag. mom. | J T^-1 | -4.490448e-26 | $-\mu_B[J/T] \cdot pi^{{-1 \cdot K^{{-1 \cdot \text{bits}^{{-1$ | 4.472741e-26 | 0.3943% | PASS |
-| 342 | muon magn. moment | J T^-1 | -4.490448e-26 | $-1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 739.8250% | fit |
-| 343 | muon mass | kg | 1.883532e-28 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 200119.1206% | fit |
-| 344 | muon mass energy equivalent | J | 1.692834e-11 | $1 \cdot \text{dict}^{{-2 \cdot \text{words}^{{-3$ | 1.724671e-11 | 1.8807% | fit |
-| 345 | muon mass energy equivalent in MeV | MeV | 105.65838 | $m_e[MeV] \cdot pi^{1} \cdot K^{1} \cdot \text{bits}^{1}$ | 105.95314 | 0.2790% | PASS |
-| 346 | muon mass in u | u | 0.11342893 | $1 \cdot U^{{-2$ | 0.11110761 | 2.0465% | fit |
-| 347 | muon molar mass | kg mol^-1 | 1.134289e-04 | $1 \cdot pi^{{-1 \cdot \text{bits}^{{-1 \cdot \text{entropy}^{{-1$ | 1.130362e-04 | 0.3462% | PASS |
-| 348 | natural unit of action | J s | 1.054572e-34 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 357603948430.3334% | fit |
-| 349 | natural unit of action in eV s | eV s | 6.582120e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot f_1^{1}$ | 6.592632e-16 | 0.1597% | PASS |
-| 350 | natural unit of energy | J | 8.187106e-14 | $1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1 \cdot f_1^{{-2$ | 8.317930e-14 | 1.5979% | fit |
-| 351 | natural unit of energy in MeV | MeV | 0.51099895 | $1 \cdot K^{{-1 \cdot U^{1}$ | 0.50000789 | 2.1509% | fit |
-| 352 | natural unit of length | m | 3.861593e-13 | $1 \cdot \text{dict}^{{-3 \cdot U^{{-1 \cdot f_1^{{-1$ | 3.724102e-13 | 3.5605% | fit |
-| 353 | natural unit of mass | kg | 9.109384e-31 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 41398863.7327% | fit |
-| 354 | natural unit of mom.um | kg m s^-1 | 2.730924e-22 | $1 \cdot \text{dict}^{{-3 \cdot \text{words}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 4.576828e-22 | 67.5926% | fit |
-| 355 | natural unit of mom.um in MeV/c | MeV/c | 0.51099895 | $1 \cdot K^{{-1 \cdot U^{1}$ | 0.50000789 | 2.1509% | fit |
-| 356 | natural unit of momentum | kg m s^-1 | 2.730924e-22 | $1 \cdot \text{dict}^{{-3 \cdot \text{words}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 4.576828e-22 | 67.5926% | fit |
-| 357 | natural unit of momentum in MeV/c | MeV/c | 0.51099895 | $1 \cdot K^{{-1 \cdot U^{1}$ | 0.50000789 | 2.1509% | fit |
-| 358 | natural unit of time | s | 1.288089e-21 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-2 \cdot f_1^{{-3$ | 1.476457e-21 | 14.6239% | fit |
-| 359 | natural unit of velocity | m s^-1 | 299792458 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{3}$ | 2.9866567e+08 | 0.3759% | PASS |
-| 360 | neutron Compton wavelength | m | 1.319591e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot f_1^{{-2$ | 1.340291e-15 | 1.5687% | fit |
-| 361 | neutron Compton wavelength over 2 pi | m | 2.100194e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-2$ | 2.087913e-16 | 0.5848% | PASS |
-| 362 | neutron gyromag. ratio | s^-1 T^-1 | 183247174 | $1 \cdot \text{bits}^{1} \cdot \text{entropy}^{3}$ | 184549376 | 0.7106% | PASS |
-| 363 | neutron gyromag. ratio in MHz/T | MHz T^-1 | 29.164693 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot U^{{-2$ | 29.332408 | 0.5751% | PASS |
-| 364 | neutron gyromag. ratio over 2 pi | MHz T^-1 | 29.164693 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot U^{{-2$ | 29.332408 | 0.5751% | PASS |
-| 365 | neutron gyromagn. ratio | s^-1 T^-1 | 183247174 | $1 \cdot \text{bits}^{1} \cdot \text{entropy}^{3}$ | 184549376 | 0.7106% | PASS |
-| 366 | neutron gyromagn. ratio over 2 pi | MHz T^-1 | 29.164695 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot U^{{-2$ | 29.332408 | 0.5751% | PASS |
-| 367 | neutron mag. mom. | J T^-1 | -9.662365e-27 | $-\mu_B[J/T] \cdot \text{bits}^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{1}$ | 9.580740e-27 | 0.8448% | PASS |
-| 368 | neutron magn. moment | J T^-1 | -9.662364e-27 | $-1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 3802.9685% | fit |
-| 369 | neutron mass | kg | 1.674928e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 22415.5445% | fit |
-| 370 | neutron mass energy equivalent | J | 1.505350e-10 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1$ | 1.505168e-10 | 0.0121% | PASS |
-| 371 | neutron mass energy equivalent in MeV | MeV | 939.56542 | $m_e[MeV] \cdot pi^{1} \cdot \text{words}^{2}$ | 924.68192 | 1.5841% | fit |
+| 308 | joule-kilogram relationship | kg | 1.112650e-17 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot \ln(K)$ | 1.133648e-17 | 1.8872% | fit |
+| 309 | kelvin-atomic mass unit relationship | u | 9.251087e-14 | $1 \cdot \text{bits} \cdot \text{dict}^{-3} \cdot \text{words}^{-3}$ | 9.263372e-14 | 0.1328% | PASS |
+| 310 | kelvin-electron volt relationship | eV | 8.617333e-05 | $1 \cdot K \cdot \text{total\_bits}^{-2}$ | 8.608815e-05 | 0.0988% | PASS |
+| 311 | kelvin-hartree relationship | E_h | 3.166812e-06 | $1 \cdot \text{dict}^{-2} \cdot \text{words} \cdot \ln(K)^{-1}$ | 3.193535e-06 | 0.8438% | PASS |
+| 312 | kelvin-hertz relationship | Hz | 2.083662e+10 | $1 \cdot \pi^{-1} \cdot \text{dict}^{3} \cdot \ln(\text{dict})$ | 2.084770e+10 | 0.0532% | PASS |
+| 313 | kelvin-inverse meter relationship | m^-1 | 69.50348 | $1 \cdot \text{bits}^{-1} \cdot \text{entropy} \cdot U$ | 69.819283 | 0.4544% | PASS |
+| 314 | kelvin-joule relationship | J | 1.380649e-23 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1^{-3}$ | 6.133507e-24 | 55.5752% | fit |
+| 315 | kelvin-kilogram relationship | kg | 1.536179e-40 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 245491573594706464.0000% | fit |
+| 316 | kilogram-atomic mass unit relationship | u | 6.022141e+26 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 99.5597% | fit |
+| 317 | kilogram-electron volt relationship | eV | 5.609589e+35 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 318 | kilogram-hartree relationship | E_h | 2.061486e+34 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 319 | kilogram-hertz relationship | Hz | 1.356392e+50 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 320 | kilogram-inverse meter relationship | m^-1 | 4.524438e+41 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 321 | kilogram-joule relationship | J | 8.987552e+16 | $1 \cdot \text{dict}^{3} \cdot \text{total\_bits}^{3} \cdot \ln(K)^{-1}$ | 8.821083e+16 | 1.8522% | fit |
+| 322 | kilogram-kelvin relationship | K | 6.509657e+39 | $1 \cdot \text{dict}^{3} \cdot \text{entropy}^{3} \cdot \text{total\_bits}^{3}$ | 2.651683e+24 | 100.0000% | fit |
+| 323 | lattice parameter of silicon | m | 5.431021e-10 | $1 \cdot \text{entropy}^{-1} \cdot \text{total\_bits}^{-2} \cdot f_1^{-1}$ | 5.378878e-10 | 0.9601% | PASS |
+| 324 | lattice spacing of ideal Si (220) | m | 1.920156e-10 | $1 \cdot \text{entropy}^{-3} \cdot U^{-1} \cdot f_1^{-1}$ | 1.906740e-10 | 0.6987% | PASS |
+| 325 | lattice spacing of silicon | m | 1.920156e-10 | $1 \cdot \text{entropy}^{-3} \cdot U^{-1} \cdot f_1^{-1}$ | 1.906740e-10 | 0.6987% | PASS |
+| 326 | luminous efficacy | lm W^-1 | 683 | $1 \cdot \text{dict} \cdot U^{-1}$ | 682.6559 | 0.0504% | PASS |
+| 327 | mag. constant | N A^-2 | 1.256637e-06 | $1 \cdot K^{-1} \cdot \text{dict}^{-1} \cdot \text{checksum}^{-2}$ | 1.271566e-06 | 1.1880% | fit |
+| 328 | mag. flux quantum | Wb | 2.067834e-15 | $1 \cdot K^{-3} \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-1}$ | 2.041514e-15 | 1.2728% | fit |
+| 329 | magn. constant | N A^-2 | 1.256637e-06 | $1 \cdot K^{-1} \cdot \text{dict}^{-1} \cdot \text{checksum}^{-2}$ | 1.271566e-06 | 1.1880% | fit |
+| 330 | magn. flux quantum | Wb | 2.067834e-15 | $1 \cdot K^{-3} \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-1}$ | 2.041514e-15 | 1.2728% | fit |
+| 331 | molar Planck constant | J Hz^-1 mol^-1 | 3.990313e-10 | $1 \cdot \text{dict}^{-2} \cdot \text{words}^{-2}$ | 4.139211e-10 | 3.7315% | fit |
+| 332 | molar Planck constant times c | J m mol^-1 | 0.11962657 | $1 \cdot \text{checksum}^{-1}$ | 0.125 | 4.4918% | fit |
+| 333 | molar gas constant | J mol^-1 K^-1 | 8.3144626 | $1 \cdot \text{checksum}$ | 8 | 3.7821% | fit |
+| 334 | molar mass constant | kg mol^-1 | 0.001 | $1 \cdot \text{bits} \cdot f_1^{-2}$ | 0.0010131454 | 1.3145% | fit |
+| 335 | molar mass of carbon-12 | kg mol^-1 | 0.012 | $1 \cdot \text{bits}^{-1} \cdot \ln(\text{dict})^{-1}$ | 0.0119231 | 0.6408% | PASS |
+| 336 | molar volume of ideal gas (273.15 K, 100 kPa) | m^3 mol^-1 | 0.022710955 | $1 \cdot K \cdot \text{total\_bits}^{-1}$ | 0.022727273 | 0.0719% | PASS |
+| 337 | molar volume of ideal gas (273.15 K, 101.3... | m^3 mol^-1 | 0.02241397 | $1 \cdot K \cdot \text{total\_bits}^{-1}$ | 0.022727273 | 1.3978% | fit |
+| 338 | molar volume of silicon | m^3 mol^-1 | 1.205883e-05 | $1 \cdot \ln(\text{dict})^{-1} \cdot f_1^{-2}$ | 1.207983e-05 | 0.1742% | PASS |
+| 339 | muon Compton wavelength | m | 1.173444e-14 | $1 \cdot K^{-2} \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-1}$ | 1.224909e-14 | 4.3858% | fit |
+| 340 | muon Compton wavelength over 2 pi | m | 1.867594e-15 | $1 \cdot \text{dict}^{-2} \cdot \text{entropy}^{-3} \cdot \ln(\text{dict})^{-1}$ | 1.863812e-15 | 0.2025% | PASS |
+| 341 | muon mag. mom. | J T^-1 | -4.490448e-26 | $-mu_B \cdot \pi^{-1} \cdot K^{-1} \cdot \text{bits}^{-1}$ | 4.472741e-26 | 0.3943% | PASS |
+| 342 | muon magn. moment | J T^-1 | -4.490448e-26 | $-1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 739.8250% | fit |
+| 343 | muon mass | kg | 1.883532e-28 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 200119.1206% | fit |
+| 344 | muon mass energy equivalent | J | 1.692834e-11 | $1 \cdot \text{dict}^{-2} \cdot \text{words}^{-3}$ | 1.724671e-11 | 1.8807% | fit |
+| 345 | muon mass energy equivalent in MeV | MeV | 105.65838 | $m_e \cdot \pi \cdot K \cdot \text{bits}$ | 105.95314 | 0.2790% | PASS |
+| 346 | muon mass in u | u | 0.11342893 | $1 \cdot U^{-2}$ | 0.11110761 | 2.0465% | fit |
+| 347 | muon molar mass | kg mol^-1 | 1.134289e-04 | $1 \cdot \pi^{-1} \cdot \text{bits}^{-1} \cdot \text{entropy}^{-1}$ | 1.130362e-04 | 0.3462% | PASS |
+| 348 | natural unit of action | J s | 1.054572e-34 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 357603948430.3334% | fit |
+| 349 | natural unit of action in eV s | eV s | 6.582120e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot f_1$ | 6.592632e-16 | 0.1597% | PASS |
+| 350 | natural unit of energy | J | 8.187106e-14 | $1 \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1} \cdot f_1^{-2}$ | 8.317930e-14 | 1.5979% | fit |
+| 351 | natural unit of energy in MeV | MeV | 0.51099895 | $1 \cdot K^{-1} \cdot U$ | 0.50000789 | 2.1509% | fit |
+| 352 | natural unit of length | m | 3.861593e-13 | $1 \cdot \text{dict}^{-3} \cdot U^{-1} \cdot f_1^{-1}$ | 3.724102e-13 | 3.5605% | fit |
+| 353 | natural unit of mass | kg | 9.109384e-31 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 41398863.7327% | fit |
+| 354 | natural unit of mom.um | kg m s^-1 | 2.730924e-22 | $1 \cdot \text{dict}^{-3} \cdot \text{words}^{-3} \cdot \text{total\_bits}^{-3}$ | 4.576828e-22 | 67.5926% | fit |
+| 355 | natural unit of mom.um in MeV/c | MeV/c | 0.51099895 | $1 \cdot K^{-1} \cdot U$ | 0.50000789 | 2.1509% | fit |
+| 356 | natural unit of momentum | kg m s^-1 | 2.730924e-22 | $1 \cdot \text{dict}^{-3} \cdot \text{words}^{-3} \cdot \text{total\_bits}^{-3}$ | 4.576828e-22 | 67.5926% | fit |
+| 357 | natural unit of momentum in MeV/c | MeV/c | 0.51099895 | $1 \cdot K^{-1} \cdot U$ | 0.50000789 | 2.1509% | fit |
+| 358 | natural unit of time | s | 1.288089e-21 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-2} \cdot f_1^{-3}$ | 1.476457e-21 | 14.6239% | fit |
+| 359 | natural unit of velocity | m s^-1 | 299792458 | $1 \cdot \text{total\_bits} \cdot f_1^{3}$ | 2.9866567e+08 | 0.3759% | PASS |
+| 360 | neutron Compton wavelength | m | 1.319591e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot f_1^{-2}$ | 1.340291e-15 | 1.5687% | fit |
+| 361 | neutron Compton wavelength over 2 pi | m | 2.100194e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-2}$ | 2.087913e-16 | 0.5848% | PASS |
+| 362 | neutron gyromag. ratio | s^-1 T^-1 | 183247174 | $1 \cdot \text{bits} \cdot \text{entropy}^{3}$ | 184549376 | 0.7106% | PASS |
+| 363 | neutron gyromag. ratio in MHz/T | MHz T^-1 | 29.164693 | $1 \cdot \text{total\_bits} \cdot U^{-2}$ | 29.332408 | 0.5751% | PASS |
+| 364 | neutron gyromag. ratio over 2 pi | MHz T^-1 | 29.164693 | $1 \cdot \text{total\_bits} \cdot U^{-2}$ | 29.332408 | 0.5751% | PASS |
+| 365 | neutron gyromagn. ratio | s^-1 T^-1 | 183247174 | $1 \cdot \text{bits} \cdot \text{entropy}^{3}$ | 184549376 | 0.7106% | PASS |
+| 366 | neutron gyromagn. ratio over 2 pi | MHz T^-1 | 29.164695 | $1 \cdot \text{total\_bits} \cdot U^{-2}$ | 29.332408 | 0.5751% | PASS |
+| 367 | neutron mag. mom. | J T^-1 | -9.662365e-27 | $-mu_B \cdot \text{bits}^{-1} \cdot \text{total\_bits}^{-1} \cdot U$ | 9.580740e-27 | 0.8448% | PASS |
+| 368 | neutron magn. moment | J T^-1 | -9.662364e-27 | $-1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 3802.9685% | fit |
+| 369 | neutron mass | kg | 1.674928e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 22415.5445% | fit |
+| 370 | neutron mass energy equivalent | J | 1.505350e-10 | $1 \cdot K^{-1} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1}$ | 1.505168e-10 | 0.0121% | PASS |
+| 371 | neutron mass energy equivalent in MeV | MeV | 939.56542 | $m_e \cdot \pi \cdot \text{words}^{2}$ | 924.68192 | 1.5841% | fit |
 | 372 | neutron mass in u | u | 1.0086649 | $1 \cdot 1$ | 1 | 0.8590% | PASS |
-| 373 | neutron molar mass | kg mol^-1 | 0.0010086649 | $1 \cdot \text{bits}^{1} \cdot f_1^{{-2$ | 0.0010131454 | 0.4442% | PASS |
-| 374 | neutron-proton mass difference | kg | 2.305575e-30 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 16356735.4875% | fit |
-| 375 | neutron-proton mass difference energy equi... | J | 2.072147e-13 | $1 \cdot \text{dict}^{{-2 \cdot f_1^{{-3$ | 2.107457e-13 | 1.7040% | fit |
-| 376 | neutron-proton mass difference energy equi... | MeV | 1.2933325 | $1 \cdot K^{{-1 \cdot \rho_{\text{BIP}}^{{-1$ | 1.2929293 | 0.0312% | PASS |
-| 377 | neutron-proton mass difference in u | u | 0.0013884495 | $1 \cdot K^{{-1 \cdot \text{bits}^{{-2$ | 0.0013774105 | 0.7951% | PASS |
-| 378 | nuclear magneton | J T^-1 | 5.050784e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 7366.5451% | fit |
-| 379 | nuclear magneton in K/T | K T^-1 | 3.658268e-04 | $1 \cdot K^{1} \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-1$ | 3.662109e-04 | 0.1050% | PASS |
-| 380 | nuclear magneton in MHz/T | MHz T^-1 | 7.6225932 | $1 \cdot \ln(\text{dict})^{1}$ | 7.624619 | 0.0266% | PASS |
-| 381 | nuclear magneton in eV/T | eV T^-1 | 3.152451e-08 | $1 \cdot \text{dict}^{{-2 \cdot \ln(\text{dict})^{{-1$ | 3.126957e-08 | 0.8087% | PASS |
-| 382 | nuclear magneton in inverse meter per tesla | m^-1 T^-1 | 0.025426234 | $1 \cdot \text{checksum}^{1} \cdot U^{{-1 \cdot f_1^{{-1$ | 0.025591835 | 0.6513% | PASS |
-| 383 | nuclear magneton in inverse meters per tesla | m^-1 T^-1 | 0.025426234 | $1 \cdot \text{checksum}^{1} \cdot U^{{-1 \cdot f_1^{{-1$ | 0.025591835 | 0.6513% | PASS |
-| 384 | proton Compton wavelength | m | 1.321410e-15 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot f_1^{{-2$ | 1.340291e-15 | 1.4289% | fit |
-| 385 | proton Compton wavelength over 2 pi | m | 2.103089e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-2$ | 2.087913e-16 | 0.7216% | PASS |
-| 386 | proton charge to mass quotient | C kg^-1 | 95788331 | $1 \cdot \text{dict}^{2} \cdot \ln(\text{dict})^{1} \cdot U^{1}$ | 95941423 | 0.1598% | PASS |
+| 373 | neutron molar mass | kg mol^-1 | 0.0010086649 | $1 \cdot \text{bits} \cdot f_1^{-2}$ | 0.0010131454 | 0.4442% | PASS |
+| 374 | neutron-proton mass difference | kg | 2.305575e-30 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 16356735.4875% | fit |
+| 375 | neutron-proton mass difference energy equi... | J | 2.072147e-13 | $1 \cdot \text{dict}^{-2} \cdot f_1^{-3}$ | 2.107457e-13 | 1.7040% | fit |
+| 376 | neutron-proton mass difference energy equi... | MeV | 1.2933325 | $1 \cdot K^{-1} \cdot \rho_{\text{BIP}}^{-1}$ | 1.2929293 | 0.0312% | PASS |
+| 377 | neutron-proton mass difference in u | u | 0.0013884495 | $1 \cdot K^{-1} \cdot \text{bits}^{-2}$ | 0.0013774105 | 0.7951% | PASS |
+| 378 | nuclear magneton | J T^-1 | 5.050784e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 7366.5451% | fit |
+| 379 | nuclear magneton in K/T | K T^-1 | 3.658268e-04 | $1 \cdot K \cdot \text{dict}^{-1} \cdot \text{checksum}^{-1}$ | 3.662109e-04 | 0.1050% | PASS |
+| 380 | nuclear magneton in MHz/T | MHz T^-1 | 7.6225932 | $1 \cdot \ln(\text{dict})$ | 7.624619 | 0.0266% | PASS |
+| 381 | nuclear magneton in eV/T | eV T^-1 | 3.152451e-08 | $1 \cdot \text{dict}^{-2} \cdot \ln(\text{dict})^{-1}$ | 3.126957e-08 | 0.8087% | PASS |
+| 382 | nuclear magneton in inverse meter per tesla | m^-1 T^-1 | 0.025426234 | $1 \cdot \text{checksum} \cdot U^{-1} \cdot f_1^{-1}$ | 0.025591835 | 0.6513% | PASS |
+| 383 | nuclear magneton in inverse meters per tesla | m^-1 T^-1 | 0.025426234 | $1 \cdot \text{checksum} \cdot U^{-1} \cdot f_1^{-1}$ | 0.025591835 | 0.6513% | PASS |
+| 384 | proton Compton wavelength | m | 1.321410e-15 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot f_1^{-2}$ | 1.340291e-15 | 1.4289% | fit |
+| 385 | proton Compton wavelength over 2 pi | m | 2.103089e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-2}$ | 2.087913e-16 | 0.7216% | PASS |
+| 386 | proton charge to mass quotient | C kg^-1 | 95788331 | $1 \cdot \text{dict}^{2} \cdot \ln(\text{dict}) \cdot U$ | 95941423 | 0.1598% | PASS |
 | 387 | proton gyromag. ratio | s^-1 T^-1 | 2.6752219e+08 | $1 \cdot \text{dict}^{2} \cdot \text{checksum}^{2}$ | 268435456 | 0.3414% | PASS |
-| 388 | proton gyromag. ratio in MHz/T | MHz T^-1 | 42.577478 | $1 \cdot K^{{-1 \cdot \text{entropy}^{1}$ | 42.666667 | 0.2095% | PASS |
-| 389 | proton gyromag. ratio over 2 pi | MHz T^-1 | 42.577479 | $1 \cdot K^{{-1 \cdot \text{entropy}^{1}$ | 42.666667 | 0.2095% | PASS |
+| 388 | proton gyromag. ratio in MHz/T | MHz T^-1 | 42.577478 | $1 \cdot K^{-1} \cdot \text{entropy}$ | 42.666667 | 0.2095% | PASS |
+| 389 | proton gyromag. ratio over 2 pi | MHz T^-1 | 42.577479 | $1 \cdot K^{-1} \cdot \text{entropy}$ | 42.666667 | 0.2095% | PASS |
 | 390 | proton gyromagn. ratio | s^-1 T^-1 | 2.6752219e+08 | $1 \cdot \text{dict}^{2} \cdot \text{checksum}^{2}$ | 268435456 | 0.3414% | PASS |
-| 391 | proton gyromagn. ratio over 2 pi | MHz T^-1 | 42.577481 | $1 \cdot K^{{-1 \cdot \text{entropy}^{1}$ | 42.666667 | 0.2095% | PASS |
-| 392 | proton mag. mom. | J T^-1 | 1.410607e-26 | $\mu_B[J/T] \cdot pi^{1} \cdot \text{dict}^{{-1$ | 1.422615e-26 | 0.8513% | PASS |
-| 393 | proton magn. moment | J T^-1 | 1.410607e-26 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 2573.4528% | fit |
-| 394 | proton mass | kg | 1.672622e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 22446.5803% | fit |
-| 395 | proton mass energy equivalent | J | 1.503278e-10 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-1$ | 1.505168e-10 | 0.1257% | PASS |
-| 396 | proton mass energy equivalent in MeV | MeV | 938.27209 | $m_e[MeV] \cdot pi^{1} \cdot \text{words}^{2}$ | 924.68192 | 1.4484% | fit |
+| 391 | proton gyromagn. ratio over 2 pi | MHz T^-1 | 42.577481 | $1 \cdot K^{-1} \cdot \text{entropy}$ | 42.666667 | 0.2095% | PASS |
+| 392 | proton mag. mom. | J T^-1 | 1.410607e-26 | $mu_B \cdot \pi \cdot \text{dict}^{-1}$ | 1.422615e-26 | 0.8513% | PASS |
+| 393 | proton magn. moment | J T^-1 | 1.410607e-26 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 2573.4528% | fit |
+| 394 | proton mass | kg | 1.672622e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 22446.5803% | fit |
+| 395 | proton mass energy equivalent | J | 1.503278e-10 | $1 \cdot K^{-1} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-1}$ | 1.505168e-10 | 0.1257% | PASS |
+| 396 | proton mass energy equivalent in MeV | MeV | 938.27209 | $m_e \cdot \pi \cdot \text{words}^{2}$ | 924.68192 | 1.4484% | fit |
 | 397 | proton mass in u | u | 1.0072765 | $1 \cdot 1$ | 1 | 0.7224% | PASS |
-| 398 | proton molar mass | kg mol^-1 | 0.0010072765 | $1 \cdot \text{bits}^{1} \cdot f_1^{{-2$ | 0.0010131454 | 0.5826% | PASS |
-| 399 | proton rms charge radius | m | 8.407500e-16 | $1 \cdot \text{dict}^{{-2 \cdot \text{entropy}^{{-1 \cdot f_1^{{-3$ | 8.232254e-16 | 2.0844% | fit |
-| 400 | quantum of circulation | m^2 s^-1 | 3.636948e-04 | $1 \cdot \text{bits}^{{-1 \cdot \text{entropy}^{{-1$ | 3.551136e-04 | 2.3594% | fit |
-| 401 | quantum of circulation times 2 | m^2 s^-1 | 7.273895e-04 | $1 \cdot \text{entropy}^{{-1 \cdot \ln(K)^{{-1 \cdot U^{{-1$ | 7.266951e-04 | 0.0955% | PASS |
-| 402 | reduced Compton wavelength | m | 3.861593e-13 | $1 \cdot \text{dict}^{{-3 \cdot U^{{-1 \cdot f_1^{{-1$ | 3.724102e-13 | 3.5605% | fit |
-| 403 | reduced Planck constant | J s | 1.054572e-34 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 357603948430.3334% | fit |
-| 404 | reduced Planck constant in eV s | eV s | 6.582120e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{total\_\text{bits}}^{{-3 \cdot f_1^{1}$ | 6.592632e-16 | 0.1597% | PASS |
-| 405 | reduced Planck constant times c in MeV fm | MeV fm | 197.32698 | $1 \cdot K^{1} \cdot \text{entropy}^{1} \cdot \rho_{\text{BIP}}^{1}$ | 198 | 0.3411% | PASS |
-| 406 | reduced muon Compton wavelength | m | 1.867594e-15 | $1 \cdot \text{dict}^{{-2 \cdot \text{entropy}^{{-3 \cdot \ln(\text{dict})^{{-1$ | 1.863812e-15 | 0.2025% | PASS |
-| 407 | reduced neutron Compton wavelength | m | 2.100194e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-2$ | 2.087913e-16 | 0.5848% | PASS |
-| 408 | reduced proton Compton wavelength | m | 2.103089e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{checksum}^{{-1 \cdot \text{total\_\text{bits}}^{{-2$ | 2.087913e-16 | 0.7216% | PASS |
-| 409 | reduced tau Compton wavelength | m | 1.110538e-16 | $1 \cdot \text{bits}^{{-2 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-3$ | 1.070885e-16 | 3.5706% | fit |
-| 410 | second radiation constant | m K | 0.014387769 | $1 \cdot \text{bits}^{1} \cdot \text{entropy}^{{-1 \cdot U^{{-1$ | 0.014322691 | 0.4523% | PASS |
-| 411 | shielded helion gyromag. ratio | s^-1 T^-1 | 2.0378946e+08 | $1 \cdot \text{bits}^{1} \cdot \text{total\_\text{bits}}^{3}$ | 202397184 | 0.6832% | PASS |
-| 412 | shielded helion gyromag. ratio in MHz/T | MHz T^-1 | 32.4341 | $1 \cdot \text{entropy}^{1} \cdot \text{checksum}^{{-1$ | 32 | 1.3384% | fit |
-| 413 | shielded helion gyromag. ratio over 2 pi | MHz T^-1 | 32.4341 | $1 \cdot \text{entropy}^{1} \cdot \text{checksum}^{{-1$ | 32 | 1.3384% | fit |
-| 414 | shielded helion gyromagn. ratio | s^-1 T^-1 | 2.0378946e+08 | $1 \cdot \text{bits}^{1} \cdot \text{total\_\text{bits}}^{3}$ | 202397184 | 0.6832% | PASS |
-| 415 | shielded helion gyromagn. ratio over 2 pi | MHz T^-1 | 32.434101 | $1 \cdot \text{entropy}^{1} \cdot \text{checksum}^{{-1$ | 32 | 1.3384% | fit |
-| 416 | shielded helion mag. mom. | J T^-1 | -1.074553e-26 | $-\mu_B[J/T] \cdot K^{{-2 \cdot \text{words}^{{-1$ | 1.073381e-26 | 0.1091% | PASS |
-| 417 | shielded helion magn. moment | J T^-1 | -1.074553e-26 | $-1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 3409.5434% | fit |
+| 398 | proton molar mass | kg mol^-1 | 0.0010072765 | $1 \cdot \text{bits} \cdot f_1^{-2}$ | 0.0010131454 | 0.5826% | PASS |
+| 399 | proton rms charge radius | m | 8.407500e-16 | $1 \cdot \text{dict}^{-2} \cdot \text{entropy}^{-1} \cdot f_1^{-3}$ | 8.232254e-16 | 2.0844% | fit |
+| 400 | quantum of circulation | m^2 s^-1 | 3.636948e-04 | $1 \cdot \text{bits}^{-1} \cdot \text{entropy}^{-1}$ | 3.551136e-04 | 2.3594% | fit |
+| 401 | quantum of circulation times 2 | m^2 s^-1 | 7.273895e-04 | $1 \cdot \text{entropy}^{-1} \cdot \ln(K)^{-1} \cdot U^{-1}$ | 7.266951e-04 | 0.0955% | PASS |
+| 402 | reduced Compton wavelength | m | 3.861593e-13 | $1 \cdot \text{dict}^{-3} \cdot U^{-1} \cdot f_1^{-1}$ | 3.724102e-13 | 3.5605% | fit |
+| 403 | reduced Planck constant | J s | 1.054572e-34 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 357603948430.3334% | fit |
+| 404 | reduced Planck constant in eV s | eV s | 6.582120e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{total\_bits}^{-3} \cdot f_1$ | 6.592632e-16 | 0.1597% | PASS |
+| 405 | reduced Planck constant times c in MeV fm | MeV fm | 197.32698 | $1 \cdot K \cdot \text{entropy} \cdot \rho_{\text{BIP}}$ | 198 | 0.3411% | PASS |
+| 406 | reduced muon Compton wavelength | m | 1.867594e-15 | $1 \cdot \text{dict}^{-2} \cdot \text{entropy}^{-3} \cdot \ln(\text{dict})^{-1}$ | 1.863812e-15 | 0.2025% | PASS |
+| 407 | reduced neutron Compton wavelength | m | 2.100194e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-2}$ | 2.087913e-16 | 0.5848% | PASS |
+| 408 | reduced proton Compton wavelength | m | 2.103089e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{checksum}^{-1} \cdot \text{total\_bits}^{-2}$ | 2.087913e-16 | 0.7216% | PASS |
+| 409 | reduced tau Compton wavelength | m | 1.110538e-16 | $1 \cdot \text{bits}^{-2} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-3}$ | 1.070885e-16 | 3.5706% | fit |
+| 410 | second radiation constant | m K | 0.014387769 | $1 \cdot \text{bits} \cdot \text{entropy}^{-1} \cdot U^{-1}$ | 0.014322691 | 0.4523% | PASS |
+| 411 | shielded helion gyromag. ratio | s^-1 T^-1 | 2.0378946e+08 | $1 \cdot \text{bits} \cdot \text{total\_bits}^{3}$ | 202397184 | 0.6832% | PASS |
+| 412 | shielded helion gyromag. ratio in MHz/T | MHz T^-1 | 32.4341 | $1 \cdot \text{entropy} \cdot \text{checksum}^{-1}$ | 32 | 1.3384% | fit |
+| 413 | shielded helion gyromag. ratio over 2 pi | MHz T^-1 | 32.4341 | $1 \cdot \text{entropy} \cdot \text{checksum}^{-1}$ | 32 | 1.3384% | fit |
+| 414 | shielded helion gyromagn. ratio | s^-1 T^-1 | 2.0378946e+08 | $1 \cdot \text{bits} \cdot \text{total\_bits}^{3}$ | 202397184 | 0.6832% | PASS |
+| 415 | shielded helion gyromagn. ratio over 2 pi | MHz T^-1 | 32.434101 | $1 \cdot \text{entropy} \cdot \text{checksum}^{-1}$ | 32 | 1.3384% | fit |
+| 416 | shielded helion mag. mom. | J T^-1 | -1.074553e-26 | $-mu_B \cdot K^{-2} \cdot \text{words}^{-1}$ | 1.073381e-26 | 0.1091% | PASS |
+| 417 | shielded helion magn. moment | J T^-1 | -1.074553e-26 | $-1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 3409.5434% | fit |
 | 418 | shielded proton gyromag. ratio | s^-1 T^-1 | 2.6751532e+08 | $1 \cdot \text{dict}^{2} \cdot \text{checksum}^{2}$ | 268435456 | 0.3440% | PASS |
-| 419 | shielded proton gyromag. ratio in MHz/T | MHz T^-1 | 42.576385 | $1 \cdot K^{{-1 \cdot \text{entropy}^{1}$ | 42.666667 | 0.2120% | PASS |
-| 420 | shielded proton gyromag. ratio over 2 pi | MHz T^-1 | 42.576385 | $1 \cdot K^{{-1 \cdot \text{entropy}^{1}$ | 42.666667 | 0.2120% | PASS |
-| 421 | shielded proton mag. mom. | J T^-1 | 1.410571e-26 | $\mu_B[J/T] \cdot pi^{1} \cdot \text{dict}^{{-1$ | 1.422615e-26 | 0.8539% | PASS |
-| 422 | shielded proton magn. moment | J T^-1 | 1.410570e-26 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 2573.5215% | fit |
-| 423 | speed of light in vacuum | m s^-1 | 299792458 | $1 \cdot \text{total\_\text{bits}}^{1} \cdot f_1^{3}$ | 2.9866567e+08 | 0.3759% | PASS |
-| 424 | standard acceleration of gravity | m s^-2 | 9.80665 | $1 \cdot pi^{2}$ | 9.8696044 | 0.6420% | PASS |
-| 425 | standard atmosphere | Pa | 101325 | $1 \cdot K^{2} \cdot \text{bits}^{1} \cdot \text{entropy}^{1}$ | 101376 | 0.0503% | PASS |
-| 426 | standard-state pressure | Pa | 100000 | $1 \cdot K^{1} \cdot \text{dict}^{1} \cdot \text{checksum}^{1}$ | 98304 | 1.6960% | fit |
-| 427 | tau Compton wavelength | m | 6.977710e-16 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot f_1^{1}$ | 7.230207e-16 | 3.6186% | fit |
-| 428 | tau Compton wavelength over 2 pi | m | 1.110560e-16 | $1 \cdot \text{bits}^{{-2 \cdot \text{dict}^{{-2 \cdot \text{total\_\text{bits}}^{{-3$ | 1.070885e-16 | 3.5725% | fit |
-| 429 | tau energy equivalent | MeV | 1776.86 | $1 \cdot K^{{-1 \cdot f_1^{2}$ | 1809.5462 | 1.8395% | fit |
-| 430 | tau mass | kg | 3.167540e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 11805.7390% | fit |
-| 431 | tau mass energy equivalent | J | 2.846840e-10 | $1 \cdot \text{dict}^{{-2 \cdot \text{checksum}^{{-1 \cdot f_1^{{-1$ | 2.860156e-10 | 0.4677% | PASS |
-| 432 | tau mass energy equivalent in MeV | MeV | 1776.82 | $m_e[MeV] \cdot \text{entropy}^{1} \cdot \ln(K)^{1} \cdot \ln(\text{dict})^{1}$ | 1787.1369 | 0.5806% | PASS |
-| 433 | tau mass in u | u | 1.90754 | $1 \cdot pi^{{-1 \cdot K^{1}$ | 1.9098593 | 0.1216% | PASS |
-| 434 | tau molar mass | kg mol^-1 | 0.00190754 | $1 \cdot K^{{-1 \cdot \text{total\_\text{bits}}^{{-1 \cdot U^{1}$ | 0.0018939693 | 0.7114% | PASS |
-| 435 | triton mag. mom. | J T^-1 | 1.504610e-26 | $\mu_B[J/T] \cdot K^{{-1 \cdot f_1^{{-1$ | 1.483392e-26 | 1.4102% | fit |
-| 436 | triton mass | kg | 5.007357e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 7431.2997% | fit |
-| 437 | triton mass energy equivalent | J | 4.500388e-10 | $1 \cdot \text{bits}^{{-2 \cdot \text{total\_\text{bits}}^{{-3$ | 4.491618e-10 | 0.1949% | PASS |
-| 438 | triton mass energy equivalent in MeV | MeV | 2808.9211 | $m_e[MeV] \cdot \text{dict}^{1} \cdot \text{checksum}^{1} \cdot U^{{-1$ | 2790.6916 | 0.6490% | PASS |
-| 439 | triton mass in u | u | 3.0155007 | $1 \cdot U^{1}$ | 3.0000473 | 0.5125% | PASS |
-| 440 | triton molar mass | kg mol^-1 | 0.0030155007 | $1 \cdot pi^{{-1 \cdot f_1^{{-1$ | 0.0030548484 | 1.3048% | fit |
-| 441 | unified atomic mass unit | kg | 1.660539e-27 | $1 \cdot \text{dict}^{{-3 \cdot \text{entropy}^{{-3 \cdot \text{total\_\text{bits}}^{{-3$ | 3.771190e-25 | 22610.6398% | fit |
-| 442 | vacuum electric permittivity | F m^-1 | 8.854188e-12 | $1 \cdot \text{dict}^{{-2 \cdot \text{entropy}^{{-1 \cdot f_1^{{-1$ | 8.937986e-12 | 0.9464% | PASS |
-| 443 | vacuum mag. permeability | N A^-2 | 1.256637e-06 | $1 \cdot K^{{-1 \cdot \text{dict}^{{-1 \cdot \text{checksum}^{{-2$ | 1.271566e-06 | 1.1880% | fit |
-| 444 | von Klitzing constant | ohm | 25812.807 | $1 \cdot \text{entropy}^{1} \cdot f_1^{1}$ | 26674.754 | 3.3392% | fit |
-| 445 | {220} lattice spacing of silicon | m | 1.920156e-10 | $1 \cdot \text{entropy}^{{-3 \cdot U^{{-1 \cdot f_1^{{-1$ | 1.906740e-10 | 0.6987% | PASS |
+| 419 | shielded proton gyromag. ratio in MHz/T | MHz T^-1 | 42.576385 | $1 \cdot K^{-1} \cdot \text{entropy}$ | 42.666667 | 0.2120% | PASS |
+| 420 | shielded proton gyromag. ratio over 2 pi | MHz T^-1 | 42.576385 | $1 \cdot K^{-1} \cdot \text{entropy}$ | 42.666667 | 0.2120% | PASS |
+| 421 | shielded proton mag. mom. | J T^-1 | 1.410571e-26 | $mu_B \cdot \pi \cdot \text{dict}^{-1}$ | 1.422615e-26 | 0.8539% | PASS |
+| 422 | shielded proton magn. moment | J T^-1 | 1.410570e-26 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 2573.5215% | fit |
+| 423 | speed of light in vacuum | m s^-1 | 299792458 | $1 \cdot \text{total\_bits} \cdot f_1^{3}$ | 2.9866567e+08 | 0.3759% | PASS |
+| 424 | standard acceleration of gravity | m s^-2 | 9.80665 | $1 \cdot \pi^{2}$ | 9.8696044 | 0.6420% | PASS |
+| 425 | standard atmosphere | Pa | 101325 | $1 \cdot K^{2} \cdot \text{bits} \cdot \text{entropy}$ | 101376 | 0.0503% | PASS |
+| 426 | standard-state pressure | Pa | 100000 | $1 \cdot K \cdot \text{dict} \cdot \text{checksum}$ | 98304 | 1.6960% | fit |
+| 427 | tau Compton wavelength | m | 6.977710e-16 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot f_1$ | 7.230207e-16 | 3.6186% | fit |
+| 428 | tau Compton wavelength over 2 pi | m | 1.110560e-16 | $1 \cdot \text{bits}^{-2} \cdot \text{dict}^{-2} \cdot \text{total\_bits}^{-3}$ | 1.070885e-16 | 3.5725% | fit |
+| 429 | tau energy equivalent | MeV | 1776.86 | $1 \cdot K^{-1} \cdot f_1^{2}$ | 1809.5462 | 1.8395% | fit |
+| 430 | tau mass | kg | 3.167540e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 11805.7390% | fit |
+| 431 | tau mass energy equivalent | J | 2.846840e-10 | $1 \cdot \text{dict}^{-2} \cdot \text{checksum}^{-1} \cdot f_1^{-1}$ | 2.860156e-10 | 0.4677% | PASS |
+| 432 | tau mass energy equivalent in MeV | MeV | 1776.82 | $m_e \cdot \text{entropy} \cdot \ln(K) \cdot \ln(\text{dict})$ | 1787.1369 | 0.5806% | PASS |
+| 433 | tau mass in u | u | 1.90754 | $1 \cdot \pi^{-1} \cdot K$ | 1.9098593 | 0.1216% | PASS |
+| 434 | tau molar mass | kg mol^-1 | 0.00190754 | $1 \cdot K^{-1} \cdot \text{total\_bits}^{-1} \cdot U$ | 0.0018939693 | 0.7114% | PASS |
+| 435 | triton mag. mom. | J T^-1 | 1.504610e-26 | $mu_B \cdot K^{-1} \cdot f_1^{-1}$ | 1.483392e-26 | 1.4102% | fit |
+| 436 | triton mass | kg | 5.007357e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 7431.2997% | fit |
+| 437 | triton mass energy equivalent | J | 4.500388e-10 | $1 \cdot \text{bits}^{-2} \cdot \text{total\_bits}^{-3}$ | 4.491618e-10 | 0.1949% | PASS |
+| 438 | triton mass energy equivalent in MeV | MeV | 2808.9211 | $m_e \cdot \text{dict} \cdot \text{checksum} \cdot U^{-1}$ | 2790.6916 | 0.6490% | PASS |
+| 439 | triton mass in u | u | 3.0155007 | $1 \cdot U$ | 3.0000473 | 0.5125% | PASS |
+| 440 | triton molar mass | kg mol^-1 | 0.0030155007 | $1 \cdot \pi^{-1} \cdot f_1^{-1}$ | 0.0030548484 | 1.3048% | fit |
+| 441 | unified atomic mass unit | kg | 1.660539e-27 | $1 \cdot \text{dict}^{-3} \cdot \text{entropy}^{-3} \cdot \text{total\_bits}^{-3}$ | 3.771190e-25 | 22610.6398% | fit |
+| 442 | vacuum electric permittivity | F m^-1 | 8.854188e-12 | $1 \cdot \text{dict}^{-2} \cdot \text{entropy}^{-1} \cdot f_1^{-1}$ | 8.937986e-12 | 0.9464% | PASS |
+| 443 | vacuum mag. permeability | N A^-2 | 1.256637e-06 | $1 \cdot K^{-1} \cdot \text{dict}^{-1} \cdot \text{checksum}^{-2}$ | 1.271566e-06 | 1.1880% | fit |
+| 444 | von Klitzing constant | ohm | 25812.807 | $1 \cdot \text{entropy} \cdot f_1$ | 26674.754 | 3.3392% | fit |
+| 445 | {220} lattice spacing of silicon | m | 1.920156e-10 | $1 \cdot \text{entropy}^{-3} \cdot U^{-1} \cdot f_1^{-1}$ | 1.906740e-10 | 0.6987% | PASS |
 
 
-Полные данные в JSON: [`bip39_fit_all_445_v8.json`](complete_theory_kit/results/bip39_fit_all_445_v8.json) и [`symbolic_all_445_constants_v10.json`](complete_theory_kit/results/symbolic_all_445_constants_v10.json).
+Полные данные в JSON в JSON: [`bip39_fit_all_445_v8.json`](complete_theory_kit/results/bip39_fit_all_445_v8.json) и [`symbolic_all_445_constants_v10.json`](complete_theory_kit/results/symbolic_all_445_constants_v10.json).

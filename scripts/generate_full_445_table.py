@@ -1,4 +1,4 @@
-"""Generate FULL 445 constant table in README.md."""
+"""Generate FULL 445 constant table in README.md — FIXED LaTeX."""
 import json, math, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,29 +17,80 @@ def fmt_val(v):
         return f"{v:.8g}"
     return str(v)
 
+# Variable display names for LaTeX
+VAR_NAMES = {
+    'K': 'K',
+    'bits': '\\text{bits}',
+    'dict': '\\text{dict}',
+    'words': '\\text{words}',
+    'entropy': '\\text{entropy}',
+    'total_bits': '\\text{total\\_bits}',
+    'checksum': '\\text{checksum}',
+    'lnK': '\\ln(K)',
+    'lnDict': '\\ln(\\text{dict})',
+    'U': 'U',
+    'f1': 'f_1',
+    'pi': '\\pi',
+    'e': 'e',
+    'bip_density': '\\rho_{\\text{BIP}}',
+    'mu_B': '\\mu_B',
+}
+
 def fmt_formula(f):
-    """Convert sparse_formula to readable LaTeX."""
-    f = f.replace('sign(1) * ', '').replace('sign(-1) * ', '-')
-    f = f.replace(' * ', ' \\cdot ')
-    f = f.replace('^-', '^{-').replace('^', '^{')
-    # Close braces for negative exponents
-    f = re.sub(r'\^{(-?\d+)', r'^{\1}', f)
-    f = f.replace('dict', '\\text{dict}')
-    f = f.replace('total_bits', '\\text{total\\_bits}')
-    f = f.replace('checksum', '\\text{checksum}')
-    f = f.replace('entropy', '\\text{entropy}')
-    f = f.replace('words', '\\text{words}')
-    f = f.replace('bits', '\\text{bits}')
-    f = f.replace('lnK', '\\ln(K)')
-    f = f.replace('lnDict', '\\ln(\\text{dict})')
-    f = f.replace('m_e', 'm_e')
-    f = f.replace('mu_B', '\\mu_B')
-    f = f.replace('U', 'U')
-    f = f.replace('f1', 'f_1')
-    f = f.replace('bip_density', '\\rho_{\\text{BIP}}')
-    # Clean up empty braces
-    f = f.replace('{}', '')
-    return f
+    """Convert sparse_formula to proper LaTeX."""
+    # Extract sign
+    sign = ''
+    if f.startswith('sign(-1) * '):
+        sign = '-'
+        f = f[11:]
+    elif f.startswith('sign(1) * '):
+        f = f[10:]
+    
+    # Handle base units like m_e[MeV], mu_B[J/T]
+    base_unit = None
+    for bu in ['m_e[MeV]', 'mu_B[J/T]']:
+        if bu in f:
+            base_unit = bu
+            f = f.replace(bu + ' * ', '').replace(bu, '')
+            break
+    
+    # Split by * 
+    terms = [t.strip() for t in f.split('*') if t.strip()]
+    
+    latex_terms = []
+    for term in terms:
+        # Parse variable name and exponent
+        term = term.strip()
+        if not term:
+            continue
+        if term == '1':
+            latex_terms.append('1')
+            continue
+        
+        # Check for variable^exponent pattern
+        m = re.match(r'^([a-zA-Z_]\w*)\^(-?\d+)$', term)
+        if m:
+            var, exp = m.group(1), m.group(2)
+            var_tex = VAR_NAMES.get(var, var)
+            if exp == '1':
+                latex_terms.append(var_tex)
+            elif exp == '-1':
+                latex_terms.append(f'{var_tex}^{{-1}}')
+            else:
+                latex_terms.append(f'{var_tex}^{{{exp}}}')
+        elif re.match(r'^[a-zA-Z_]\w*$', term):
+            var = term
+            var_tex = VAR_NAMES.get(var, var)
+            latex_terms.append(var_tex)
+        else:
+            # Fallback: keep as-is but escape braces
+            latex_terms.append(term)
+    
+    result = ' \\cdot '.join(latex_terms) if latex_terms else '1'
+    if base_unit:
+        result = base_unit.split('[')[0] + ' \\cdot ' + result
+    
+    return sign + result
 
 # Build the table
 T = ""
@@ -70,7 +121,6 @@ for idx, r in enumerate(all_sorted, 1):
     else:
         status = "fit"
     
-    # Shorten long names for table fit
     if len(name) > 45:
         name = name[:42] + "..."
     
@@ -81,44 +131,55 @@ print(f"Table size: {len(T)} chars, {len(T.split(chr(10)))} rows")
 # Now insert into README
 readme = open(README, 'r', encoding='utf-8').read()
 
-# Find the prediction table section and replace it
-marker_start = "## BIP39-мономиальные предсказания: 445 констант"
-marker_end = "Полные таблицы всех 445 констант"
+marker_start = "## BIP39-мономиальные предсказания: все 445 констант"
+end_marker = "Полные данные в JSON"
 
 start_idx = readme.find(marker_start)
-end_idx = readme.find(marker_end, start_idx)
+end_idx = readme.find(end_marker, start_idx)
 
 if start_idx == -1 or end_idx == -1:
-    print("ERROR: Could not find table markers in README")
-    # Let me search more broadly
-    for m in ["BIP39-мономиальные предсказания", "Полные таблицы", "Безразмерные константы"]:
+    print("ERROR: Could not find table markers")
+    for m in ["BIP39-мономиальные предсказания: все 445", "Полные данные в JSON"]:
         idx = readme.find(m)
-        if idx >= 0:
-            print(f"  Found '{m}' at pos {idx} (line {readme[:idx].count(chr(10))+1})")
+        print(f"  '{m}': {'found at ' + str(idx) if idx >= 0 else 'NOT FOUND'}")
     exit(1)
 
-# Find the end of the paragraph after marker_end
-end_of_section = readme.find('\n', readme.find('\n', end_idx) + 1)
-# Actually find the next ## header or end of file
-next_header = readme.find('\n## ', end_idx + 50)
-if next_header == -1:
-    next_header = len(readme)
+# Find the next ## header or end of section after end_marker
+section_end = readme.find('\n## ', end_idx)
+if section_end == -1:
+    section_end = len(readme)
 
-# Build replacement
 replacement = f"""## BIP39-мономиальные предсказания: все 445 констант
 
 Полная таблица BIP39-мономиальных предсказаний для всех 445 констант SciPy/CODATA.
-Моном — произведение степеней параметров BIP39-словаря: $K$, bits, dict, words, entropy, total_bits, checksum, $U$, $f_1$, $\ln(K)$, $\ln(\\text{{dict}})$.
+Моном — произведение степеней параметров BIP39-словаря: $K$, $\\text{{bits}}$, $\\text{{dict}}$, $\\text{{words}}$, $\\text{{entropy}}$, $\\text{{total\\_bits}}$, $\\text{{checksum}}$, $U$, $f_1$, $\\ln(K)$, $\\ln(\\text{{dict}})$.
 
-Статусы: **PASS** — ошибка < 1%, **PASS*** — ошибка < 0.1%, **fit** — калибровочный коэффициент.
+Статусы: **PASS** — ошибка < 1%, **PASS*** — ошибка < 0.1%, **fit** — требуется калибровочный коэффициент.
 
-{ T }
+{T}
 
-Полные данные в JSON: [`bip39_fit_all_445_v8.json`](complete_theory_kit/results/bip39_fit_all_445_v8.json) и [`symbolic_all_445_constants_v10.json`](complete_theory_kit/results/symbolic_all_445_constants_v10.json)."""
+{end_marker} в JSON: [`bip39_fit_all_445_v8.json`](complete_theory_kit/results/bip39_fit_all_445_v8.json) и [`symbolic_all_445_constants_v10.json`](complete_theory_kit/results/symbolic_all_445_constants_v10.json)."""
 
-new_readme = readme[:start_idx] + replacement + readme[end_of_section:]
+new_readme = readme[:start_idx] + replacement + readme[section_end:]
 
 with open(README, 'w', encoding='utf-8') as f:
     f.write(new_readme)
 
-print(f"READme updated. New size: {len(new_readme)} bytes, {new_readme.count(chr(10))} lines")
+# Validate that all $...$ expressions have balanced braces
+import re as re2
+dollars = re2.findall(r'\$[^$]+\$', new_readme)
+bad_braces = []
+for d in dollars:
+    opens = d.count('{')
+    closes = d.count('}')
+    if opens != closes:
+        bad_braces.append((d[:60], opens, closes))
+
+if bad_braces:
+    print(f"\nWARNING: {len(bad_braces)} LaTeX expressions with unbalanced braces:")
+    for expr, o, c in bad_braces[:5]:
+        print(f"  {expr}...  opens={o} closes={c}")
+else:
+    print("\nAll LaTeX expressions have balanced braces!")
+
+print(f"README updated. Size: {len(new_readme)} bytes, {new_readme.count(chr(10))} lines")
